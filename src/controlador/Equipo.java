@@ -4,10 +4,7 @@
  */
 package controlador;
 
-/**
- *
- * @author Nicolas olivos
- */
+
 public class Equipo {
     EquipoItem ARMADURA;
     EquipoItem ARMA;

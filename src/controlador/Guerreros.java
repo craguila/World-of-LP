@@ -5,7 +5,19 @@
  */
 package controlador;
 
+import java.util.ArrayList;
+import java.util.List;
+
 
 public class Guerreros extends Personaje {
+    List<Habilidad> habilidades = new ArrayList<>();
+    public Guerreros(String Nombre, int Nivel, int EXP, Stats stats, int Vida, int Stamina, int Mana, Equipo equipo, Inventario inventario) {
+        super(Nombre, Nivel, EXP, stats, Vida, Stamina, Mana, equipo, inventario);
+        habilidades.add(new Habilidad("Golpe Fuerte",10,"Paralisis",5));
+        
+
+    }
+
+    
     
 }

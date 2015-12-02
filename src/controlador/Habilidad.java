@@ -5,10 +5,20 @@
  */
 package controlador;
 
-/**
- *
- * @author Administrador
- */
+
 class Habilidad {
+    public String nombre; //nombre de la habilidad
+    public int dano; //daño que produce
+    public String estado; //estado que genera en el enemigo (quemado, paralizado, ...)
+    private int costo;
+    
+    public Habilidad(String nombre, int dano, String estado, int costo){
+        this.nombre = nombre;
+        this.dano = dano;
+        this.estado = estado;
+        this.costo = costo;
+       
+    }
+    
     
 }

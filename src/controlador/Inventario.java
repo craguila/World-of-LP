@@ -6,10 +6,6 @@ package controlador;
 
 import java.util.ArrayList;
 
-/**
- *
- * @author Nicolas olivos
- */
 public class Inventario {
     int capacidad; //Capacidad del inventario
     int total_actual;

@@ -6,11 +6,14 @@
 package controlador;
 
 
-public class Mago extends Personaje {
+public class Monstruo extends Personaje {
+    int exp_entregada; // experiencia que entrega al usuario.
+    Habilidad[] spell_mo;
 
-    public Mago(String Nombre, int Nivel, int EXP, Stats stats, int Vida, int Stamina, int Mana, Equipo equipo, Inventario inventario) {
+    public Monstruo(String Nombre, int Nivel, int EXP, Stats stats, int Vida, int Stamina, int Mana, Equipo equipo, Inventario inventario) {
         super(Nombre, Nivel, EXP, stats, Vida, Stamina, Mana, equipo, inventario);
+        
     }
-    int piedras;
-    Habilidad[] spell_mg;
+    
+
 }

@@ -7,5 +7,11 @@ package controlador;
 
 
 public class Arquero extends Personaje {
-    
+
+    public Arquero(String Nombre, int Nivel, int EXP, Stats stats, int Vida, int Stamina, int Mana, Equipo equipo, Inventario inventario) {
+        super(Nombre, Nivel, EXP, stats, Vida, Stamina, Mana, equipo, inventario);
+    }
+    int ira;
+    int Flechas;
+    Habilidad[] spell_Ar; //requiere utilizar flechas y ira para atacar
 }
