@@ -9,6 +9,7 @@ import Graficos.Pantalla;
 import control.Teclado;
 import java.awt.BorderLayout;
 import java.awt.Canvas;
+import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Graphics;
 import java.awt.image.BufferStrategy;
@@ -21,8 +22,8 @@ import javax.swing.JFrame;
 
 
 public class juego extends Canvas implements Runnable{
-    private static final int ANCHO = 800;
-    private static final int ALTO = 600;
+    private static final int ANCHO = 500;
+    private static final int ALTO = 500;
     private static final String NOMBRE = "World of LP";
     
     private static int aps = 0;
@@ -83,16 +84,16 @@ public class juego extends Canvas implements Runnable{
         teclado.actualizar();
         
         if(teclado.arriba){
-            System.out.println("arriba");
+            y++;
         }
         if(teclado.abajo){
-            System.out.println("abajo");
+            y--;
         }
         if(teclado.derecha){
-            System.out.println("derecha");
+            x--;
         }
         if(teclado.izquierda){
-            System.out.println("izquierda");
+            x++;
         }
         aps++;
     }
@@ -112,6 +113,9 @@ public class juego extends Canvas implements Runnable{
         Graphics g = estrategia.getDrawGraphics();
         
         g.drawImage(imagen, 0, 0, getWidth(),getHeight(),null);
+        g.setColor(Color.white);
+        g.fillRect(ANCHO/2,ALTO/2,32,32);
+        
         g.dispose();
         
         estrategia.show();

@@ -5,6 +5,8 @@
  */
 package Graficos;
 
+import vista.cuadro.Cuadro;
+
 
 public class Pantalla {
     private final int ancho;
@@ -29,8 +31,9 @@ public class Pantalla {
         }
     }
     
+    //temporal
     public void mostrar(final int compensacionX, final int compensacionY){
-        for(int y=0; y<alto ;y++){
+        for(int y=0; y < alto ;y++){
             int posicionY = y + compensacionY;
             if (posicionY < 0 || posicionY >= alto){
                 continue;
@@ -41,9 +44,30 @@ public class Pantalla {
                     continue;
                 }
                 
-                //temporal
-                pixeles[(posicionX + posicionY) * ancho] = Sprite.pasto.pixeles[((x & MASCARA_SPRITE)+(y & MASCARA_SPRITE)) * LADO_SPRITE];
+            //temporal
+            pixeles[posicionX + posicionY * ancho] = Sprite.pasto.pixeles[(x & MASCARA_SPRITE)+(y & MASCARA_SPRITE) * LADO_SPRITE];
             }
         }
+    }
+    //temporal
+    
+    public void mostrarCuadro(int compensacionX, int compensacionY, Cuadro cuadro){
+        for (int y=0 ; y< cuadro.sprite.getLado();y++){
+            int posicionY = y + compensacionY;
+            for (int x=0; x<cuadro.sprite.getLado();x++){
+                int posicionX = x + compensacionX;
+                if(posicionX < 0 || posicionX > ancho || posicionY <0 || posicionY > alto){
+                    break;
+                }
+                pixeles[posicionX + posicionY*ancho] = cuadro.sprite.pixeles[x + y*cuadro.sprite.getLado()];
+            }
+        }
+    }
+    
+    public int getAncho(){
+        return ancho;
+    }
+    public int getLargo(){
+        return alto;
     }
 }
