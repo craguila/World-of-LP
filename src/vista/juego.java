@@ -21,7 +21,7 @@ import javax.swing.JFrame;
 
 
 
-public class juego extends Canvas implements Runnable{
+public class Juego extends Canvas implements Runnable{
     private static final int ANCHO = 500;
     private static final int ALTO = 500;
     private static final String NOMBRE = "World of LP";
@@ -40,11 +40,15 @@ public class juego extends Canvas implements Runnable{
     private static BufferedImage imagen = new BufferedImage(ANCHO,ALTO,BufferedImage.TYPE_INT_RGB);
     private static int[] pixeles = ((DataBufferInt) imagen.getRaster().getDataBuffer()).getData();
     
-    private juego(){
+    private static Mapa mapa;
+    
+    private Juego(){
         setPreferredSize(new Dimension(ANCHO, ALTO));
         
         pantalla = new Pantalla(ANCHO,ALTO);
         
+        mapa = new MapaGenerado(2048,2048); //Aqui se define el ancho del juego en cuadritos
+        mapa.generarMapa();
         teclado = new Teclado();
         addKeyListener(teclado);
         
@@ -60,8 +64,8 @@ public class juego extends Canvas implements Runnable{
     }
     
     public static void main(String args[]){
-        juego Juego = new juego();
-        Juego.iniciar();
+        Juego juego = new Juego();
+        juego.iniciar();
     }
     
     private synchronized void iniciar(){
@@ -84,16 +88,16 @@ public class juego extends Canvas implements Runnable{
         teclado.actualizar();
         
         if(teclado.arriba){
-            y++;
-        }
-        if(teclado.abajo){
             y--;
         }
+        if(teclado.abajo){
+            y++;
+        }
         if(teclado.derecha){
-            x--;
+            x++;
         }
         if(teclado.izquierda){
-            x++;
+            x--;
         }
         aps++;
     }
@@ -106,7 +110,7 @@ public class juego extends Canvas implements Runnable{
         }
         
         pantalla.limpiar();
-        pantalla.mostrar(x,y);
+        mapa.mostrar(x, y, pantalla);
         
         System.arraycopy(pantalla.pixeles, 0, pixeles, 0, pixeles.length);
         
@@ -124,7 +128,7 @@ public class juego extends Canvas implements Runnable{
 
     public void run() {
         final int NS_POR_SEGUNDO = 1000000000;
-        final byte FPS_OBJETIVO = 60;
+        final byte FPS_OBJETIVO = 120;
         final double NS_POR_ACTUALIZACION = NS_POR_SEGUNDO/FPS_OBJETIVO;
         
         long referenciaActualizacion = System.nanoTime();
