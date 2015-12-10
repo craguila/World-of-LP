@@ -39,18 +39,31 @@ public abstract class Mapa {
     
     public void mostrar(int compensacionX, int compensacionY, Pantalla pantalla){
         int o = compensacionX >> 5; //si no lo dividimos se mueve un tile y no un pixel
-        int e = (compensacionX + pantalla.getAncho()) >> 5; ;
+        int e = (compensacionX + pantalla.getAncho()) >> 5; 
         int n = compensacionY >> 5;
         int s = (compensacionY + pantalla.getLargo()) >> 5;
         
+        for (int y=n; y<s; y++){
+            for (int x = o; x < e ;x++){
+		if (x < 0 || y < 0 || x >= ancho || y >= alto) {
+		    Cuadro.VACIO.mostrar(x, y, pantalla);
+		} else {
+		    getCuadro(x, y).mostrar(x, y, pantalla);
+		}
+            }
+        }
+        
     }
     
-    public Cuadro getCuadro(){
+    public Cuadro getCuadro(final int x, final int y){
+        if (x < 0 || y < 0 || x >= ancho || y >= alto) {
+	    return Cuadro.VACIO;
+	}
         switch(cuadros[x+y*ancho]){
             case 0:
                 return Cuadro.pasto;
             default:
-                return null;
+                return Cuadro.VACIO;
         }
     }
 }
