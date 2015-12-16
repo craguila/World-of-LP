@@ -13,23 +13,25 @@ public abstract class Mapa {
     protected int alto;
     
     protected int[] cuadros;
+    protected Cuadro[] cuadrosCatalogo;
     
     public Mapa(int ancho, int alto){
         this.ancho = ancho;
         this.alto = alto;
-        
         cuadros = new int[ancho*alto];
+        generarMapa();
     }
     
     public Mapa(String ruta){
         cargarMapa(ruta);
+        generarMapa();
     }
     
     protected void generarMapa(){
         
     }
     
-    private void cargarMapa(String ruta){
+    protected void cargarMapa(String ruta){
         
     }
     
@@ -38,17 +40,19 @@ public abstract class Mapa {
     }
     
     public void mostrar(int compensacionX, int compensacionY, Pantalla pantalla){
-        int o = compensacionX >> 5; //si no lo dividimos se mueve un tile y no un pixel
-        int e = (compensacionX + pantalla.getAncho()) >> 5; 
-        int n = compensacionY >> 5;
-        int s = (compensacionY + pantalla.getLargo()) >> 5;
+        
+        pantalla.setDiferencia(compensacionX, compensacionY);
+        int o = compensacionX>>5 ; //si no lo dividimos se mueve un tile y no un pixel
+        int e = (compensacionX + pantalla.getAncho() + Cuadro.LADO)>>5; 
+        int n = compensacionY >>5;
+        int s = (compensacionY + pantalla.getLargo()  + Cuadro.LADO)>>5 ;
         
         for (int y=n; y<s; y++){
             for (int x = o; x < e ;x++){
 		if (x < 0 || y < 0 || x >= ancho || y >= alto) {
-		    Cuadro.VACIO.mostrar(x, y, pantalla);
+		    Cuadro.AGUA.mostrar(x, y, pantalla);
 		} else {
-		    getCuadro(x, y).mostrar(x, y, pantalla);
+                    cuadrosCatalogo[x+y*ancho].mostrar(x, y, pantalla);
 		}
             }
         }
@@ -61,7 +65,13 @@ public abstract class Mapa {
 	}
         switch(cuadros[x+y*ancho]){
             case 0:
-                return Cuadro.pasto;
+                return Cuadro.PASTO;
+            case 1:
+                return Cuadro.ARENA;
+            case 2:
+                return Cuadro.AGUA;
+            case 3:
+                return Cuadro.MURO;
             default:
                 return Cuadro.VACIO;
         }

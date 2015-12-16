@@ -14,11 +14,11 @@ public class MapaGenerado extends Mapa{
         super(ancho, alto);
     }
     
-    protected void GenerarMapa(){
+    @Override
+    protected void generarMapa(){
         for(int y=0; y<alto; y++){
             for (int x=0; x<ancho; x++){
-                int num_ran = aleatorio.nextInt(3);
-                System.out.println(num_ran);
+                int num_ran = aleatorio.nextInt(4);
                 cuadros[x+y*ancho] = num_ran;
             }
         }

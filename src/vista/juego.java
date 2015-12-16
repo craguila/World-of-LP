@@ -7,6 +7,13 @@ package vista;
 
 import Graficos.Pantalla;
 import control.Teclado;
+import controlador.Equipo;
+import controlador.Guerreros;
+import controlador.Inventario;
+import controlador.Personaje;
+import controlador.Stats;
+import controlador.Arquero;
+import controlador.Mago;
 import java.awt.BorderLayout;
 import java.awt.Canvas;
 import java.awt.Color;
@@ -15,6 +22,7 @@ import java.awt.Graphics;
 import java.awt.image.BufferStrategy;
 import java.awt.image.BufferedImage;
 import java.awt.image.DataBufferInt;
+import java.util.Scanner;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JFrame;
@@ -47,8 +55,8 @@ public class Juego extends Canvas implements Runnable{
         
         pantalla = new Pantalla(ANCHO,ALTO);
         
-        mapa = new MapaGenerado(2048,2048); //Aqui se define el ancho del juego en cuadritos
-        mapa.generarMapa();
+        mapa = new MapaCargado("/texturas/mapa1.png"); //Aqui se define el ancho del juego en cuadritos
+        
         teclado = new Teclado();
         addKeyListener(teclado);
         
@@ -64,7 +72,51 @@ public class Juego extends Canvas implements Runnable{
     }
     
     public static void main(String args[]){
+//        Scanner scan = new Scanner(System.in);
+//        System.out.println("Bienvenido a World of LP");
+//        System.out.println("Ingrese su nombre: ");
+//        String nombre = scan.next();
+//        System.out.println("Indique su clase: (1: Guerrero, 2: Arquero, 3: Mago) ");
+//        int clase = 0;
+//        while (clase == 0){
+//            try {
+//                clase = scan.nextInt();
+//                while (clase<1 || clase > 3){
+//                    System.out.println("La clase debe ser un numero entre 1 y 3");
+//                    clase = scan.nextInt();
+//                }
+//            } catch (Exception e){
+//                System.out.println("A partir de ahora será un guerrero, por gil");
+//                clase = 1;
+//            }
+//        }
+//        Personaje Heroe;
+//        String tipo = "";
+//        Stats stats = new Stats();
+//        Equipo equipo = new Equipo();
+//        Inventario inventario = new Inventario();
+//        switch (clase) {
+//            case 1: 
+//                Heroe = new Guerreros(nombre, 1, 0, stats, 10, 10, 10, equipo, inventario);
+//                tipo = "Guerrero";
+//                break;
+//            case 2:
+//                Heroe = new Arquero(nombre, 1, 0, stats, 10, 10, 10, equipo, inventario);
+//                tipo = "Arquero";
+//                break;
+//            default:
+//                Heroe = new Mago(nombre, 1, 0, stats, 10, 10, 10, equipo, inventario);
+//                tipo = "Mago";
+//                break;
+//                
+//        }
+//        System.out.println("Es un placer conocer por fin a tan renombrado "+ tipo);
+//        System.out.println(Heroe.getNombre()+", tu mision en este mundo mágico consiste en:");
+//        System.out.println("-----------");
+        
+        
         Juego juego = new Juego();
+        
         juego.iniciar();
     }
     
@@ -109,7 +161,7 @@ public class Juego extends Canvas implements Runnable{
             return;
         }
         
-        pantalla.limpiar();
+//        pantalla.limpiar();
         mapa.mostrar(x, y, pantalla);
         
         System.arraycopy(pantalla.pixeles, 0, pixeles, 0, pixeles.length);

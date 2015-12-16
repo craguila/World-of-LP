@@ -16,7 +16,10 @@ public class Sprite {
     
     //coleccion de sprites
     public static Sprite VACIO = new Sprite(32,0);
-    public static Sprite pasto = new Sprite(32,0,0,HojaSprites.nivel1);
+    public static Sprite PASTO = new Sprite(32,0,0,HojaSprites.nivel1);
+    public static Sprite ARENA = new Sprite(32,1,0,HojaSprites.nivel1);
+    public static Sprite AGUA = new Sprite(32,2,0,HojaSprites.nivel1);
+    public static Sprite MURO = new Sprite(32,3,0,HojaSprites.nivel1);
     
     //fin de la coleccion
     

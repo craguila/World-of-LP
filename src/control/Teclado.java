@@ -19,10 +19,10 @@ public class Teclado implements KeyListener{
     public boolean derecha;
     
     public void actualizar(){
-        arriba = teclas[KeyEvent.VK_W];
-        abajo = teclas[KeyEvent.VK_S];
-        izquierda = teclas[KeyEvent.VK_A];
-        derecha = teclas[KeyEvent.VK_D];
+        arriba = teclas[KeyEvent.VK_UP];
+        abajo = teclas[KeyEvent.VK_DOWN];
+        izquierda = teclas[KeyEvent.VK_LEFT];
+        derecha = teclas[KeyEvent.VK_RIGHT];
     }
     public void keyTyped(KeyEvent e) {
     }

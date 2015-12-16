@@ -9,16 +9,19 @@ import Graficos.Pantalla;
 import Graficos.Sprite;
 
 
-public abstract class Cuadro {
+
+public class Cuadro {
     public int x;
     public int y;
     
     public Sprite sprite;
-    
+    public static final int LADO = 32;
     //coleccion de cuadros
-    public static final Cuadro VACIO = new CuadroVacio(Sprite.VACIO);
-    public static final Cuadro pasto = new CuadroPasto(Sprite.pasto);
-    
+    public static final Cuadro VACIO = new Cuadro(Sprite.VACIO);
+    public static final Cuadro PASTO = new Cuadro(Sprite.PASTO);
+    public static final Cuadro ARENA = new Cuadro(Sprite.ARENA);
+    public static final Cuadro AGUA = new Cuadro(Sprite.AGUA);
+    public static final Cuadro MURO = new Cuadro(Sprite.MURO);
     
     //fin de la coleccion
     
