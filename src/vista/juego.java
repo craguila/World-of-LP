@@ -9,7 +9,7 @@ import Graficos.Pantalla;
 import Graficos.Sprite;
 import control.Teclado;
 import controlador.Equipo;
-import controlador.Guerreros;
+import controlador.Guerrero;
 import controlador.Inventario;
 import controlador.Personaje;
 import controlador.Stats;
@@ -88,7 +88,7 @@ public class Juego extends Canvas implements Runnable{
 //        Inventario inventario = new Inventario();
 //        switch (clase) {
 //            case 1: 
-//                Heroe = new Guerreros(nombre, 1, 0, stats, 10, 10, 10, equipo, inventario);
+//                Heroe = new Guerrero(nombre, 1, 0, stats, 10, 10, 10, equipo, inventario);
 //                tipo = "Guerrero";
 //                break;
 //            case 2:
@@ -109,8 +109,10 @@ public class Juego extends Canvas implements Runnable{
         Equipo equipo = new Equipo();
         Inventario inventario = new Inventario();
         int[] pos = {445,277};
-        
-        jugador = new Arquero(mapa,nombre,1,1,stats,10,10,10,equipo,inventario,teclado,pos,Sprite.ABAJO0);
+       
+//        jugador = new Arquero(mapa,nombre,1,1,stats,10,10,10,equipo,inventario,teclado,pos,Sprite.ABAJO0);
+//        jugador = new Mago(mapa,nombre,1,1,stats,10,10,10,equipo,inventario,teclado,pos,Sprite.ABAJO0);
+        jugador = new Guerrero(mapa,nombre,1,1,stats,10,10,10,equipo,inventario,teclado,pos,Sprite.ABAJO0);
         
         ventana = new JFrame(NOMBRE);
         ventana.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
