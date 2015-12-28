@@ -7,33 +7,35 @@ package controlador;
 
 import Graficos.Sprite;
 import control.Teclado;
+import java.util.ArrayList;
+import java.util.List;
 import vista.Mapa;
 
 
-public class Arquero extends Personaje {
+public class Guerrero extends Personaje {
     protected boolean enMovimiento = false;
     private int animacion;
+    List<Habilidad> habilidades = new ArrayList<>();
     private Teclado teclado;   
-    private int ira;
-    private int Flechas;
-    private Habilidad[] spell_Ar; //requiere utilizar flechas y ira para atacar
-    public Arquero(Mapa mapa, String Nombre, int Nivel, int EXP, Stats stats, int Vida, int Stamina, int Mana, Equipo equipo, Inventario inventario,Teclado teclado, int[] posicion, Sprite sprite) {
-        super(mapa, Nombre, Nivel, EXP, stats, Vida, Stamina, Mana, equipo, inventario, posicion);
+    public Guerrero(Mapa mapa, String Nombre, int Nivel, int EXP, Stats stats, int Vida, int Stamina, int Mana, Equipo equipo, Inventario inventario,Teclado teclado, int[] posicion, Sprite sprite) {
+        super(mapa,Nombre, Nivel, EXP, stats, Vida, Stamina, Mana, equipo, inventario, posicion);
         this.teclado = teclado;
+        habilidades.add(new Habilidad("Golpe Fuerte",10,"Paralisis",5));
         this.sprite = sprite;
+        
+
     }
-    
     @Override
     public void actualizar(){
         int desplazamientoX = 0;
         int desplazamientoY = 0;
-        
+
         if (animacion<32767){
             animacion++;
         }else{
             animacion =0;
         }
-        
+
         if (teclado.arriba){
             desplazamientoY--;
         }
@@ -46,65 +48,65 @@ public class Arquero extends Personaje {
         if(teclado.derecha){
             desplazamientoX++;
         }
-        
+
         int resto = animacion%40;
         if (direccion == 'n'){
-            sprite = Sprite.AARRIBA0;
+            sprite = Sprite.ARRIBA0;
             if (enMovimiento){
                 if (resto>10 && resto <= 20){
-                    sprite = Sprite.AARRIBA1;
+                    sprite = Sprite.ARRIBA1;
                 } else if (resto>20 && resto<=30){
-                    sprite= Sprite.AARRIBA0;
+                    sprite= Sprite.ARRIBA0;
                 } else if (resto>30 && resto<=40){
-                    sprite= Sprite.AARRIBA2;
+                    sprite= Sprite.ARRIBA2;
                 } else{
-                    sprite= Sprite.AARRIBA0;
+                    sprite= Sprite.ARRIBA0;
                 }
             }
         }
         if (direccion == 's'){
-            sprite = Sprite.AABAJO0;
+            sprite = Sprite.ABAJO0;
              if (enMovimiento){
                 if (resto>10 && resto <= 20){
-                    sprite = Sprite.AABAJO1;
+                    sprite = Sprite.ABAJO1;
                 } else if (resto>20 && resto<=30){
-                    sprite= Sprite.AABAJO0;
+                    sprite= Sprite.ABAJO0;
                 } else if (resto>30 && resto<=40){
-                    sprite= Sprite.AABAJO2;
+                    sprite= Sprite.ABAJO2;
                 } else{
-                    sprite= Sprite.AABAJO0;
+                    sprite= Sprite.ABAJO0;
                 }
             }
         } 
         if (direccion == 'o'){
-            sprite = Sprite.AIZQUIERDA0;
+            sprite = Sprite.IZQUIERDA0;
              if (enMovimiento){
                 if (resto>10 && resto <= 20){
-                    sprite = Sprite.AIZQUIERDA1;
+                    sprite = Sprite.IZQUIERDA1;
                 } else if (resto>20 && resto<=30){
-                    sprite= Sprite.AIZQUIERDA0;
+                    sprite= Sprite.IZQUIERDA0;
                 } else if (resto>30 && resto<=40){
-                    sprite= Sprite.AIZQUIERDA2;
+                    sprite= Sprite.IZQUIERDA2;
                 } else{
-                    sprite= Sprite.AIZQUIERDA0;
+                    sprite= Sprite.IZQUIERDA0;
                 }
             }
-            
+
         }
         if (direccion == 'e'){
-            sprite = Sprite.ADERECHA0;
+            sprite = Sprite.DERECHA0;
              if (enMovimiento){
                 if (resto>10 && resto <= 20){
-                    sprite = Sprite.ADERECHA1;
+                    sprite = Sprite.DERECHA1;
                 } else if (resto>20 && resto<=30){
-                    sprite= Sprite.ADERECHA0;
+                    sprite= Sprite.DERECHA0;
                 } else if (resto>30 && resto<=40){
-                    sprite= Sprite.ADERECHA2;
+                    sprite= Sprite.DERECHA2;
                 } else{
-                    sprite= Sprite.ADERECHA0;
+                    sprite= Sprite.DERECHA0;
                 }
             }
-            
+
         }
         if (desplazamientoX != 0 || desplazamientoY != 0){
             mover(desplazamientoX, desplazamientoY);
@@ -112,18 +114,16 @@ public class Arquero extends Personaje {
         } else{
             enMovimiento = false;
         }
-        
+
     }
-    
+
     @Override
     public Sprite getSprite(){
         return sprite;
     }
     public void mostrar(){
-        
+
     }
-
     
     
-
 }
