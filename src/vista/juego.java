@@ -6,6 +6,7 @@
 package vista;
 
 import Graficos.Pantalla;
+import Graficos.Sprite;
 import control.Teclado;
 import controlador.Equipo;
 import controlador.Guerreros;
@@ -36,8 +37,7 @@ public class Juego extends Canvas implements Runnable{
     
     private static int aps = 0;
     private static int fps = 0;
-    private static int x = 0;
-    private static int y = 0;
+    
     private static JFrame ventana;
     private static volatile boolean jugando = false;
     private static Thread thread;
@@ -49,16 +49,29 @@ public class Juego extends Canvas implements Runnable{
     private static int[] pixeles = ((DataBufferInt) imagen.getRaster().getDataBuffer()).getData();
     
     private static Mapa mapa;
+    private static Personaje jugador;
     
     private Juego(){
         setPreferredSize(new Dimension(ANCHO, ALTO));
         
         pantalla = new Pantalla(ANCHO,ALTO);
         
-        mapa = new MapaCargado("/texturas/mapa1.png"); //Aqui se define el ancho del juego en cuadritos
-        
         teclado = new Teclado();
         addKeyListener(teclado);
+        
+        mapa = new MapaCargado("/texturas/mapa1.png"); //Aqui se define el ancho del juego en cuadritos
+        Scanner scan = new Scanner(System.in);
+        System.out.println("Bienvenido a World of LP");
+        System.out.println("Ingrese su nombre: ");
+        //String nombre = scan.next();
+        String nombre = "Pepito";
+        Stats stats = new Stats();
+        Equipo equipo = new Equipo();
+        Inventario inventario = new Inventario();
+        int[] pos = {445,277};
+        
+        jugador = new Arquero(nombre,1,1,stats,10,10,10,equipo,inventario,teclado,pos,Sprite.ABAJO0);
+        
         
         ventana = new JFrame(NOMBRE);
         ventana.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -138,19 +151,7 @@ public class Juego extends Canvas implements Runnable{
     
     private void actualizar(){
         teclado.actualizar();
-        
-        if(teclado.arriba){
-            y--;
-        }
-        if(teclado.abajo){
-            y++;
-        }
-        if(teclado.derecha){
-            x++;
-        }
-        if(teclado.izquierda){
-            x--;
-        }
+        jugador.actualizar();
         aps++;
     }
     private void mostrar(){
@@ -162,15 +163,17 @@ public class Juego extends Canvas implements Runnable{
         }
         
 //        pantalla.limpiar();
-        mapa.mostrar(x, y, pantalla);
-        
+        mapa.mostrar(jugador.getX()- pantalla.getAncho()/2 + jugador.getSprite().getLado()/2 , jugador.getY()-pantalla.getLargo()/2 + jugador.getSprite().getLado()/2, pantalla);
+        jugador.mostrar(pantalla);
         System.arraycopy(pantalla.pixeles, 0, pixeles, 0, pixeles.length);
         
         Graphics g = estrategia.getDrawGraphics();
         
         g.drawImage(imagen, 0, 0, getWidth(),getHeight(),null);
-        g.setColor(Color.white);
-        g.fillRect(ANCHO/2,ALTO/2,32,32);
+        g.setColor(Color.red);
+        
+        
+        g.drawString("x:"+jugador.getX()+" y:"+jugador.getY(), 10, 10);
         
         g.dispose();
         
