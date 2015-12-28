@@ -13,6 +13,6 @@ public class Inventario {
     public Inventario(){
         capacidad = 10;
         total_actual = 0;
-    };
+    }
     
 }

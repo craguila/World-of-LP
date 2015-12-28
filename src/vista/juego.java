@@ -8,25 +8,14 @@ package vista;
 import Graficos.Pantalla;
 import Graficos.Sprite;
 import control.Teclado;
-import controlador.Equipo;
-import controlador.Guerrero;
-import controlador.Inventario;
-import controlador.Personaje;
-import controlador.Stats;
-import controlador.Arquero;
-import controlador.Mago;
-import java.awt.BorderLayout;
-import java.awt.Canvas;
-import java.awt.Color;
-import java.awt.Dimension;
-import java.awt.Graphics;
+import controlador.*;
+import java.awt.*;
 import java.awt.image.BufferStrategy;
 import java.awt.image.BufferedImage;
 import java.awt.image.DataBufferInt;
 import java.util.Scanner;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 
 
 
@@ -51,7 +40,7 @@ public class Juego extends Canvas implements Runnable{
     private static Mapa mapa;
     private static Personaje jugador;
     
-    private Juego(){
+    public Juego(String nombre,int clase){
         setPreferredSize(new Dimension(ANCHO, ALTO));
         
         pantalla = new Pantalla(ANCHO,ALTO);
@@ -60,60 +49,28 @@ public class Juego extends Canvas implements Runnable{
         addKeyListener(teclado);
         
         mapa = new MapaCargado("/texturas/mapa1.png"); //Aqui se define el ancho del juego en cuadritos
-        Scanner scan = new Scanner(System.in);
-        System.out.println("Bienvenido a World of LP");
-        System.out.println("Ingrese su nombre: ");
-        //String nombre = scan.next();
-//        System.out.println("Bienvenido a World of LP");
-//        System.out.println("Ingrese su nombre: ");
-//        String nombre = scan.next();
-//        System.out.println("Indique su clase: (1: Guerrero, 2: Arquero, 3: Mago) ");
-//        int clase = 0;
-//        while (clase == 0){
-//            try {
-//                clase = scan.nextInt();
-//                while (clase<1 || clase > 3){
-//                    System.out.println("La clase debe ser un numero entre 1 y 3");
-//                    clase = scan.nextInt();
-//                }
-//            } catch (Exception e){
-//                System.out.println("A partir de ahora será un guerrero, por gil");
-//                clase = 1;
-//            }
-//        }
-//        Personaje Heroe;
-//        String tipo = "";
-//        Stats stats = new Stats();
-//        Equipo equipo = new Equipo();
-//        Inventario inventario = new Inventario();
-//        switch (clase) {
-//            case 1: 
-//                Heroe = new Guerrero(nombre, 1, 0, stats, 10, 10, 10, equipo, inventario);
-//                tipo = "Guerrero";
-//                break;
-//            case 2:
-//                Heroe = new Arquero(nombre, 1, 0, stats, 10, 10, 10, equipo, inventario);
-//                tipo = "Arquero";
-//                break;
-//            default:
-//                Heroe = new Mago(nombre, 1, 0, stats, 10, 10, 10, equipo, inventario);
-//                tipo = "Mago";
-//                break;
-//                
-//        }
-//        System.out.println("Es un placer conocer por fin a tan renombrado "+ tipo);
-//        System.out.println(Heroe.getNombre()+", tu mision en este mundo mágico consiste en:");
-//        System.out.println("-----------");
-        String nombre = "Pepito";
+        String tipo = "";
         Stats stats = new Stats();
         Equipo equipo = new Equipo();
         Inventario inventario = new Inventario();
         int[] pos = {445,277};
-       
-//        jugador = new Arquero(mapa,nombre,1,1,stats,10,10,10,equipo,inventario,teclado,pos,Sprite.ABAJO0);
-//        jugador = new Mago(mapa,nombre,1,1,stats,10,10,10,equipo,inventario,teclado,pos,Sprite.ABAJO0);
-        jugador = new Guerrero(mapa,nombre,1,1,stats,10,10,10,equipo,inventario,teclado,pos,Sprite.ABAJO0);
-        
+        switch (clase) {
+            case 1: 
+                jugador = new Guerrero(mapa,nombre,1,1,stats,10,10,10,equipo,inventario,teclado,pos,Sprite.ABAJO0);
+                tipo = "Guerrero";
+                break;
+            case 2:
+                jugador = new Arquero(mapa,nombre,1,1,stats,10,10,10,equipo,inventario,teclado,pos,Sprite.ABAJO0);
+                tipo = "Arquero";
+                break;
+            default:
+                jugador = new Mago(mapa,nombre,1,1,stats,10,10,10,equipo,inventario,teclado,pos,Sprite.ABAJO0);
+                tipo = "Mago";
+                break;
+                
+        }
+        JOptionPane.showMessageDialog(this, "Es un placer conocer por fin a tan renombrado "+ tipo, NOMBRE, 1);
+        JOptionPane.showMessageDialog(this,jugador.getNombre()+", tu mision en este mundo mágico consiste en:", NOMBRE, 1);       
         ventana = new JFrame(NOMBRE);
         ventana.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         ventana.setResizable(false);
@@ -125,14 +82,7 @@ public class Juego extends Canvas implements Runnable{
         
     }
     
-    public static void main(String args[]){
-        
-        Juego juego = new Juego();
-        
-        juego.iniciar();
-    }
-    
-    private synchronized void iniciar(){
+    public synchronized void iniciar(){
         jugando = true;
         thread = new Thread(this, "Graficos");
         thread.start();
