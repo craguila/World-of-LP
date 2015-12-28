@@ -10,4 +10,9 @@ public class Inventario {
     int capacidad; //Capacidad del inventario
     int total_actual;
     ArrayList<Item> items;
+    public Inventario(){
+        capacidad = 10;
+        total_actual = 0;
+    };
+    
 }

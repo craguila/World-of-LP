@@ -5,14 +5,21 @@
  */
 package controlador;
 
+import Graficos.Sprite;
+import control.Teclado;
 import java.util.ArrayList;
 import java.util.List;
 
 
 public class Guerreros extends Personaje {
+    
+    protected Sprite sprite;
+    protected boolean enMovimiento = false;
     List<Habilidad> habilidades = new ArrayList<>();
-    public Guerreros(String Nombre, int Nivel, int EXP, Stats stats, int Vida, int Stamina, int Mana, Equipo equipo, Inventario inventario) {
-        super(Nombre, Nivel, EXP, stats, Vida, Stamina, Mana, equipo, inventario);
+    private Teclado teclado;   
+    public Guerreros(String Nombre, int Nivel, int EXP, Stats stats, int Vida, int Stamina, int Mana, Equipo equipo, Inventario inventario,Teclado teclado, int[] posicion) {
+        super(Nombre, Nivel, EXP, stats, Vida, Stamina, Mana, equipo, inventario, posicion);
+        this.teclado = teclado;
         habilidades.add(new Habilidad("Golpe Fuerte",10,"Paralisis",5));
         
 

@@ -6,12 +6,13 @@
 package controlador;
 
 
+
 public class Monstruo extends Personaje {
     int exp_entregada; // experiencia que entrega al usuario.
     Habilidad[] spell_mo;
 
-    public Monstruo(String Nombre, int Nivel, int EXP, Stats stats, int Vida, int Stamina, int Mana, Equipo equipo, Inventario inventario) {
-        super(Nombre, Nivel, EXP, stats, Vida, Stamina, Mana, equipo, inventario);
+    public Monstruo(String Nombre, int Nivel, int EXP, Stats stats, int Vida, int Stamina, int Mana, Equipo equipo, Inventario inventario, int[] posicion) {
+        super(Nombre, Nivel, EXP, stats, Vida, Stamina, Mana, equipo, inventario, posicion);
         
     }
     

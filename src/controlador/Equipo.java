@@ -9,4 +9,9 @@ public class Equipo {
     EquipoItem ARMADURA;
     EquipoItem ARMA;
     EquipoItem FLECHAS;
+    public Equipo(){
+        ARMADURA = new EquipoItem(); //hacer un constructor para cada cosa
+        ARMA = new EquipoItem();
+        FLECHAS = new EquipoItem();
+    }
 }

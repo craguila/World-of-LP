@@ -4,10 +4,7 @@
  */
 package controlador;
 
-/**
- *
- * @author Nicolas olivos
- */
+
 //enum TipoStatus{
 //    "VENENO",
 //    "PARALISIS",
@@ -16,9 +13,16 @@ package controlador;
 //}
 
 public class Status {//Ejemplo: veneno, paralisis, dormir, piedra, ...
-    String nombre;
-    String tipo;/*Preguntar para que sirve"!!!!!!!!*/
-    float value; /*Fuerza porcentual del estatus (si es ataque, porcentaje de exito en traspasarlo;
+    private String nombre;
+    private String tipo;/*Preguntar para que sirve"!!!!!!!!*/
+    private float value; /*Fuerza porcentual del estatus (si es ataque, porcentaje de exito en traspasarlo;
     si es defensa, porcentaje de exito en proteger.)*/
-    int duration; //Duracion en turnos.
+    public int duration; //Duracion en turnos.
+    public Status(){
+        nombre = "Veneno";
+        tipo = "veneno";
+        value= (float) 0.1;
+        duration = 10;
+        
+    }
 }

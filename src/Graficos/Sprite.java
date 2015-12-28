@@ -14,6 +14,24 @@ public class Sprite {
     public int[] pixeles;
     private HojaSprites hoja;
     
+    //sprites del personaje
+    public static final Sprite ABAJO0 = new Sprite(32,0,1,HojaSprites.nivel1);
+    public static final Sprite ABAJO1 = new Sprite(32,1,1,HojaSprites.nivel1);
+    public static final Sprite ABAJO2 = new Sprite(32,2,1,HojaSprites.nivel1);
+    
+    public static final Sprite IZQUIERDA0 = new Sprite(32,0,2,HojaSprites.nivel1);
+    public static final Sprite IZQUIERDA1 = new Sprite(32,1,2,HojaSprites.nivel1);
+    public static final Sprite IZQUIERDA2 = new Sprite(32,2,2,HojaSprites.nivel1);
+    
+    public static final Sprite DERECHA0 = new Sprite(32,0,3,HojaSprites.nivel1);
+    public static final Sprite DERECHA1 = new Sprite(32,1,3,HojaSprites.nivel1);
+    public static final Sprite DERECHA2 = new Sprite(32,2,3,HojaSprites.nivel1);
+    
+    public static final Sprite ARRIBA0 = new Sprite(32,0,4,HojaSprites.nivel1);
+    public static final Sprite ARRIBA1 = new Sprite(32,1,4,HojaSprites.nivel1);
+    public static final Sprite ARRIBA2 = new Sprite(32,2,4,HojaSprites.nivel1);
+    //fin de la coleccion
+    
     //coleccion de sprites
     public static Sprite VACIO = new Sprite(32,0);
     public static Sprite PASTO = new Sprite(32,0,0,HojaSprites.nivel1);

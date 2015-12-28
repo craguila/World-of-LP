@@ -21,4 +21,8 @@ public class Stats {
     int stamina;   //Cantidad de energa para uso de golpes especiales y aumenta potencial de \% de golpes crticos. Mas stamina aumenta energa y velocidad de           // recuperacion.
     int constitucion; //Afecta cantidad maxima de vida y recuperacion de vida por turno (cuando no
     //esta en batal 
+    public Stats(){
+        radio_vision = rapidez = fuerza = destreza = resistencia = resistencia_magica = 
+                inteligencia = stamina = constitucion = 10;
+    }
 }
