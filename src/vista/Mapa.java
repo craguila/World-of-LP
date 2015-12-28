@@ -27,6 +27,10 @@ public abstract class Mapa {
         generarMapa();
     }
     
+    public Cuadro getCuadro(int posicion){
+        return cuadrosCatalogo[posicion];
+    }
+    
     protected void generarMapa(){
         
     }
@@ -75,5 +79,9 @@ public abstract class Mapa {
             default:
                 return Cuadro.VACIO;
         }
+    }
+
+    public int getAncho() {
+        return ancho; 
     }
 }

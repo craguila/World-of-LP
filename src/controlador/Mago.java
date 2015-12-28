@@ -6,14 +6,15 @@
 package controlador;
 
 import control.Teclado;
+import vista.Mapa;
 
 
 public class Mago extends Personaje {
     private Teclado teclado; 
     private int piedras;
     private Habilidad[] spell_mg;
-    public Mago(String Nombre, int Nivel, int EXP, Stats stats, int Vida, int Stamina, int Mana, Equipo equipo, Inventario inventario,Teclado teclado, int[] posicion) {
-        super(Nombre, Nivel, EXP, stats, Vida, Stamina, Mana, equipo, inventario, posicion);
+    public Mago(Mapa mapa,String Nombre, int Nivel, int EXP, Stats stats, int Vida, int Stamina, int Mana, Equipo equipo, Inventario inventario,Teclado teclado, int[] posicion) {
+        super(mapa, Nombre, Nivel, EXP, stats, Vida, Stamina, Mana, equipo, inventario, posicion);
         this.teclado = teclado;
     }
 

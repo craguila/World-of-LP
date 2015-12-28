@@ -9,6 +9,7 @@ import Graficos.Sprite;
 import control.Teclado;
 import java.util.ArrayList;
 import java.util.List;
+import vista.Mapa;
 
 
 public class Guerreros extends Personaje {
@@ -17,8 +18,8 @@ public class Guerreros extends Personaje {
     protected boolean enMovimiento = false;
     List<Habilidad> habilidades = new ArrayList<>();
     private Teclado teclado;   
-    public Guerreros(String Nombre, int Nivel, int EXP, Stats stats, int Vida, int Stamina, int Mana, Equipo equipo, Inventario inventario,Teclado teclado, int[] posicion) {
-        super(Nombre, Nivel, EXP, stats, Vida, Stamina, Mana, equipo, inventario, posicion);
+    public Guerreros(Mapa mapa, String Nombre, int Nivel, int EXP, Stats stats, int Vida, int Stamina, int Mana, Equipo equipo, Inventario inventario,Teclado teclado, int[] posicion) {
+        super(mapa,Nombre, Nivel, EXP, stats, Vida, Stamina, Mana, equipo, inventario, posicion);
         this.teclado = teclado;
         habilidades.add(new Habilidad("Golpe Fuerte",10,"Paralisis",5));
         

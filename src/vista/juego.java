@@ -64,28 +64,6 @@ public class Juego extends Canvas implements Runnable{
         System.out.println("Bienvenido a World of LP");
         System.out.println("Ingrese su nombre: ");
         //String nombre = scan.next();
-        String nombre = "Pepito";
-        Stats stats = new Stats();
-        Equipo equipo = new Equipo();
-        Inventario inventario = new Inventario();
-        int[] pos = {445,277};
-        
-        jugador = new Arquero(nombre,1,1,stats,10,10,10,equipo,inventario,teclado,pos,Sprite.ABAJO0);
-        
-        
-        ventana = new JFrame(NOMBRE);
-        ventana.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        ventana.setResizable(false);
-        ventana.setLayout(new BorderLayout());
-        ventana.add(this, BorderLayout.CENTER);
-        ventana.pack();
-        ventana.setLocationRelativeTo(null);
-        ventana.setVisible(true);
-        
-    }
-    
-    public static void main(String args[]){
-//        Scanner scan = new Scanner(System.in);
 //        System.out.println("Bienvenido a World of LP");
 //        System.out.println("Ingrese su nombre: ");
 //        String nombre = scan.next();
@@ -126,7 +104,26 @@ public class Juego extends Canvas implements Runnable{
 //        System.out.println("Es un placer conocer por fin a tan renombrado "+ tipo);
 //        System.out.println(Heroe.getNombre()+", tu mision en este mundo mágico consiste en:");
 //        System.out.println("-----------");
+        String nombre = "Pepito";
+        Stats stats = new Stats();
+        Equipo equipo = new Equipo();
+        Inventario inventario = new Inventario();
+        int[] pos = {445,277};
         
+        jugador = new Arquero(mapa,nombre,1,1,stats,10,10,10,equipo,inventario,teclado,pos,Sprite.ABAJO0);
+        
+        ventana = new JFrame(NOMBRE);
+        ventana.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        ventana.setResizable(false);
+        ventana.setLayout(new BorderLayout());
+        ventana.add(this, BorderLayout.CENTER);
+        ventana.pack();
+        ventana.setLocationRelativeTo(null);
+        ventana.setVisible(true);
+        
+    }
+    
+    public static void main(String args[]){
         
         Juego juego = new Juego();
         
@@ -181,6 +178,7 @@ public class Juego extends Canvas implements Runnable{
         fps++;
     }
 
+    @Override
     public void run() {
         final int NS_POR_SEGUNDO = 1000000000;
         final byte FPS_OBJETIVO = 120;

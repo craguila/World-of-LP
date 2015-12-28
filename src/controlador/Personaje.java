@@ -24,7 +24,8 @@ public class Personaje {
     
     protected char direccion = 'n';
 
-    public Personaje(String Nombre, int Nivel, int EXP, Stats stats, int Vida, int Stamina, int Mana, Equipo equipo, Inventario inventario, int[] posicion) {
+    public Personaje(Mapa mapa, String Nombre, int Nivel, int EXP, Stats stats, int Vida, int Stamina, int Mana, Equipo equipo, Inventario inventario, int[] posicion) {
+        this.mapa = mapa;
         this.Nombre = Nombre;
         this.Nivel = Nivel;
         this.EXP = EXP;
@@ -71,13 +72,44 @@ public class Personaje {
             direccion = 'n';
         }
         if (vivo()){
-            changeX(desplazamientoX);
-            changeY(desplazamientoY);
+            if (!sienteelchoque(desplazamientoX,0)){
+                changeX(desplazamientoX);
+            }
+            if (!sienteelchoque(0,desplazamientoY)){
+                changeY(desplazamientoY);
+            }
         }
     }   
     
-    private boolean sienteelchoque(){
-        return false;
+    private boolean sienteelchoque(int desplazamientoX, int desplazamientoY){
+        boolean colision = false;
+        int posicionX = posicion[0] + desplazamientoX;
+        int posicionY = posicion[1] + desplazamientoY;
+        
+        int margenIzquierdo = -23; //cambiar despues
+        int margenDerecho = 26;
+        
+        int margenSuperior = -20;
+        int margenInferior = 29;
+        
+        int bordeIzquierdo = (posicionX + margenDerecho)/sprite.getLado();
+        int bordeDerecho = (posicionX+ margenDerecho + margenIzquierdo)/sprite.getLado();
+        int bordeSuperior = (posicionY+ margenInferior)/sprite.getLado();
+        int bordeInferior = (posicionY+ margenInferior + margenSuperior)/sprite.getLado();
+        
+        if(mapa.getCuadro(bordeIzquierdo + bordeSuperior * mapa.getAncho()).esSolido()){
+            colision = true;
+        }
+        if(mapa.getCuadro(bordeDerecho + bordeSuperior * mapa.getAncho()).esSolido()){
+            colision = true;
+        } 
+        if(mapa.getCuadro(bordeIzquierdo + bordeInferior * mapa.getAncho()).esSolido()){
+            colision = true;
+        } 
+        if(mapa.getCuadro(bordeDerecho + bordeInferior * mapa.getAncho()).esSolido()){
+            colision = true;
+        }
+        return colision;
     }
 
     public void actualizar() {

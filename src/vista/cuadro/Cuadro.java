@@ -16,24 +16,31 @@ public class Cuadro {
     
     public Sprite sprite;
     public static final int LADO = 32;
+    
+    public boolean solido;
+    
     //coleccion de cuadros
     public static final Cuadro VACIO = new Cuadro(Sprite.VACIO);
     public static final Cuadro PASTO = new Cuadro(Sprite.PASTO);
     public static final Cuadro ARENA = new Cuadro(Sprite.ARENA);
     public static final Cuadro AGUA = new Cuadro(Sprite.AGUA);
-    public static final Cuadro MURO = new Cuadro(Sprite.MURO);
+    public static final Cuadro MURO = new Cuadro(Sprite.MURO, true);
     
     //fin de la coleccion
     
     public Cuadro(Sprite sprite){
         this.sprite = sprite;
+        solido = false;
     }
-    
+    public Cuadro(Sprite sprite, boolean solido){
+        this.sprite = sprite;
+        this.solido = solido;
+    }
     public void mostrar(int x, int y, Pantalla pantalla){
         pantalla.mostrarCuadro(x<<5, y<<5, this);
     }
     
-    public boolean solido(){
-        return false;
+    public boolean esSolido(){
+        return solido;
     }
 }
