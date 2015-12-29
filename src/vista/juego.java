@@ -13,6 +13,8 @@ import java.awt.*;
 import java.awt.image.BufferStrategy;
 import java.awt.image.BufferedImage;
 import java.awt.image.DataBufferInt;
+import java.util.ArrayList;
+import java.util.Random;
 import java.util.Scanner;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
@@ -39,6 +41,8 @@ public class Juego extends Canvas implements Runnable{
     
     private static Mapa mapa;
     private static Personaje jugador;
+    public static ArrayList<Monstruo> monstruos = new ArrayList<>();
+    
     
     public Juego(String nombre,int clase){
         setPreferredSize(new Dimension(ANCHO, ALTO));
@@ -70,7 +74,23 @@ public class Juego extends Canvas implements Runnable{
                 
         }
         JOptionPane.showMessageDialog(this, "Es un placer conocer por fin a tan renombrado "+ tipo, NOMBRE, 1);
-        JOptionPane.showMessageDialog(this,jugador.getNombre()+", tu mision en este mundo mágico consiste en:", NOMBRE, 1);       
+        JOptionPane.showMessageDialog(this,jugador.getNombre()+", tu mision en este mundo mágico consiste en: \n chapalapachala", NOMBRE, 1);  
+        //cargamos enemigos
+        //creamos los monstruos
+        int num_murcielagos = 5;
+        int i = 0;
+        Random  rnd = new Random();
+        while (i < num_murcielagos){
+            i++;
+            int[] m_pos = {0,0};
+            m_pos[0]=(int)(rnd.nextDouble() * 1000);
+            m_pos[1]=(int)(rnd.nextDouble() * 1000);
+            monstruos.add(new Murcielago(mapa,"Murcielago"+i,1,1,stats,10,10,10,equipo,inventario,m_pos,Sprite.MUABAJO0));
+            
+        }
+        //cargamos items
+        
+        
         ventana = new JFrame(NOMBRE);
         ventana.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         ventana.setResizable(false);
@@ -101,6 +121,9 @@ public class Juego extends Canvas implements Runnable{
     private void actualizar(){
         teclado.actualizar();
         jugador.actualizar();
+        for (int i=0;i<monstruos.size();i++){
+            monstruos.get(i).actualizar();
+        }
         aps++;
     }
     private void mostrar(){
@@ -114,6 +137,9 @@ public class Juego extends Canvas implements Runnable{
 //        pantalla.limpiar();
         mapa.mostrar(jugador.getX()- pantalla.getAncho()/2 + jugador.getSprite().getLado()/2 , jugador.getY()-pantalla.getLargo()/2 + jugador.getSprite().getLado()/2, pantalla);
         jugador.mostrar(pantalla);
+        for (int i=0;i<monstruos.size();i++){
+            monstruos.get(i).mostrar(pantalla);
+        }
         System.arraycopy(pantalla.pixeles, 0, pixeles, 0, pixeles.length);
         
         Graphics g = estrategia.getDrawGraphics();
