@@ -21,7 +21,7 @@ public class Status {//Ejemplo: veneno, paralisis, dormir, piedra, ...
     public Status(){
         nombre = "Veneno";
         tipo = "veneno";
-        value= (float) 0.1;
+        value= 0.1f;
         duration = 10;
         
     }
