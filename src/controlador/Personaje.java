@@ -135,14 +135,28 @@ public class Personaje {
                 
         for(Monstruo m: Juego.monstruos){
             int lado_monstruo =m.getSprite().getLado();
-            int monstruoX = m.posicion[0];
-            int monstruoY = m.posicion[1];
-            if (posicionX + margenDerecho > monstruoX && posicionX + margenDerecho < monstruoX + lado_monstruo){
-                if (posicionY + margenInferior > monstruoY && posicionY + margenInferior < monstruoX + lado_monstruo){
-//monstruoX > bordeDerecho && monstruoY< bordeSuperior && monstruoY > bordeInferior ){
+            //esquinas del monstruo
+            int monstruoX = m.posicion[0]-lado_monstruo+5;
+            int monstruoY = m.posicion[1]-lado_monstruo;
+            int monstruoX2 = m.posicion[0];
+            int monstruoY2 = m.posicion[1];
+            //esquinas del jugador
+            int playerX = posicionX + margenIzquierdo+18;
+            int playerX2 = posicionX - margenIzquierdo- margenDerecho - sprite.getLado()+18;
+            int playerY = posicionY + margenSuperior;
+            int playerY2 = posicionY + margenSuperior + margenInferior + sprite.getLado();
+
+            if (playerX>monstruoX && playerX<monstruoX2 && playerY>monstruoY && playerY<monstruoY2){
                 colision = true;
-                }
             }
+            if (playerX2>monstruoX && playerX2<monstruoX2 && playerY>monstruoY && playerY<monstruoY2){
+                colision = true;
+            }
+//            if (posicionX + margenDerecho > monstruoX && posicionX + margenDerecho < monstruoX + lado_monstruo){
+//                if (posicionY + margenInferior > monstruoY && posicionY + margenInferior < monstruoX + lado_monstruo){
+//monstruoX > bordeDerecho && monstruoY< bordeSuperior && monstruoY > bordeInferior ){
+               
+            
         }
         
         if(mapa.getCuadro(bordeIzquierdo + bordeSuperior * mapa.getAncho()).esSolido()){

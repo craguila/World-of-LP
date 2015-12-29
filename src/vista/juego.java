@@ -48,7 +48,6 @@ public class Juego extends Canvas implements Runnable,ActionListener{
     private JMenuItem item1;
     private frmStats ventanaStats;
     
-    
     public Juego(String nombre,int clase){
         setPreferredSize(new Dimension(ANCHO, ALTO));
         
@@ -83,7 +82,7 @@ public class Juego extends Canvas implements Runnable,ActionListener{
         JOptionPane.showMessageDialog(this,jugador.getNombre()+", tu mision en este mundo mágico consiste en: \n chapalapachala", NOMBRE, 1);  
         //cargamos enemigos
         //creamos los monstruos
-        int num_murcielagos = 0;
+        int num_murcielagos = 10;
         int i = 0;
         Random  rnd = new Random();
         while (i < num_murcielagos){
