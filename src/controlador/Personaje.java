@@ -3,6 +3,8 @@ package controlador;
 
 import Graficos.Pantalla;
 import Graficos.Sprite;
+import java.util.ArrayList;
+import java.util.Date;
 import java.util.Random;
 import javax.swing.JOptionPane;
 import vista.Juego;
@@ -25,6 +27,8 @@ public class Personaje {
     Inventario inventario;
     protected Mapa mapa;
     
+    private ArrayList<Habilidad> habilidades;
+    
     protected char direccion = 'n';
 
     public Personaje(Mapa mapa, String Nombre, int Nivel, int EXP, Stats stats, int Vida, int Stamina, int Mana, Equipo equipo, Inventario inventario, int[] posicion) {
@@ -39,6 +43,11 @@ public class Personaje {
         this.equipo = equipo;
         this.inventario = inventario;
         this.posicion = posicion;
+        habilidades = new ArrayList<>();
+    }
+    
+    public void addHabilidad(Habilidad h){
+        habilidades.add(h);
     }
     
     public void aumentarExp(int exp){
@@ -66,7 +75,7 @@ public class Personaje {
     }
     
     public void mejorar(){
-        Random ran =new Random();
+        Random ran =new Random(new Date().getTime());
         stats.radio_vision+=ran.nextInt(Nivel);
         stats.rapidez+=ran.nextInt(Nivel);
         stats.fuerza+=ran.nextInt(Nivel);
@@ -200,5 +209,9 @@ public class Personaje {
 
     public Stats getStats() {
         return this.stats;
+    }
+
+    public ArrayList<Habilidad> getHabilidades() {
+        return this.habilidades;
     }
 }

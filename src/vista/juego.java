@@ -17,6 +17,7 @@ import java.awt.image.BufferStrategy;
 import java.awt.image.BufferedImage;
 import java.awt.image.DataBufferInt;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.Random;
 import javax.swing.*;
 
@@ -58,24 +59,29 @@ public class Juego extends Canvas implements Runnable,ActionListener{
         
         mapa = new MapaCargado("/texturas/mapa1.png"); //Aqui se define el ancho del juego en cuadritos
         String tipo;
-        Stats stats;
         Equipo equipo = new Equipo();
         Inventario inventario = new Inventario();
         int[] pos = {445,277};
         switch (clase) {
             case 1:
-                stats=new Stats(5, 10, 10, 8, 15, 10, 10, 13, 15);
-                jugador = new Guerrero(mapa,nombre,1,0,stats,10,10,10,equipo,inventario,teclado,pos,Sprite.ABAJO0);
+                jugador = new Guerrero(mapa,nombre,1,0,Stats.STATS_GUERRERO,10,10,10,equipo,inventario,teclado,pos,Sprite.ABAJO0);
+                jugador.getHabilidades().add(Habilidad.CORAJE_DIVINO);
+                jugador.getHabilidades().add(Habilidad.FURIA_CAOTICA);
+                jugador.getHabilidades().add(Habilidad.VELOCIDAD);
                 tipo = "Guerrero";
                 break;
             case 2:
-                stats = new Stats(8, 7, 6, 10, 12, 8, 12, 15, 10);
-                jugador = new Arquero(mapa,nombre,1,0,stats,10,10,10,equipo,inventario,teclado,pos,Sprite.ABAJO0);
+                jugador = new Arquero(mapa,nombre,1,0, Stats.STATS_ARQUERO,10,10,10,equipo,inventario,teclado,pos,Sprite.ABAJO0);
+                jugador.getHabilidades().add(Habilidad.INFLINGIR_ENFERMEDAD);
+                jugador.getHabilidades().add(Habilidad.LLAMADA_A_LA_NATURALEZA);
+                jugador.getHabilidades().add(Habilidad.PRESENTIR);
                 tipo = "Arquero";
                 break;
             default:
-                stats=new Stats(10, 5, 4, 3, 10, 15, 15, 10, 15);
-                jugador = new Mago(mapa,nombre,1,0,stats,10,10,10,equipo,inventario,teclado,pos,Sprite.ABAJO0);
+                jugador = new Mago(mapa,nombre,1,0, Stats.STATS_MAGO,10,10,10,equipo,inventario,teclado,pos,Sprite.ABAJO0);
+                jugador.getHabilidades().add(Habilidad.DESORDEN_DE_LA_REALIDAD);
+                jugador.getHabilidades().add(Habilidad.CONGELAR_ALMA);
+                jugador.getHabilidades().add(Habilidad.PARADOJA_TEMPORAL);
                 tipo = "Mago";
                 break;
                 
@@ -87,13 +93,13 @@ public class Juego extends Canvas implements Runnable,ActionListener{
         //creamos los monstruos
         int num_murcielagos = 10;
         int i = 0;
-        Random  rnd = new Random();
+        Random  rnd = new Random(new Date().getTime());
         while (i < num_murcielagos){
             i++;
             int[] m_pos = {0,0};
             m_pos[0]=(int)(rnd.nextDouble() * 1000);
             m_pos[1]=(int)(rnd.nextDouble() * 1000);
-            monstruos.add(new Murcielago(mapa,"Murcielago"+i,1,0,stats,10,10,10,equipo,inventario,m_pos,Sprite.MUABAJO0));
+            monstruos.add(new Murcielago(mapa,"Murcielago"+i,1,0, Stats.STATS_MONSTRUO,10,10,10,equipo,inventario,m_pos,Sprite.MUABAJO0));
             
         }
         //cargamos items

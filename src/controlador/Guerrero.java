@@ -7,22 +7,17 @@ package controlador;
 
 import Graficos.Sprite;
 import control.Teclado;
-import java.util.ArrayList;
 import vista.Mapa;
 
 
 public class Guerrero extends Personaje {
     protected boolean enMovimiento = false;
     private int animacion;
-    ArrayList<Habilidad> habilidades = new ArrayList<>();
     private Teclado teclado;   
     public Guerrero(Mapa mapa, String Nombre, int Nivel, int EXP, Stats stats, int Vida, int Stamina, int Mana, Equipo equipo, Inventario inventario,Teclado teclado, int[] posicion, Sprite sprite) {
         super(mapa,Nombre, Nivel, EXP, stats, Vida, Stamina, Mana, equipo, inventario, posicion);
         this.teclado = teclado;
-        habilidades.add(new Habilidad("Golpe Fuerte",10,"Paralisis",5));
         this.sprite = sprite;
-        
-
     }
     @Override
     public void actualizar(){

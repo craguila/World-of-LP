@@ -7,7 +7,6 @@ package controlador;
 
 import Graficos.Sprite;
 import control.Teclado;
-import java.util.ArrayList;
 import vista.Mapa;
 
 
@@ -16,7 +15,6 @@ public class Mago extends Personaje {
     protected boolean enMovimiento = false;
     private int animacion;
     private int piedras;
-    ArrayList<Habilidad> habilidades = new ArrayList<>();
     public Mago(Mapa mapa,String Nombre, int Nivel, int EXP, Stats stats, int Vida, int Stamina, int Mana, Equipo equipo, Inventario inventario,Teclado teclado, int[] posicion, Sprite sprite) {
         super(mapa, Nombre, Nivel, EXP, stats, Vida, Stamina, Mana, equipo, inventario, posicion);
         this.teclado = teclado;

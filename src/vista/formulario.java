@@ -57,7 +57,7 @@ public class formulario extends javax.swing.JFrame {
 
         lblArquero.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblArquero.setIcon(new javax.swing.ImageIcon(getClass().getResource("/texturas/arquero.jpg"))); // NOI18N
-        lblArquero.setToolTipText("<html>\nRadio Vision:\t \t8.<br>\nRapidez:\t\t7.<br>\nFuerza:\t\t6.<br>\nDestreza: \t\t10.<br>\nResistencia:\t\t12.<br>\nResistencia Magica: \t8.<br>\nInteligencia: \t\t12.<br>\nStamina: \t\t15.<br>\nConstitucion: \t10.<br>\n</html>");
+        lblArquero.setToolTipText("<html>\nSTATS<br>\nRadio Vision:\t \t8.<br>\nRapidez:\t\t7.<br>\nFuerza:\t\t6.<br>\nDestreza: \t\t10.<br>\nResistencia:\t\t12.<br>\nResistencia Magica: \t8.<br>\nInteligencia: \t\t12.<br>\nStamina: \t\t15.<br>\nConstitucion: \t10.<br>\n</html>");
         lblArquero.setMaximumSize(new java.awt.Dimension(144, 24));
         lblArquero.setMinimumSize(new java.awt.Dimension(144, 24));
         lblArquero.setPreferredSize(new java.awt.Dimension(144, 24));
@@ -82,7 +82,7 @@ public class formulario extends javax.swing.JFrame {
 
         lblGuerrero.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblGuerrero.setIcon(new javax.swing.ImageIcon(getClass().getResource("/texturas/guerrero.jpg"))); // NOI18N
-        lblGuerrero.setToolTipText("<html>\nRadio Vision:\t \t5.<br>\nRapidez:\t\t10.<br>\nFuerza:\t\t10.<br>\nDestreza: \t\t8.<br>\nResistencia:\t\t15.<br>\nResistencia Magica: \t10.<br>\nInteligencia: \t\t10.<br>\nStamina: \t\t13.<br>\nConstitucion: \t5.<br>\n</html>");
+        lblGuerrero.setToolTipText("<html>\nSTATS<br>\nRadio Vision:\t \t5.<br>\nRapidez:\t\t10.<br>\nFuerza:\t\t10.<br>\nDestreza: \t\t8.<br>\nResistencia:\t\t15.<br>\nResistencia Magica: \t10.<br>\nInteligencia: \t\t10.<br>\nStamina: \t\t13.<br>\nConstitucion: \t5.<br>\n</html>");
         lblGuerrero.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         lblGuerrero.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -105,7 +105,7 @@ public class formulario extends javax.swing.JFrame {
 
         lblMago.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblMago.setIcon(new javax.swing.ImageIcon(getClass().getResource("/texturas/mago.jpg"))); // NOI18N
-        lblMago.setToolTipText("<html>\nRadio Vision:\t \t10.<br>\nRapidez:\t\t5.<br>\nFuerza:\t\t4.<br>\nDestreza: \t\t3.<br>\nResistencia:\t\t10.<br>\nResistencia Magica: \t15.<br>\nInteligencia: \t\t15.<br>\nStamina: \t\t10.<br>\nConstitucion: \t15.<br>\n</html>");
+        lblMago.setToolTipText("<html>\nSTATS<br>\nRadio Vision:\t \t10.<br>\nRapidez:\t\t5.<br>\nFuerza:\t\t4.<br>\nDestreza: \t\t3.<br>\nResistencia:\t\t10.<br>\nResistencia Magica: \t15.<br>\nInteligencia: \t\t15.<br>\nStamina: \t\t10.<br>\nConstitucion: \t15.<br>\n</html>");
         lblMago.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 lblMagoMouseClicked(evt);
