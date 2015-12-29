@@ -1,2 +1,0 @@
-controlador.TipoItem
-controlador.Item

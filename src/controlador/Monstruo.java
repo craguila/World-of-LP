@@ -5,13 +5,14 @@
  */
 package controlador;
 
+import java.util.ArrayList;
 import vista.Mapa;
 
 
 
 public class Monstruo extends Personaje {
     int exp_entregada; // experiencia que entrega al usuario.
-    Habilidad[] spell_mo;
+    ArrayList<Habilidad> spell_mo;
 
     public Monstruo(Mapa mapa,String Nombre, int Nivel, int EXP, Stats stats, int Vida, int Stamina, int Mana, Equipo equipo, Inventario inventario, int[] posicion) {
         super(mapa, Nombre, Nivel, EXP, stats, Vida, Stamina, Mana, equipo, inventario, posicion);

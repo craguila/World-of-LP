@@ -3,6 +3,7 @@ package controlador;
 
 import Graficos.Pantalla;
 import Graficos.Sprite;
+import vista.Juego;
 import vista.Mapa;
 
 
@@ -96,6 +97,20 @@ public class Personaje {
         int bordeDerecho = (posicionX+ margenDerecho + margenIzquierdo)/sprite.getLado();
         int bordeSuperior = (posicionY+ margenInferior)/sprite.getLado();
         int bordeInferior = (posicionY+ margenInferior + margenSuperior)/sprite.getLado();
+        //si hay un enemigo,
+        //siente el choque!
+                
+        for (int i=0;i<Juego.monstruos.size();i++){
+            int lado_monstruo = Juego.monstruos.get(i).getSprite().getLado();
+            int monstruoX = Juego.monstruos.get(i).posicion[0];
+            int monstruoY = Juego.monstruos.get(i).posicion[1];
+            if (posicionX + margenDerecho > monstruoX && posicionX + margenDerecho < monstruoX + lado_monstruo){
+                if (posicionY + margenInferior > monstruoY && posicionY + margenInferior < monstruoX + lado_monstruo){
+//monstruoX > bordeDerecho && monstruoY< bordeSuperior && monstruoY > bordeInferior ){
+                colision = true;
+                }
+            }
+        }
         
         if(mapa.getCuadro(bordeIzquierdo + bordeSuperior * mapa.getAncho()).esSolido()){
             colision = true;

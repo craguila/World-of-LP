@@ -65,6 +65,23 @@ public class Sprite {
     public static final Sprite MARRIBA1 = new Sprite(32,1,8,HojaSprites.nivel1);
     public static final Sprite MARRIBA2 = new Sprite(32,2,8,HojaSprites.nivel1);
     //fin de la coleccion 
+    //sprites del murcielago
+    public static final Sprite MUABAJO0 = new Sprite(32,3,5,HojaSprites.nivel1);
+    public static final Sprite MUABAJO1 = new Sprite(32,4,5,HojaSprites.nivel1);
+    public static final Sprite MUABAJO2 = new Sprite(32,5,5,HojaSprites.nivel1);
+    
+    public static final Sprite MUIZQUIERDA0 = new Sprite(32,3,6,HojaSprites.nivel1);
+    public static final Sprite MUIZQUIERDA1 = new Sprite(32,4,6,HojaSprites.nivel1);
+    public static final Sprite MUIZQUIERDA2 = new Sprite(32,5,6,HojaSprites.nivel1);
+    
+    public static final Sprite MUDERECHA0 = new Sprite(32,3,7,HojaSprites.nivel1);
+    public static final Sprite MUDERECHA1 = new Sprite(32,4,7,HojaSprites.nivel1);
+    public static final Sprite MUDERECHA2 = new Sprite(32,5,7,HojaSprites.nivel1);
+    
+    public static final Sprite MUARRIBA0 = new Sprite(32,3,8,HojaSprites.nivel1);
+    public static final Sprite MUARRIBA1 = new Sprite(32,4,8,HojaSprites.nivel1);
+    public static final Sprite MUARRIBA2 = new Sprite(32,5,8,HojaSprites.nivel1);
+    //fin de la coleccion 
     //coleccion de sprites
     public static Sprite VACIO = new Sprite(32,0);
     public static Sprite PASTO = new Sprite(32,0,0,HojaSprites.nivel1);
