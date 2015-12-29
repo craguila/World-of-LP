@@ -4,11 +4,6 @@
  */
 package vista;
 
-import java.awt.Color;
-import java.awt.Graphics;
-import java.awt.image.BufferStrategy;
-import java.awt.image.BufferedImage;
-import java.awt.image.DataBufferInt;
 import javax.swing.ButtonGroup;
 import javax.swing.JOptionPane;
 
@@ -41,12 +36,12 @@ public class formulario extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        panel1 = new javax.swing.JPanel();
-        jLabel5 = new javax.swing.JLabel();
-        panel2 = new javax.swing.JPanel();
-        jLabel4 = new javax.swing.JLabel();
-        panel3 = new javax.swing.JPanel();
-        jLabel6 = new javax.swing.JLabel();
+        pnlArquero = new javax.swing.JPanel();
+        lblArquero = new javax.swing.JLabel();
+        pnlGuerrero = new javax.swing.JPanel();
+        lblGuerrero = new javax.swing.JLabel();
+        pnlMago = new javax.swing.JPanel();
+        lblMago = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         txtNombre = new javax.swing.JTextField();
@@ -58,85 +53,71 @@ public class formulario extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        panel1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        panel1.addMouseListener(new java.awt.event.MouseAdapter() {
+        pnlArquero.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+
+        lblArquero.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblArquero.setIcon(new javax.swing.ImageIcon(getClass().getResource("/texturas/arquero.jpg"))); // NOI18N
+        lblArquero.setMaximumSize(new java.awt.Dimension(144, 24));
+        lblArquero.setMinimumSize(new java.awt.Dimension(144, 24));
+        lblArquero.setPreferredSize(new java.awt.Dimension(144, 24));
+        lblArquero.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                panel1MouseClicked(evt);
-            }
-            public void mousePressed(java.awt.event.MouseEvent evt) {
-                panel1MousePressed(evt);
+                lblArqueroMouseClicked(evt);
             }
         });
 
-        jLabel5.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/texturas/arquero.jpg"))); // NOI18N
-        jLabel5.setMaximumSize(new java.awt.Dimension(144, 24));
-        jLabel5.setMinimumSize(new java.awt.Dimension(144, 24));
-        jLabel5.setPreferredSize(new java.awt.Dimension(144, 24));
-
-        javax.swing.GroupLayout panel1Layout = new javax.swing.GroupLayout(panel1);
-        panel1.setLayout(panel1Layout);
-        panel1Layout.setHorizontalGroup(
-            panel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jLabel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+        javax.swing.GroupLayout pnlArqueroLayout = new javax.swing.GroupLayout(pnlArquero);
+        pnlArquero.setLayout(pnlArqueroLayout);
+        pnlArqueroLayout.setHorizontalGroup(
+            pnlArqueroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(lblArquero, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
-        panel1Layout.setVerticalGroup(
-            panel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jLabel5, javax.swing.GroupLayout.DEFAULT_SIZE, 161, Short.MAX_VALUE)
+        pnlArqueroLayout.setVerticalGroup(
+            pnlArqueroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(lblArquero, javax.swing.GroupLayout.DEFAULT_SIZE, 161, Short.MAX_VALUE)
         );
 
-        panel2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        panel2.addMouseListener(new java.awt.event.MouseAdapter() {
+        pnlGuerrero.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+
+        lblGuerrero.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblGuerrero.setIcon(new javax.swing.ImageIcon(getClass().getResource("/texturas/guerrero.jpg"))); // NOI18N
+        lblGuerrero.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        lblGuerrero.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                panel2MouseClicked(evt);
-            }
-            public void mousePressed(java.awt.event.MouseEvent evt) {
-                panel2MousePressed(evt);
+                lblGuerreroMouseClicked(evt);
             }
         });
 
-        jLabel4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/texturas/guerrero.jpg"))); // NOI18N
-        jLabel4.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        jLabel4.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mousePressed(java.awt.event.MouseEvent evt) {
-                jLabel4MousePressed(evt);
-            }
-        });
-
-        javax.swing.GroupLayout panel2Layout = new javax.swing.GroupLayout(panel2);
-        panel2.setLayout(panel2Layout);
-        panel2Layout.setHorizontalGroup(
-            panel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jLabel4, javax.swing.GroupLayout.DEFAULT_SIZE, 144, Short.MAX_VALUE)
+        javax.swing.GroupLayout pnlGuerreroLayout = new javax.swing.GroupLayout(pnlGuerrero);
+        pnlGuerrero.setLayout(pnlGuerreroLayout);
+        pnlGuerreroLayout.setHorizontalGroup(
+            pnlGuerreroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(lblGuerrero, javax.swing.GroupLayout.DEFAULT_SIZE, 144, Short.MAX_VALUE)
         );
-        panel2Layout.setVerticalGroup(
-            panel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jLabel4, javax.swing.GroupLayout.DEFAULT_SIZE, 161, Short.MAX_VALUE)
+        pnlGuerreroLayout.setVerticalGroup(
+            pnlGuerreroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(lblGuerrero, javax.swing.GroupLayout.DEFAULT_SIZE, 161, Short.MAX_VALUE)
         );
 
-        panel3.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        panel3.addMouseListener(new java.awt.event.MouseAdapter() {
+        pnlMago.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+
+        lblMago.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblMago.setIcon(new javax.swing.ImageIcon(getClass().getResource("/texturas/mago.jpg"))); // NOI18N
+        lblMago.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                panel3MouseClicked(evt);
-            }
-            public void mousePressed(java.awt.event.MouseEvent evt) {
-                panel3MousePressed(evt);
+                lblMagoMouseClicked(evt);
             }
         });
 
-        jLabel6.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/texturas/mago.jpg"))); // NOI18N
-
-        javax.swing.GroupLayout panel3Layout = new javax.swing.GroupLayout(panel3);
-        panel3.setLayout(panel3Layout);
-        panel3Layout.setHorizontalGroup(
-            panel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jLabel6, javax.swing.GroupLayout.DEFAULT_SIZE, 144, Short.MAX_VALUE)
+        javax.swing.GroupLayout pnlMagoLayout = new javax.swing.GroupLayout(pnlMago);
+        pnlMago.setLayout(pnlMagoLayout);
+        pnlMagoLayout.setHorizontalGroup(
+            pnlMagoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(lblMago, javax.swing.GroupLayout.DEFAULT_SIZE, 144, Short.MAX_VALUE)
         );
-        panel3Layout.setVerticalGroup(
-            panel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jLabel6, javax.swing.GroupLayout.DEFAULT_SIZE, 161, Short.MAX_VALUE)
+        pnlMagoLayout.setVerticalGroup(
+            pnlMagoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(lblMago, javax.swing.GroupLayout.DEFAULT_SIZE, 161, Short.MAX_VALUE)
         );
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
@@ -183,17 +164,17 @@ public class formulario extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addContainerGap()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
-                            .addComponent(panel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(pnlGuerrero, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(Clase1))
                         .addGap(46, 46, 46)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
-                            .addComponent(panel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(pnlArquero, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(Clase2)
                             .addComponent(jLabel3)
                             .addComponent(btnIniciar))
                         .addGap(45, 45, 45)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
-                            .addComponent(panel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(pnlMago, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(Clase3)))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(178, 178, 178)
@@ -206,7 +187,7 @@ public class formulario extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {panel1, panel2, panel3});
+        layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {pnlArquero, pnlGuerrero, pnlMago});
 
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -226,15 +207,15 @@ public class formulario extends javax.swing.JFrame {
                     .addComponent(Clase2))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
-                    .addComponent(panel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(panel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(panel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(pnlArquero, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(pnlGuerrero, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(pnlMago, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addComponent(btnIniciar)
                 .addGap(18, 18, 18))
         );
 
-        layout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {panel1, panel2, panel3});
+        layout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {pnlArquero, pnlGuerrero, pnlMago});
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -267,37 +248,17 @@ public class formulario extends javax.swing.JFrame {
         clase=3;
     }//GEN-LAST:event_Clase3ActionPerformed
 
-    private void panel2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_panel2MouseClicked
-//        Clase1.doClick();
-    }//GEN-LAST:event_panel2MouseClicked
-
-    private void panel1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_panel1MouseClicked
-//        Clase2.doClick();
-    }//GEN-LAST:event_panel1MouseClicked
-
-    private void panel3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_panel3MouseClicked
-//        Clase3.doClick();
-    }//GEN-LAST:event_panel3MouseClicked
-
-    private void panel2MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_panel2MousePressed
-        Clase1.doClick();
-        btnIniciar.doClick();
-    }//GEN-LAST:event_panel2MousePressed
-
-    private void panel1MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_panel1MousePressed
-        Clase2.doClick();
-        btnIniciar.doClick();
-    }//GEN-LAST:event_panel1MousePressed
-
-    private void panel3MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_panel3MousePressed
+    private void lblMagoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblMagoMouseClicked
         Clase3.doClick();
-        btnIniciar.doClick();
-    }//GEN-LAST:event_panel3MousePressed
+    }//GEN-LAST:event_lblMagoMouseClicked
 
-    private void jLabel4MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel4MousePressed
+    private void lblArqueroMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblArqueroMouseClicked
+        Clase2.doClick();
+    }//GEN-LAST:event_lblArqueroMouseClicked
+
+    private void lblGuerreroMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblGuerreroMouseClicked
         Clase1.doClick();
-        btnIniciar.doClick();
-    }//GEN-LAST:event_jLabel4MousePressed
+    }//GEN-LAST:event_lblGuerreroMouseClicked
 
     /**
      * @param args the command line arguments
@@ -354,12 +315,12 @@ public class formulario extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel6;
-    private javax.swing.JPanel panel1;
-    private javax.swing.JPanel panel2;
-    private javax.swing.JPanel panel3;
+    private javax.swing.JLabel lblArquero;
+    private javax.swing.JLabel lblGuerrero;
+    private javax.swing.JLabel lblMago;
+    private javax.swing.JPanel pnlArquero;
+    private javax.swing.JPanel pnlGuerrero;
+    private javax.swing.JPanel pnlMago;
     private javax.swing.JTextField txtNombre;
     // End of variables declaration//GEN-END:variables
 }

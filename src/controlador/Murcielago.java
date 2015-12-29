@@ -6,7 +6,6 @@
 package controlador;
 
 import Graficos.Sprite;
-import control.Teclado;
 import vista.Mapa;
 
 /**

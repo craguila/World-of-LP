@@ -29,8 +29,7 @@ public class Cuadro {
     //fin de la coleccion
     
     public Cuadro(Sprite sprite){
-        this.sprite = sprite;
-        solido = false;
+        this(sprite,false);
     }
     public Cuadro(Sprite sprite, boolean solido){
         this.sprite = sprite;

@@ -100,10 +100,10 @@ public class Personaje {
         //si hay un enemigo,
         //siente el choque!
                 
-        for (int i=0;i<Juego.monstruos.size();i++){
-            int lado_monstruo = Juego.monstruos.get(i).getSprite().getLado();
-            int monstruoX = Juego.monstruos.get(i).posicion[0];
-            int monstruoY = Juego.monstruos.get(i).posicion[1];
+        for(Monstruo m: Juego.monstruos){
+            int lado_monstruo =m.getSprite().getLado();
+            int monstruoX = m.posicion[0];
+            int monstruoY = m.posicion[1];
             if (posicionX + margenDerecho > monstruoX && posicionX + margenDerecho < monstruoX + lado_monstruo){
                 if (posicionY + margenInferior > monstruoY && posicionY + margenInferior < monstruoX + lado_monstruo){
 //monstruoX > bordeDerecho && monstruoY< bordeSuperior && monstruoY > bordeInferior ){

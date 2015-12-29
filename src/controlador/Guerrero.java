@@ -8,14 +8,13 @@ package controlador;
 import Graficos.Sprite;
 import control.Teclado;
 import java.util.ArrayList;
-import java.util.List;
 import vista.Mapa;
 
 
 public class Guerrero extends Personaje {
     protected boolean enMovimiento = false;
     private int animacion;
-    List<Habilidad> habilidades = new ArrayList<>();
+    ArrayList<Habilidad> habilidades = new ArrayList<>();
     private Teclado teclado;   
     public Guerrero(Mapa mapa, String Nombre, int Nivel, int EXP, Stats stats, int Vida, int Stamina, int Mana, Equipo equipo, Inventario inventario,Teclado teclado, int[] posicion, Sprite sprite) {
         super(mapa,Nombre, Nivel, EXP, stats, Vida, Stamina, Mana, equipo, inventario, posicion);

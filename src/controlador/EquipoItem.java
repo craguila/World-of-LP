@@ -18,6 +18,6 @@ public class EquipoItem extends Item {
         physical_level = magic_level = range = 10;
         Status veneno = new Status();
         status_list=new ArrayList<>();
-        status_list.add(veneno); //algo pasa con esto... ¡¡arreglar!!
+        status_list.add(veneno); 
     }
 }

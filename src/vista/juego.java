@@ -15,7 +15,6 @@ import java.awt.image.BufferedImage;
 import java.awt.image.DataBufferInt;
 import java.util.ArrayList;
 import java.util.Random;
-import java.util.Scanner;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 
@@ -77,7 +76,7 @@ public class Juego extends Canvas implements Runnable{
         JOptionPane.showMessageDialog(this,jugador.getNombre()+", tu mision en este mundo mágico consiste en: \n chapalapachala", NOMBRE, 1);  
         //cargamos enemigos
         //creamos los monstruos
-        int num_murcielagos = 5;
+        int num_murcielagos = 0;
         int i = 0;
         Random  rnd = new Random();
         while (i < num_murcielagos){
@@ -121,8 +120,8 @@ public class Juego extends Canvas implements Runnable{
     private void actualizar(){
         teclado.actualizar();
         jugador.actualizar();
-        for (int i=0;i<monstruos.size();i++){
-            monstruos.get(i).actualizar();
+        for(Monstruo m: monstruos){
+            m.actualizar();
         }
         aps++;
     }
@@ -137,8 +136,8 @@ public class Juego extends Canvas implements Runnable{
 //        pantalla.limpiar();
         mapa.mostrar(jugador.getX()- pantalla.getAncho()/2 + jugador.getSprite().getLado()/2 , jugador.getY()-pantalla.getLargo()/2 + jugador.getSprite().getLado()/2, pantalla);
         jugador.mostrar(pantalla);
-        for (int i=0;i<monstruos.size();i++){
-            monstruos.get(i).mostrar(pantalla);
+        for (Monstruo m: monstruos){
+            m.mostrar(pantalla);
         }
         System.arraycopy(pantalla.pixeles, 0, pixeles, 0, pixeles.length);
         
