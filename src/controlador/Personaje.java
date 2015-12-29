@@ -3,6 +3,8 @@ package controlador;
 
 import Graficos.Pantalla;
 import Graficos.Sprite;
+import com.sun.xml.internal.bind.v2.runtime.JAXBContextImpl;
+import javax.swing.JOptionPane;
 import vista.Juego;
 import vista.Mapa;
 
@@ -37,7 +39,38 @@ public class Personaje {
         this.equipo = equipo;
         this.inventario = inventario;
         this.posicion = posicion;
-    }   
+    }
+    
+    public void aumentarExp(int exp){
+        if((this.EXP+exp)>=expSiguienteLvl(this.Nivel)){
+            exp=this.EXP+exp-expSiguienteLvl(this.Nivel);
+            subirLvl();
+            this.EXP=0;
+            JOptionPane.showMessageDialog(null, getNombre()+" ,haz subido al Nivel: "+getNivel(), "World of LP", 1);
+            aumentarExp(exp);
+            return;
+        }
+        this.EXP+=exp;
+    }
+    
+    public int expSiguienteLvl(int lvl){
+        double exp=0;
+        double NA=(1+Math.pow(5, 0.5))/2;
+        exp=(Math.pow(NA, lvl+7)-Math.pow(1-NA, lvl+7))/Math.pow(5, 0.5);
+        return (int) exp;
+    }
+    
+    public void subirLvl(){
+        this.Nivel +=1;
+    }
+    
+    public int getNivel(){
+        return this.Nivel;
+    }
+    
+    public int getEXP(){
+        return this.EXP;
+    }
     
     public String getNombre(){
         return Nombre;
@@ -135,5 +168,9 @@ public class Personaje {
     public void mostrar(Pantalla pantalla){
         pantalla.mostrarJugador(posicion[0], posicion[1], this);
         
+    }
+
+    public Stats getStats() {
+        return this.stats;
     }
 }

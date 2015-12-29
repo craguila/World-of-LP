@@ -25,4 +25,40 @@ public class Stats {
         radio_vision = rapidez = fuerza = destreza = resistencia = resistencia_magica = 
                 inteligencia = stamina = constitucion = 10;
     }
+
+    public int getDestreza() {
+        return destreza;
+    }
+
+    public int getFuerza() {
+        return fuerza;
+    }
+
+    public int getInteligencia() {
+        return inteligencia;
+    }
+
+    public int getRadio_vision() {
+        return radio_vision;
+    }
+
+    public int getRapidez() {
+        return rapidez;
+    }
+
+    public int getResistencia() {
+        return resistencia;
+    }
+
+    public int getResistencia_magica() {
+        return resistencia_magica;
+    }
+
+    public int getStamina() {
+        return stamina;
+    }
+
+    public int getConstitucion() {
+        return this.constitucion;
+    }
 }

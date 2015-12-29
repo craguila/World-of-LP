@@ -10,17 +10,19 @@ import Graficos.Sprite;
 import control.Teclado;
 import controlador.*;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.awt.event.KeyEvent;
 import java.awt.image.BufferStrategy;
 import java.awt.image.BufferedImage;
 import java.awt.image.DataBufferInt;
 import java.util.ArrayList;
 import java.util.Random;
-import javax.swing.JFrame;
-import javax.swing.JOptionPane;
+import javax.swing.*;
 
 
 
-public class Juego extends Canvas implements Runnable{
+public class Juego extends Canvas implements Runnable,ActionListener{
     private static final int ANCHO = 500;
     private static final int ALTO = 500;
     private static final String NOMBRE = "World of LP";
@@ -41,6 +43,10 @@ public class Juego extends Canvas implements Runnable{
     private static Mapa mapa;
     private static Personaje jugador;
     public static ArrayList<Monstruo> monstruos = new ArrayList<>();
+    private JMenuBar mb;
+    private JMenu menu1;
+    private JMenuItem item1;
+    private frmStats ventanaStats;
     
     
     public Juego(String nombre,int clase){
@@ -59,19 +65,20 @@ public class Juego extends Canvas implements Runnable{
         int[] pos = {445,277};
         switch (clase) {
             case 1: 
-                jugador = new Guerrero(mapa,nombre,1,1,stats,10,10,10,equipo,inventario,teclado,pos,Sprite.ABAJO0);
+                jugador = new Guerrero(mapa,nombre,1,0,stats,10,10,10,equipo,inventario,teclado,pos,Sprite.ABAJO0);
                 tipo = "Guerrero";
                 break;
             case 2:
-                jugador = new Arquero(mapa,nombre,1,1,stats,10,10,10,equipo,inventario,teclado,pos,Sprite.ABAJO0);
+                jugador = new Arquero(mapa,nombre,1,0,stats,10,10,10,equipo,inventario,teclado,pos,Sprite.ABAJO0);
                 tipo = "Arquero";
                 break;
             default:
-                jugador = new Mago(mapa,nombre,1,1,stats,10,10,10,equipo,inventario,teclado,pos,Sprite.ABAJO0);
+                jugador = new Mago(mapa,nombre,1,0,stats,10,10,10,equipo,inventario,teclado,pos,Sprite.ABAJO0);
                 tipo = "Mago";
                 break;
                 
         }
+        ventanaStats=new frmStats(jugador);
         JOptionPane.showMessageDialog(this, "Es un placer conocer por fin a tan renombrado "+ tipo, NOMBRE, 1);
         JOptionPane.showMessageDialog(this,jugador.getNombre()+", tu mision en este mundo mágico consiste en: \n chapalapachala", NOMBRE, 1);  
         //cargamos enemigos
@@ -84,7 +91,7 @@ public class Juego extends Canvas implements Runnable{
             int[] m_pos = {0,0};
             m_pos[0]=(int)(rnd.nextDouble() * 1000);
             m_pos[1]=(int)(rnd.nextDouble() * 1000);
-            monstruos.add(new Murcielago(mapa,"Murcielago"+i,1,1,stats,10,10,10,equipo,inventario,m_pos,Sprite.MUABAJO0));
+            monstruos.add(new Murcielago(mapa,"Murcielago"+i,1,0,stats,10,10,10,equipo,inventario,m_pos,Sprite.MUABAJO0));
             
         }
         //cargamos items
@@ -97,6 +104,14 @@ public class Juego extends Canvas implements Runnable{
         ventana.add(this, BorderLayout.CENTER);
         ventana.pack();
         ventana.setLocationRelativeTo(null);
+        mb=new JMenuBar();
+        menu1=new JMenu("Ver");
+        mb.add(menu1);
+        item1=new JMenuItem("Stats");
+        item1.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_1,ActionEvent.CTRL_MASK));
+        item1.addActionListener(this);
+        menu1.add(item1);
+        ventana.setJMenuBar(mb);
         ventana.setVisible(true);
         
     }
@@ -185,6 +200,13 @@ public class Juego extends Canvas implements Runnable{
                 fps = 0;
                 referenciaContador = System.nanoTime();
             }
+        }
+    }
+
+    @Override
+    public void actionPerformed(ActionEvent e) {
+        if(e.getSource()==item1){
+            ventanaStats.setVisible(true);
         }
     }
 }
