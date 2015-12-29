@@ -3,7 +3,7 @@ package controlador;
 
 import Graficos.Pantalla;
 import Graficos.Sprite;
-import com.sun.xml.internal.bind.v2.runtime.JAXBContextImpl;
+import java.util.Random;
 import javax.swing.JOptionPane;
 import vista.Juego;
 import vista.Mapa;
@@ -61,7 +61,21 @@ public class Personaje {
     }
     
     public void subirLvl(){
+        mejorar();
         this.Nivel +=1;
+    }
+    
+    public void mejorar(){
+        Random ran =new Random();
+        stats.radio_vision+=ran.nextInt(Nivel);
+        stats.rapidez+=ran.nextInt(Nivel);
+        stats.fuerza+=ran.nextInt(Nivel);
+        stats.destreza+=ran.nextInt(Nivel);
+        stats.resistencia+=ran.nextInt(Nivel);
+        stats.resistencia_magica+=ran.nextInt(Nivel);
+        stats.inteligencia+=ran.nextInt(Nivel);
+        stats.stamina+=ran.nextInt(Nivel);
+        stats.constitucion+=ran.nextInt(Nivel);
     }
     
     public int getNivel(){

@@ -118,6 +118,7 @@
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
               <Image iconType="3" name="/texturas/arquero.jpg"/>
             </Property>
+            <Property name="toolTipText" type="java.lang.String" value="&lt;html&gt;&#xa;Radio Vision:&#x9; &#x9;8.&lt;br&gt;&#xa;Rapidez:&#x9;&#x9;7.&lt;br&gt;&#xa;Fuerza:&#x9;&#x9;6.&lt;br&gt;&#xa;Destreza: &#x9;&#x9;10.&lt;br&gt;&#xa;Resistencia:&#x9;&#x9;12.&lt;br&gt;&#xa;Resistencia Magica: &#x9;8.&lt;br&gt;&#xa;Inteligencia: &#x9;&#x9;12.&lt;br&gt;&#xa;Stamina: &#x9;&#x9;15.&lt;br&gt;&#xa;Constitucion: &#x9;10.&lt;br&gt;&#xa;&lt;/html&gt;"/>
             <Property name="maximumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
               <Dimension value="[144, 24]"/>
             </Property>
@@ -162,6 +163,7 @@
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
               <Image iconType="3" name="/texturas/guerrero.jpg"/>
             </Property>
+            <Property name="toolTipText" type="java.lang.String" value="&lt;html&gt;&#xa;Radio Vision:&#x9; &#x9;5.&lt;br&gt;&#xa;Rapidez:&#x9;&#x9;10.&lt;br&gt;&#xa;Fuerza:&#x9;&#x9;10.&lt;br&gt;&#xa;Destreza: &#x9;&#x9;8.&lt;br&gt;&#xa;Resistencia:&#x9;&#x9;15.&lt;br&gt;&#xa;Resistencia Magica: &#x9;10.&lt;br&gt;&#xa;Inteligencia: &#x9;&#x9;10.&lt;br&gt;&#xa;Stamina: &#x9;&#x9;13.&lt;br&gt;&#xa;Constitucion: &#x9;5.&lt;br&gt;&#xa;&lt;/html&gt;"/>
             <Property name="horizontalTextPosition" type="int" value="0"/>
           </Properties>
           <Events>
@@ -198,6 +200,7 @@
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
               <Image iconType="3" name="/texturas/mago.jpg"/>
             </Property>
+            <Property name="toolTipText" type="java.lang.String" value="&lt;html&gt;&#xa;Radio Vision:&#x9; &#x9;10.&lt;br&gt;&#xa;Rapidez:&#x9;&#x9;5.&lt;br&gt;&#xa;Fuerza:&#x9;&#x9;4.&lt;br&gt;&#xa;Destreza: &#x9;&#x9;3.&lt;br&gt;&#xa;Resistencia:&#x9;&#x9;10.&lt;br&gt;&#xa;Resistencia Magica: &#x9;15.&lt;br&gt;&#xa;Inteligencia: &#x9;&#x9;15.&lt;br&gt;&#xa;Stamina: &#x9;&#x9;10.&lt;br&gt;&#xa;Constitucion: &#x9;15.&lt;br&gt;&#xa;&lt;/html&gt;"/>
           </Properties>
           <Events>
             <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="lblMagoMouseClicked"/>

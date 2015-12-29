@@ -57,21 +57,24 @@ public class Juego extends Canvas implements Runnable,ActionListener{
         addKeyListener(teclado);
         
         mapa = new MapaCargado("/texturas/mapa1.png"); //Aqui se define el ancho del juego en cuadritos
-        String tipo = "";
-        Stats stats = new Stats();
+        String tipo;
+        Stats stats;
         Equipo equipo = new Equipo();
         Inventario inventario = new Inventario();
         int[] pos = {445,277};
         switch (clase) {
-            case 1: 
+            case 1:
+                stats=new Stats(5, 10, 10, 8, 15, 10, 10, 13, 15);
                 jugador = new Guerrero(mapa,nombre,1,0,stats,10,10,10,equipo,inventario,teclado,pos,Sprite.ABAJO0);
                 tipo = "Guerrero";
                 break;
             case 2:
+                stats = new Stats(8, 7, 6, 10, 12, 8, 12, 15, 10);
                 jugador = new Arquero(mapa,nombre,1,0,stats,10,10,10,equipo,inventario,teclado,pos,Sprite.ABAJO0);
                 tipo = "Arquero";
                 break;
             default:
+                stats=new Stats(10, 5, 4, 3, 10, 15, 15, 10, 15);
                 jugador = new Mago(mapa,nombre,1,0,stats,10,10,10,equipo,inventario,teclado,pos,Sprite.ABAJO0);
                 tipo = "Mago";
                 break;

@@ -21,9 +21,22 @@ public class Stats {
     int stamina;   //Cantidad de energa para uso de golpes especiales y aumenta potencial de \% de golpes crticos. Mas stamina aumenta energa y velocidad de           // recuperacion.
     int constitucion; //Afecta cantidad maxima de vida y recuperacion de vida por turno (cuando no
     //esta en batal 
+
+    public Stats(int radio_vision, int rapidez, int fuerza, int destreza, int resistencia, int resistencia_magica, int inteligencia, int stamina, int constitucion) {
+        this.radio_vision = radio_vision;
+        this.rapidez = rapidez;
+        this.fuerza = fuerza;
+        this.destreza = destreza;
+        this.resistencia = resistencia;
+        this.resistencia_magica = resistencia_magica;
+        this.inteligencia = inteligencia;
+        this.stamina = stamina;
+        this.constitucion = constitucion;
+    }
+    
+    
     public Stats(){
-        radio_vision = rapidez = fuerza = destreza = resistencia = resistencia_magica = 
-                inteligencia = stamina = constitucion = 10;
+        this(10,10,10,10,10,10,10,10,10);
     }
 
     public int getDestreza() {

@@ -120,6 +120,8 @@ public class Arquero extends Personaje {
     public Sprite getSprite(){
         return sprite;
     }
+    
+    
     public void mostrar(){
         
     }
