@@ -5,20 +5,29 @@
 package controlador;
 
 
-enum TipoItem {
-ARMADURA,
-ARMA,
-FLECHAS,
-DINERO,
-POCION_VIDA,
-POCION_MANA,
-POCION_STAMINA,
-}
+
 
 public class Item {
+    public static enum TipoItem {
+        ARMADURA,
+        ARMA,
+        FLECHAS,
+        DINERO,
+        POCION_VIDA,
+        POCION_MANA,
+        POCION_STAMINA,
+    }
     int number;          // Para las flechas, requiere el numero.
     String nombre;
     TipoItem tipo;
     String descripcion; //Descripcion de habilidad que posee
     //el item al ser utilizado. Por ejemplo, recuperar la vida del Personaje
+
+    public Item(int number, String nombre, TipoItem tipo, String descripcion) {
+        this.number = number;
+        this.nombre = nombre;
+        this.tipo = tipo;
+        this.descripcion = descripcion;
+    }
+    
 }

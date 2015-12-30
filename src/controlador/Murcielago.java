@@ -6,7 +6,6 @@
 package controlador;
 
 import Graficos.Sprite;
-import java.util.Date;
 import java.util.Random;
 import vista.Juego;
 import vista.Mapa;
@@ -80,7 +79,25 @@ public class Murcielago extends Monstruo{
                         desplazamientoY+= stats.rapidez;
                 }
             }
+<<<<<<< HEAD
             
+=======
+//crear IA para mover el monstruo
+//random si no ve al jugador, hacia el jugador si ve al jugador
+//        if (teclado.arriba){
+//            desplazamientoY--;
+//        }
+//        if (teclado.abajo){
+//            desplazamientoY++;
+//        }
+//        if(teclado.izquierda){
+//            desplazamientoX--;
+//        }
+//        if(teclado.derecha){
+//            desplazamientoX++;
+//        }
+
+>>>>>>> origin/master
         int resto = animacion%40;
         if (direccion == 'n'){
             sprite = Sprite.MUARRIBA0;

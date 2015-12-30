@@ -59,11 +59,12 @@ public class Juego extends Canvas implements Runnable,ActionListener{
         
         mapa = new MapaCargado("/texturas/mapa1.png"); //Aqui se define el ancho del juego en cuadritos
         String tipo;
-        Equipo equipo = new Equipo();
+        Equipo equipo;
         Inventario inventario = new Inventario();
         int[] pos = {445,277};
         switch (clase) {
             case 1:
+                equipo=new Equipo(EquipoItem.ARMADURA_GUERRERO, EquipoItem.ARMA_GUERRERO,null);
                 jugador = new Guerrero(mapa,nombre,1,0,Stats.STATS_GUERRERO,10,10,10,equipo,inventario,teclado,pos,Sprite.ABAJO0);
                 jugador.getHabilidades().add(Habilidad.CORAJE_DIVINO);
                 jugador.getHabilidades().add(Habilidad.FURIA_CAOTICA);
@@ -71,6 +72,7 @@ public class Juego extends Canvas implements Runnable,ActionListener{
                 tipo = "Guerrero";
                 break;
             case 2:
+                equipo=new Equipo(EquipoItem.ARMADURA_ARQUERO, EquipoItem.ARMA_ARQUERO,EquipoItem.FLECHA_ARQUERO);
                 jugador = new Arquero(mapa,nombre,1,0, Stats.STATS_ARQUERO,10,10,10,equipo,inventario,teclado,pos,Sprite.ABAJO0);
                 jugador.getHabilidades().add(Habilidad.INFLINGIR_ENFERMEDAD);
                 jugador.getHabilidades().add(Habilidad.LLAMADA_A_LA_NATURALEZA);
@@ -78,6 +80,7 @@ public class Juego extends Canvas implements Runnable,ActionListener{
                 tipo = "Arquero";
                 break;
             default:
+                equipo=new Equipo(EquipoItem.ARMADURA_MAGO, EquipoItem.ARMA_MAGO,null);
                 jugador = new Mago(mapa,nombre,1,0, Stats.STATS_MAGO,10,10,10,equipo,inventario,teclado,pos,Sprite.ABAJO0);
                 jugador.getHabilidades().add(Habilidad.DESORDEN_DE_LA_REALIDAD);
                 jugador.getHabilidades().add(Habilidad.CONGELAR_ALMA);
@@ -88,13 +91,13 @@ public class Juego extends Canvas implements Runnable,ActionListener{
         }
         ventanaStats=new frmStats(jugador);
         ventanaStats.setResizable(false);
-        JOptionPane.showMessageDialog(this, "Es un placer conocer por fin a tan renombrado "+ tipo, NOMBRE, 1);
-        JOptionPane.showMessageDialog(this,jugador.getNombre()+", tu mision en este mundo mágico consiste en: \n chapalapachala", NOMBRE, 1);  
+        JOptionPane.showMessageDialog(this, "Es un placer conocer por fin a tan renombrado "+ tipo, NOMBRE, 1); 
         //cargamos enemigos
         //creamos los monstruos
         int num_murcielagos = 10;
         int i = 0;
         Random  rnd = new Random(new Date().getTime());
+        JOptionPane.showMessageDialog(this,jugador.getNombre()+", tu mision en este mundo mágico consiste en: \n ", NOMBRE, 1); 
         while (i < num_murcielagos){
             i++;
             int[] m_pos = {0,0};
