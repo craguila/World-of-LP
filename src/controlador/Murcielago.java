@@ -8,6 +8,7 @@ package controlador;
 import Graficos.Sprite;
 import java.util.Date;
 import java.util.Random;
+import vista.Juego;
 import vista.Mapa;
 
 /**
@@ -26,46 +27,60 @@ public class Murcielago extends Monstruo{
         this.sprite = sprite;
     }
     
+    public boolean jugadorvisible(){
+        int playerx = Juego.jugador.posicion[0];
+        int playery = Juego.jugador.posicion[1];
+        int monsterx = posicion[0];
+        int monstery = posicion[1];
+        int vision = stats.radio_vision*32;
+        if (((monsterx - vision)<playerx) && ((monsterx + vision) < playerx)){
+            if (((monstery -vision) < playery )&& ((monstery + vision) > playery) ){
+                return true;
+            }
+        }
+        return false;
+    }
+    
     Random  rnd = new Random();
     @Override
     public void actualizar(){
+        int playerx = Juego.jugador.posicion[0];
+        int playery = Juego.jugador.posicion[1];
+        int monsterx = posicion[0];
+        int monstery = posicion[1];
+        
         int desplazamientoX = 0;
         int desplazamientoY = 0;
-        
         if (animacion<32767){
             animacion++;
         }else{
             animacion =0;
         }
-        int x=(int)(rnd.nextDouble() *100);
-        int y=(int)(rnd.nextDouble() *100);
-        //System.out.println(x+"-"+y);
-            if (x==1){
-                    desplazamientoX-= stats.rapidez;
-            } else if(x==2){
-                    desplazamientoX+= stats.rapidez;
+            if (jugadorvisible()){
+                int distx = playerx - monsterx;
+                int disty = playery - monstery;
+                if (distx < disty && distx!=0){
+                    desplazamientoX += (distx/Math.abs(distx))*stats.rapidez;
+                } else {
+                    if (disty != 0){
+                    desplazamientoY -= (disty/Math.abs(disty))*stats.rapidez;
+                    }
+                }
+            } else {
+                int x=(int)(rnd.nextDouble() *100);
+                int y=(int)(rnd.nextDouble() *100);
+                if (x==1){
+                        desplazamientoX-= stats.rapidez;
+                } else if(x==2){
+                        desplazamientoX+= stats.rapidez;
+                }
+                if (y==1){
+                        desplazamientoY-= stats.rapidez;
+                } else if(y==2){
+                        desplazamientoY+= stats.rapidez;
+                }
             }
-            if (y==1){
-                    desplazamientoY-= stats.rapidez;
-            } else if(y==2){
-                    desplazamientoY+= stats.rapidez;
-            }
-    System.out.println(desplazamientoX+"-"+desplazamientoY);
-//crear IA para mover el monstruo
-//random si no ve al jugador, hacia el jugador si ve al jugador
-//        if (teclado.arriba){
-//            desplazamientoY--;
-//        }
-//        if (teclado.abajo){
-//            desplazamientoY++;
-//        }
-//        if(teclado.izquierda){
-//            desplazamientoX--;
-//        }
-//        if(teclado.derecha){
-//            desplazamientoX++;
-//        }
-
+            
         int resto = animacion%40;
         if (direccion == 'n'){
             sprite = Sprite.MUARRIBA0;
@@ -126,8 +141,12 @@ public class Murcielago extends Monstruo{
 
         }
         if (desplazamientoX != 0 || desplazamientoY != 0){
+            try{
             mover(desplazamientoX*10, desplazamientoY*10);
-            enMovimiento= true;
+            enMovimiento= true;}
+            catch(Exception e){
+                    enMovimiento = false;
+                    }
             
         } else{
             enMovimiento = false;
