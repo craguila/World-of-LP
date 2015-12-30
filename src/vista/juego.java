@@ -87,6 +87,7 @@ public class Juego extends Canvas implements Runnable,ActionListener{
                 
         }
         ventanaStats=new frmStats(jugador);
+        ventanaStats.setResizable(false);
         JOptionPane.showMessageDialog(this, "Es un placer conocer por fin a tan renombrado "+ tipo, NOMBRE, 1);
         JOptionPane.showMessageDialog(this,jugador.getNombre()+", tu mision en este mundo mágico consiste en: \n chapalapachala", NOMBRE, 1);  
         //cargamos enemigos
@@ -106,6 +107,12 @@ public class Juego extends Canvas implements Runnable,ActionListener{
         
         
         ventana = new JFrame(NOMBRE);
+        ventana.addComponentListener(new java.awt.event.ComponentAdapter() {
+            @Override
+            public void componentMoved(java.awt.event.ComponentEvent evt) {
+                ventanaStats.setLocation(ventana.getLocation().x-ventanaStats.getSize().width, ventana.getLocation().y);
+            }
+        });
         ventana.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         ventana.setResizable(false);
         ventana.setLayout(new BorderLayout());
@@ -213,8 +220,9 @@ public class Juego extends Canvas implements Runnable,ActionListener{
 
     @Override
     public void actionPerformed(ActionEvent e) {
-        if(e.getSource()==item1){
-            ventanaStats.setVisible(true);
+        if(e.getSource()==item1){            
+            ventanaStats.setVisible(!ventanaStats.isVisible());
+            this.requestFocus();
         }
     }
 }

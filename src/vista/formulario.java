@@ -17,9 +17,9 @@ public class formulario extends javax.swing.JFrame {
      * Creates new form formulario
      */
     public formulario() {
+        initComponents();
         setLocationRelativeTo(null);
         setResizable(false);
-        initComponents();
         group.add(Clase1);
         group.add(Clase2);
         group.add(Clase3);
