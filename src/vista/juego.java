@@ -44,6 +44,7 @@ public class Juego extends Canvas implements Runnable,ActionListener{
     private static Mapa mapa;
     public static Personaje jugador;
     public static ArrayList<Monstruo> monstruos = new ArrayList<>();
+    public static ArrayList<Cofre> cofres = new ArrayList<>();
     private JMenuBar mb;
     private JMenu menu1;
     private JMenuItem item1;
@@ -61,7 +62,18 @@ public class Juego extends Canvas implements Runnable,ActionListener{
         String tipo;
         Equipo equipo;
         Inventario inventario = new Inventario();
+        Random  rndpos = new Random();
         int[] pos = {445,277};
+        pos[0]=(int)(rndpos.nextDouble() * 1540);
+        pos[1]=(int)(rndpos.nextDouble() * 1537);
+        
+        equipo=new Equipo(EquipoItem.ARMADURA_GUERRERO, EquipoItem.ARMA_GUERRERO,null);
+        jugador = new Guerrero(mapa,nombre,1,0,Stats.STATS_GUERRERO,10,10,10,equipo,inventario,teclado,pos,Sprite.ABAJO0);
+
+        while (jugador.hayunmuro(pos[0],pos[1])){
+            pos[0]=(int)(rndpos.nextDouble() * 1540);
+            pos[1]=(int)(rndpos.nextDouble() * 1537);
+        }
         switch (clase) {
             case 1:
                 equipo=new Equipo(EquipoItem.ARMADURA_GUERRERO, EquipoItem.ARMA_GUERRERO,null);
@@ -91,21 +103,85 @@ public class Juego extends Canvas implements Runnable,ActionListener{
         }
         ventanaStats=new frmStats(jugador);
         ventanaStats.setResizable(false);
-        JOptionPane.showMessageDialog(this, "Es un placer conocer por fin a tan renombrado "+ tipo, NOMBRE, 1); 
+        JOptionPane.showMessageDialog(this, "Es un placer conocer por fin a tan renombrado "+ tipo, NOMBRE, 1);
+        JOptionPane.showMessageDialog(this,jugador.getNombre()+", tu mision en este mundo mágico consiste en: \n ", NOMBRE, 1);
+        //agregamos los cofres;
+        Random  rnd = new Random();
+        int num_cofres = 10;
+        int i = 0;
+        while (i < num_cofres){
+            i++;
+            int[] m_pos = {0,0};
+            m_pos[0]=(int)(rnd.nextDouble() * 1540);
+            m_pos[1]=(int)(rnd.nextDouble() * 1537);
+            if (!jugador.hayunmuro(m_pos[0],m_pos[1])){
+                //poner todo en 0
+                cofres.add(new Cofre(mapa,"Cofre"+i,1,0, Stats.STATS_MONSTRUO,10,10,10,equipo,inventario,m_pos,Sprite.COFRE));
+            }
+        }
         //cargamos enemigos
         //creamos los monstruos
         int num_murcielagos = 10;
-        int i = 0;
-        Random  rnd = new Random(new Date().getTime());
-        JOptionPane.showMessageDialog(this,jugador.getNombre()+", tu mision en este mundo mágico consiste en: \n ", NOMBRE, 1); 
+        int num_tigres = 10;
+        int num_lobos = 10;
+        int num_gatos = 10;
+        int num_esq = 10;
+        i=0;
+        rnd = new Random();
         while (i < num_murcielagos){
             i++;
             int[] m_pos = {0,0};
-            m_pos[0]=(int)(rnd.nextDouble() * 1000);
-            m_pos[1]=(int)(rnd.nextDouble() * 1000);
-            monstruos.add(new Murcielago(mapa,"Murcielago"+i,1,0, Stats.STATS_MONSTRUO,10,10,10,equipo,inventario,m_pos,Sprite.MUABAJO0));
-            
+            m_pos[0]=(int)(rnd.nextDouble() * 1540);
+            m_pos[1]=(int)(rnd.nextDouble() * 1537);
+            if (!jugador.hayunmuro(m_pos[0],m_pos[1])){
+                monstruos.add(new Murcielago(mapa,"Murcielago"+i,1,0, Stats.STATS_MONSTRUO,10,10,10,equipo,inventario,m_pos,Sprite.MUABAJO0));
+            }
         }
+        i = 0;
+        rnd = new Random();
+        while (i < num_tigres){
+            i++;
+            int[] m_pos = {0,0};
+            m_pos[0]=(int)(rnd.nextDouble() * 1540);
+            m_pos[1]=(int)(rnd.nextDouble() * 1537);
+            if (!jugador.hayunmuro(m_pos[0],m_pos[1])){
+                monstruos.add(new Tigre(mapa,"Tigre"+i,1,0, Stats.STATS_MONSTRUO,10,10,10,equipo,inventario,m_pos,Sprite.TABAJO0));
+            }
+        }
+        i = 0;
+        rnd = new Random();
+        while (i < num_lobos){
+            i++;
+            int[] m_pos = {0,0};
+            m_pos[0]=(int)(rnd.nextDouble() * 1540);
+            m_pos[1]=(int)(rnd.nextDouble() * 1537);
+            if (!jugador.hayunmuro(m_pos[0],m_pos[1])){
+                monstruos.add(new Lobo(mapa,"Lobo"+i,1,0, Stats.STATS_MONSTRUO,10,10,10,equipo,inventario,m_pos,Sprite.LABAJO0));
+            }
+        }
+        i = 0;
+        rnd = new Random();
+        while (i < num_gatos){
+            i++;
+            int[] m_pos = {0,0};
+            m_pos[0]=(int)(rnd.nextDouble() * 1540);
+            m_pos[1]=(int)(rnd.nextDouble() * 1537);
+            if (!jugador.hayunmuro(m_pos[0],m_pos[1])){
+                monstruos.add(new Gato(mapa,"Gato"+i,1,0, Stats.STATS_MONSTRUO,10,10,10,equipo,inventario,m_pos,Sprite.GABAJO0));
+            }
+        }
+        i = 0;
+        rnd = new Random();
+        while (i < num_esq){
+            i++;
+            int[] m_pos = {0,0};
+            m_pos[0]=(int)(rnd.nextDouble() * 1540);
+            m_pos[1]=(int)(rnd.nextDouble() * 1537);
+            if (!jugador.hayunmuro(m_pos[0],m_pos[1])){
+                monstruos.add(new Esqueleto(mapa,"Esqueleto"+i,1,0, Stats.STATS_MONSTRUO,10,10,10,equipo,inventario,m_pos,Sprite.EABAJO0));
+            }
+        }
+        
         //cargamos items
         
         
@@ -152,10 +228,11 @@ public class Juego extends Canvas implements Runnable,ActionListener{
     
     private void actualizar(){
         teclado.actualizar();
-        jugador.actualizar();
+        if (jugador.actualizar()){
         for(Monstruo m: monstruos){
-            m.actualizar();
-        }
+            m.actualizar(); 
+        }}
+        ventanaStats.setEstado();
         aps++;
     }
     private void mostrar(){
@@ -171,6 +248,9 @@ public class Juego extends Canvas implements Runnable,ActionListener{
         jugador.mostrar(pantalla);
         for (Monstruo m: monstruos){
             m.mostrar(pantalla);
+        }
+        for (Cofre c: cofres){
+            c.mostrar(pantalla);
         }
         System.arraycopy(pantalla.pixeles, 0, pixeles, 0, pixeles.length);
         
