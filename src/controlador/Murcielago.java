@@ -6,6 +6,8 @@
 package controlador;
 
 import Graficos.Sprite;
+import java.util.Date;
+import java.util.Random;
 import vista.Mapa;
 
 /**
@@ -13,24 +15,42 @@ import vista.Mapa;
  * @author CristobalIsidroMatia
  */
 public class Murcielago extends Monstruo{
-    protected boolean enMovimiento = false;
+    private boolean enMovimiento = false;
     private int animacion;
+    
+
+    
     public Murcielago(Mapa mapa, String Nombre, int Nivel, int EXP, Stats stats, int Vida, int Stamina, int Mana, Equipo equipo, Inventario inventario, int[] posicion, Sprite sprite) {
         super(mapa, Nombre, Nivel, EXP, stats, Vida, Stamina, Mana, equipo, inventario, posicion);
         exp_entregada = 10;
         this.sprite = sprite;
     }
     
+    Random  rnd = new Random();
     @Override
     public void actualizar(){
         int desplazamientoX = 0;
         int desplazamientoY = 0;
-
+        
         if (animacion<32767){
             animacion++;
         }else{
             animacion =0;
         }
+        int x=(int)(rnd.nextDouble() *100);
+        int y=(int)(rnd.nextDouble() *100);
+        //System.out.println(x+"-"+y);
+            if (x==1){
+                    desplazamientoX-= stats.rapidez;
+            } else if(x==2){
+                    desplazamientoX+= stats.rapidez;
+            }
+            if (y==1){
+                    desplazamientoY-= stats.rapidez;
+            } else if(y==2){
+                    desplazamientoY+= stats.rapidez;
+            }
+    System.out.println(desplazamientoX+"-"+desplazamientoY);
 //crear IA para mover el monstruo
 //random si no ve al jugador, hacia el jugador si ve al jugador
 //        if (teclado.arriba){
@@ -106,8 +126,9 @@ public class Murcielago extends Monstruo{
 
         }
         if (desplazamientoX != 0 || desplazamientoY != 0){
-            mover(desplazamientoX, desplazamientoY);
+            mover(desplazamientoX*10, desplazamientoY*10);
             enMovimiento= true;
+            
         } else{
             enMovimiento = false;
         }
