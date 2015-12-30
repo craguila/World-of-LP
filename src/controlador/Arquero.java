@@ -34,16 +34,16 @@ public class Arquero extends Personaje {
         }
         
         if (teclado.arriba){
-            desplazamientoY--;
+            desplazamientoY=-1-stats.rapidez;
         }
         if (teclado.abajo){
-            desplazamientoY++;
+            desplazamientoY=+1+stats.rapidez;
         }
         if(teclado.izquierda){
-            desplazamientoX--;
+            desplazamientoX=-1-stats.rapidez;
         }
         if(teclado.derecha){
-            desplazamientoX++;
+            desplazamientoX=+1+stats.rapidez;
         }
         
         int resto = animacion%40;

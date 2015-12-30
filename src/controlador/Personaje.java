@@ -76,15 +76,15 @@ public class Personaje {
     
     public void mejorar(){
         Random ran =new Random(new Date().getTime());
-        stats.radio_vision+=ran.nextInt(Nivel);
-        stats.rapidez+=ran.nextInt(Nivel);
-        stats.fuerza+=ran.nextInt(Nivel);
-        stats.destreza+=ran.nextInt(Nivel);
-        stats.resistencia+=ran.nextInt(Nivel);
-        stats.resistencia_magica+=ran.nextInt(Nivel);
-        stats.inteligencia+=ran.nextInt(Nivel);
-        stats.stamina+=ran.nextInt(Nivel);
-        stats.constitucion+=ran.nextInt(Nivel);
+        stats.radio_vision+=ran.nextInt(1);
+        stats.rapidez+=ran.nextInt(1);
+        stats.fuerza+=ran.nextInt(1);
+        stats.destreza+=ran.nextInt(1);
+        stats.resistencia+=ran.nextInt(1);
+        stats.resistencia_magica+=ran.nextInt(1);
+        stats.inteligencia+=ran.nextInt(1);
+        stats.stamina+=ran.nextInt(1);
+        stats.constitucion+=ran.nextInt(1);
     }
     
     public int getNivel(){

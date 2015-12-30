@@ -22,9 +22,9 @@ public class Stats {
     int constitucion; //Afecta cantidad maxima de vida y recuperacion de vida por turno (cuando no
     //esta en batal 
     
-    public static Stats STATS_GUERRERO=new Stats(5, 10, 10, 8, 15, 10, 10, 13, 15);
-    public static Stats STATS_ARQUERO=new Stats(8, 7, 6, 10, 12, 8, 12, 15, 10);
-    public static Stats STATS_MAGO=new Stats(10, 5, 4, 3, 10, 15, 15, 10, 15);
+    public static Stats STATS_GUERRERO=new Stats(2, 5, 5, 4, 7, 5, 5, 6, 7);
+    public static Stats STATS_ARQUERO=new Stats(4, 3, 3, 5, 6, 4, 6, 7, 5);
+    public static Stats STATS_MAGO=new Stats(5, 2, 2, 1, 5, 7, 7, 5, 7);
     public static Stats STATS_MONSTRUO=new Stats(1, 1, 1, 1, 1, 1, 1, 1, 1);
 
     public Stats(int radio_vision, int rapidez, int fuerza, int destreza, int resistencia, int resistencia_magica, int inteligencia, int stamina, int constitucion) {
@@ -39,6 +39,19 @@ public class Stats {
         this.constitucion = constitucion;
     }
     
+    @Override
+    public String toString(){
+        return "<html> STATS<br> "
+                + "Radio Vision: "+this.radio_vision+".<br> "
+                + "Rapidez: "+this.rapidez+".<br> "
+                + "Fuerza: "+this.fuerza+".<br> "
+                + "Destreza: "+this.destreza+".<br> "
+                + "Resistencia: "+this.resistencia+".<br> "
+                + "Resistencia Magica: "+this.resistencia_magica+".<br> "
+                + "Inteligencia: "+this.inteligencia+".<br> "
+                + "Stamina: "+this.stamina+".<br> "
+                + "Constitucion: "+this.constitucion+".<br> </html>";
+    }
     
     public Stats(){
         this(10,10,10,10,10,10,10,10,10);
