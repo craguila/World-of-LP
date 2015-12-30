@@ -48,7 +48,6 @@ public class Juego extends Canvas implements Runnable,ActionListener{
     private JMenu menu1;
     private JMenuItem item1;
     private frmStats ventanaStats;
-    public static int objetivo;
     
     public Juego(String nombre,int clase){
         setPreferredSize(new Dimension(ANCHO, ALTO));
@@ -98,8 +97,7 @@ public class Juego extends Canvas implements Runnable,ActionListener{
         int num_murcielagos = 10;
         int i = 0;
         Random  rnd = new Random(new Date().getTime());
-        objetivo=rnd.nextInt(num_murcielagos);
-        JOptionPane.showMessageDialog(this,jugador.getNombre()+", tu mision en este mundo mágico consiste en: \n Encontrar al Murcielago numero:"+objetivo, NOMBRE, 1); 
+        JOptionPane.showMessageDialog(this,jugador.getNombre()+", tu mision en este mundo mágico consiste en: \n ", NOMBRE, 1); 
         while (i < num_murcielagos){
             i++;
             int[] m_pos = {0,0};
