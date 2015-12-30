@@ -42,7 +42,7 @@ public class Juego extends Canvas implements Runnable,ActionListener{
     private static int[] pixeles = ((DataBufferInt) imagen.getRaster().getDataBuffer()).getData();
     
     private static Mapa mapa;
-    private static Personaje jugador;
+    public static Personaje jugador;
     public static ArrayList<Monstruo> monstruos = new ArrayList<>();
     private JMenuBar mb;
     private JMenu menu1;
