@@ -6,7 +6,6 @@
 package controlador;
 
 import Graficos.Sprite;
-import java.util.Date;
 import java.util.Random;
 import vista.Mapa;
 
@@ -50,7 +49,6 @@ public class Murcielago extends Monstruo{
             } else if(y==2){
                     desplazamientoY+= stats.rapidez;
             }
-    System.out.println(desplazamientoX+"-"+desplazamientoY);
 //crear IA para mover el monstruo
 //random si no ve al jugador, hacia el jugador si ve al jugador
 //        if (teclado.arriba){
