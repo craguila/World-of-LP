@@ -9,9 +9,11 @@ public class Equipo {
     EquipoItem ARMADURA;
     EquipoItem ARMA;
     EquipoItem FLECHAS;
-    public Equipo(){
-        ARMADURA = new EquipoItem(); //hacer un constructor para cada cosa
-        ARMA = new EquipoItem();
-        FLECHAS = new EquipoItem();
+
+    public Equipo(EquipoItem ARMADURA, EquipoItem ARMA, EquipoItem FLECHAS) {
+        this.ARMADURA = ARMADURA;
+        this.ARMA = ARMA;
+        this.FLECHAS = FLECHAS;
     }
+    
 }
