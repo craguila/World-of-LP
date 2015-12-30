@@ -57,6 +57,42 @@ public class Stats {
         this(10,10,10,10,10,10,10,10,10);
     }
 
+    public void setConstitucion(int constitucion) {
+        this.constitucion = constitucion;
+    }
+
+    public void setDestreza(int destreza) {
+        this.destreza = destreza;
+    }
+
+    public void setFuerza(int fuerza) {
+        this.fuerza = fuerza;
+    }
+
+    public void setInteligencia(int inteligencia) {
+        this.inteligencia = inteligencia;
+    }
+
+    public void setRadio_vision(int radio_vision) {
+        this.radio_vision = radio_vision;
+    }
+
+    public void setRapidez(int rapidez) {
+        this.rapidez = rapidez;
+    }
+
+    public void setResistencia(int resistencia) {
+        this.resistencia = resistencia;
+    }
+
+    public void setResistencia_magica(int resistencia_magica) {
+        this.resistencia_magica = resistencia_magica;
+    }
+
+    public void setStamina(int stamina) {
+        this.stamina = stamina;
+    }
+
     public int getDestreza() {
         return destreza;
     }

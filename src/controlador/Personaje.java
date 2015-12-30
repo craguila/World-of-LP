@@ -9,6 +9,7 @@ import java.util.Random;
 import javax.swing.JOptionPane;
 import vista.Juego;
 import vista.Mapa;
+import vista.frmStats;
 
 
 public class Personaje {
@@ -56,6 +57,7 @@ public class Personaje {
             subirLvl();
             this.EXP=0;
             JOptionPane.showMessageDialog(null, getNombre()+" ,haz subido al Nivel: "+getNivel(), "World of LP", 1);
+            frmStats.puntosStats+=3;
             aumentarExp(exp);
             return;
         }
@@ -70,7 +72,6 @@ public class Personaje {
     }
     
     public void subirLvl(){
-        mejorar();
         this.Nivel +=1;
     }
     

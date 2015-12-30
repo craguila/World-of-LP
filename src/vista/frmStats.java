@@ -15,6 +15,7 @@ public class frmStats extends javax.swing.JFrame {
      * Creates new form frmStats
      */
     Personaje p;
+    public static int puntosStats=0;
     public frmStats(Personaje p) {
         this();
         this.p=p;
@@ -60,6 +61,7 @@ public class frmStats extends javax.swing.JFrame {
         lblResistencia.setText("Resistencia: "+this.p.getStats().getResistencia());
         lblResistenciaMagica.setText("Resistencia Magica: "+this.p.getStats().getResistencia_magica());
         lblStamina.setText("Stamina: "+this.p.getStats().getStamina());
+        lblPuntos.setText("Puntos Stats disponible: "+puntosStats);
         pack();
     }
 
@@ -89,6 +91,7 @@ public class frmStats extends javax.swing.JFrame {
         lblDestreza = new javax.swing.JLabel();
         lblConstitucion = new javax.swing.JLabel();
         lblResistencia = new javax.swing.JLabel();
+        lblPuntos = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -130,22 +133,70 @@ public class frmStats extends javax.swing.JFrame {
         });
 
         lblRadioVision.setText("jLabel1");
+        lblRadioVision.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                lblRadioVisionMouseClicked(evt);
+            }
+        });
 
         lblResistenciaMagica.setText("jLabel2");
+        lblResistenciaMagica.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                lblResistenciaMagicaMouseClicked(evt);
+            }
+        });
 
         lblRapidez.setText("jLabel3");
+        lblRapidez.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                lblRapidezMouseClicked(evt);
+            }
+        });
 
         lblInteligencia.setText("jLabel4");
+        lblInteligencia.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                lblInteligenciaMouseClicked(evt);
+            }
+        });
 
         lblFuerza.setText("jLabel5");
+        lblFuerza.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                lblFuerzaMouseClicked(evt);
+            }
+        });
 
         lblStamina.setText("jLabel6");
+        lblStamina.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                lblStaminaMouseClicked(evt);
+            }
+        });
 
         lblDestreza.setText("jLabel7");
+        lblDestreza.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                lblDestrezaMouseClicked(evt);
+            }
+        });
 
         lblConstitucion.setText("jLabel8");
+        lblConstitucion.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                lblConstitucionMouseClicked(evt);
+            }
+        });
 
         lblResistencia.setText("jLabel9");
+        lblResistencia.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                lblResistenciaMouseClicked(evt);
+            }
+        });
+
+        lblPuntos.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        lblPuntos.setText("jLabel1");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -155,37 +206,34 @@ public class frmStats extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(lblResistencia)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(btnAumentar))
+                        .addComponent(pnlArquero, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(lblNombre)
+                            .addComponent(lblClase)))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(lblNivel)
+                        .addGap(18, 18, 18)
+                        .addComponent(pgbExp, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(lblResistencia)
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(lblNivel)
-                                .addGap(18, 18, 18)
-                                .addComponent(pgbExp, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(lblExp))
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(pnlArquero, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(18, 18, 18)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(lblNombre)
-                                    .addComponent(lblClase)))
-                            .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(lblRadioVision)
-                                    .addComponent(lblRapidez)
-                                    .addComponent(lblFuerza)
-                                    .addComponent(lblDestreza))
-                                .addGap(111, 111, 111)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(lblConstitucion)
-                                    .addComponent(lblStamina)
-                                    .addComponent(lblInteligencia)
-                                    .addComponent(lblResistenciaMagica))))
-                        .addGap(0, 159, Short.MAX_VALUE)))
-                .addContainerGap())
+                            .addComponent(lblRadioVision)
+                            .addComponent(lblRapidez)
+                            .addComponent(lblFuerza)
+                            .addComponent(lblDestreza))
+                        .addGap(111, 111, 111)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(lblConstitucion)
+                            .addComponent(lblStamina)
+                            .addComponent(lblInteligencia)
+                            .addComponent(lblResistenciaMagica)
+                            .addComponent(btnAumentar)))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(lblExp)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(lblPuntos)))
+                .addContainerGap(85, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -198,11 +246,13 @@ public class frmStats extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(lblClase)
                         .addGap(68, 68, 68)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(lblNivel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(lblExp, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(pgbExp, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE, false)
+                    .addComponent(lblExp, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(lblPuntos))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
@@ -214,13 +264,7 @@ public class frmStats extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(lblDestreza)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(0, 6, Short.MAX_VALUE)
-                                .addComponent(btnAumentar))
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(lblResistencia)
-                                .addGap(0, 0, Short.MAX_VALUE))))
+                        .addComponent(lblResistencia))
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(lblResistenciaMagica)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -229,7 +273,9 @@ public class frmStats extends javax.swing.JFrame {
                         .addComponent(lblStamina)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(lblConstitucion)
-                        .addGap(0, 0, Short.MAX_VALUE)))
+                        .addGap(25, 25, 25)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 17, Short.MAX_VALUE)
+                .addComponent(btnAumentar)
                 .addContainerGap())
         );
 
@@ -240,6 +286,78 @@ public class frmStats extends javax.swing.JFrame {
         this.aumentar();
         this.setEstado();
     }//GEN-LAST:event_btnAumentarActionPerformed
+
+    private void lblRadioVisionMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblRadioVisionMouseClicked
+        if(puntosStats>0){
+            p.getStats().setRadio_vision(p.getStats().getRadio_vision()+1);
+            puntosStats--;
+            setEstado();
+        }
+    }//GEN-LAST:event_lblRadioVisionMouseClicked
+
+    private void lblRapidezMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblRapidezMouseClicked
+        if(puntosStats>0){
+            p.getStats().setRapidez(p.getStats().getRapidez()+1);
+            puntosStats--;
+            setEstado();
+        }
+    }//GEN-LAST:event_lblRapidezMouseClicked
+
+    private void lblFuerzaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblFuerzaMouseClicked
+        if(puntosStats>0){
+            p.getStats().setFuerza(p.getStats().getFuerza()+1);
+            puntosStats--;
+            setEstado();
+        }
+    }//GEN-LAST:event_lblFuerzaMouseClicked
+
+    private void lblDestrezaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblDestrezaMouseClicked
+        if(puntosStats>0){
+            p.getStats().setDestreza(p.getStats().getDestreza()+1);
+            puntosStats--;
+            setEstado();
+        }
+    }//GEN-LAST:event_lblDestrezaMouseClicked
+
+    private void lblResistenciaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblResistenciaMouseClicked
+        if(puntosStats>0){
+            p.getStats().setResistencia(p.getStats().getResistencia()+1);
+            puntosStats--;
+            setEstado();
+        }
+    }//GEN-LAST:event_lblResistenciaMouseClicked
+
+    private void lblResistenciaMagicaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblResistenciaMagicaMouseClicked
+        if(puntosStats>0){
+            p.getStats().setResistencia_magica(p.getStats().getResistencia_magica()+1);
+            puntosStats--;
+            setEstado();
+        }
+    }//GEN-LAST:event_lblResistenciaMagicaMouseClicked
+
+    private void lblInteligenciaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblInteligenciaMouseClicked
+        if(puntosStats>0){
+            p.getStats().setInteligencia(p.getStats().getInteligencia()+1);
+            puntosStats--;
+            setEstado();
+        }
+    }//GEN-LAST:event_lblInteligenciaMouseClicked
+
+    private void lblStaminaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblStaminaMouseClicked
+        if(puntosStats>0){
+            p.getStats().setStamina(p.getStats().getStamina()+1);
+            puntosStats--;
+            setEstado();
+        }
+    }//GEN-LAST:event_lblStaminaMouseClicked
+
+    private void lblConstitucionMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblConstitucionMouseClicked
+        if(puntosStats>0){
+            p.getStats().setConstitucion(p.getStats().getConstitucion()+1);
+            puntosStats--;
+            setEstado();
+        }
+    }//GEN-LAST:event_lblConstitucionMouseClicked
 
    
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -253,6 +371,7 @@ public class frmStats extends javax.swing.JFrame {
     private javax.swing.JLabel lblNivel;
     private javax.swing.JLabel lblNombre;
     private javax.swing.JLabel lblPersonaje;
+    private javax.swing.JLabel lblPuntos;
     private javax.swing.JLabel lblRadioVision;
     private javax.swing.JLabel lblRapidez;
     private javax.swing.JLabel lblResistencia;

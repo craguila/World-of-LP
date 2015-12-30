@@ -33,16 +33,16 @@ public class Mago extends Personaje {
         }
         
         if (teclado.arriba){
-            desplazamientoY=-1-stats.rapidez;
+            desplazamientoY=-stats.rapidez;
         }
         if (teclado.abajo){
-            desplazamientoY=+1+stats.rapidez;
+            desplazamientoY=+stats.rapidez;
         }
         if(teclado.izquierda){
-            desplazamientoX=-1-stats.rapidez;
+            desplazamientoX=-stats.rapidez;
         }
         if(teclado.derecha){
-            desplazamientoX=+1+stats.rapidez;
+            desplazamientoX=+stats.rapidez;
         }
         
         int resto = animacion%40;
