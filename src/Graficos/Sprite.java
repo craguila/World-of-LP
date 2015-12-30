@@ -82,12 +82,84 @@ public class Sprite {
     public static final Sprite MUARRIBA1 = new Sprite(32,4,8,HojaSprites.nivel1);
     public static final Sprite MUARRIBA2 = new Sprite(32,5,8,HojaSprites.nivel1);
     //fin de la coleccion 
+    //sprites del tigre
+    public static final Sprite TABAJO0 = new Sprite(32,6,1,HojaSprites.nivel1);
+    public static final Sprite TABAJO1 = new Sprite(32,7,1,HojaSprites.nivel1);
+    public static final Sprite TABAJO2 = new Sprite(32,8,1,HojaSprites.nivel1);
+    
+    public static final Sprite TIZQUIERDA0 = new Sprite(32,6,2,HojaSprites.nivel1);
+    public static final Sprite TIZQUIERDA1 = new Sprite(32,7,2,HojaSprites.nivel1);
+    public static final Sprite TIZQUIERDA2 = new Sprite(32,8,2,HojaSprites.nivel1);
+    
+    public static final Sprite TDERECHA0 = new Sprite(32,6,3,HojaSprites.nivel1);
+    public static final Sprite TDERECHA1 = new Sprite(32,7,3,HojaSprites.nivel1);
+    public static final Sprite TDERECHA2 = new Sprite(32,8,3,HojaSprites.nivel1);
+    
+    public static final Sprite TARRIBA0 = new Sprite(32,6,4,HojaSprites.nivel1);
+    public static final Sprite TARRIBA1 = new Sprite(32,7,4,HojaSprites.nivel1);
+    public static final Sprite TARRIBA2 = new Sprite(32,8,4,HojaSprites.nivel1);
+    //fin de la coleccion 
+        //sprites del Lobo
+    public static final Sprite LABAJO0 = new Sprite(32,6,5,HojaSprites.nivel1);
+    public static final Sprite LABAJO1 = new Sprite(32,7,5,HojaSprites.nivel1);
+    public static final Sprite LABAJO2 = new Sprite(32,8,5,HojaSprites.nivel1);
+    
+    public static final Sprite LIZQUIERDA0 = new Sprite(32,6,6,HojaSprites.nivel1);
+    public static final Sprite LIZQUIERDA1 = new Sprite(32,7,6,HojaSprites.nivel1);
+    public static final Sprite LIZQUIERDA2 = new Sprite(32,8,6,HojaSprites.nivel1);
+    
+    public static final Sprite LDERECHA0 = new Sprite(32,6,7,HojaSprites.nivel1);
+    public static final Sprite LDERECHA1 = new Sprite(32,7,7,HojaSprites.nivel1);
+    public static final Sprite LDERECHA2 = new Sprite(32,8,7,HojaSprites.nivel1);
+    
+    public static final Sprite LARRIBA0 = new Sprite(32,6,8,HojaSprites.nivel1);
+    public static final Sprite LARRIBA1 = new Sprite(32,7,8,HojaSprites.nivel1);
+    public static final Sprite LARRIBA2 = new Sprite(32,8,8,HojaSprites.nivel1);
+    //fin de la coleccion 
+    //sprites del gato
+    public static final Sprite GABAJO0 = new Sprite(32,9,1,HojaSprites.nivel1);
+    public static final Sprite GABAJO1 = new Sprite(32,10,1,HojaSprites.nivel1);
+    public static final Sprite GABAJO2 = new Sprite(32,11,1,HojaSprites.nivel1);
+    
+    public static final Sprite GIZQUIERDA0 = new Sprite(32,9,2,HojaSprites.nivel1);
+    public static final Sprite GIZQUIERDA1 = new Sprite(32,10,2,HojaSprites.nivel1);
+    public static final Sprite GIZQUIERDA2 = new Sprite(32,11,2,HojaSprites.nivel1);
+    
+    public static final Sprite GDERECHA0 = new Sprite(32,9,3,HojaSprites.nivel1);
+    public static final Sprite GDERECHA1 = new Sprite(32,10,3,HojaSprites.nivel1);
+    public static final Sprite GDERECHA2 = new Sprite(32,11,3,HojaSprites.nivel1);
+    
+    public static final Sprite GARRIBA0 = new Sprite(32,9,4,HojaSprites.nivel1);
+    public static final Sprite GARRIBA1 = new Sprite(32,10,4,HojaSprites.nivel1);
+    public static final Sprite GARRIBA2 = new Sprite(32,11,4,HojaSprites.nivel1);
+    //fin de la coleccion
+        //sprites del Esqueleto
+    public static final Sprite EABAJO0 = new Sprite(32,9,5,HojaSprites.nivel1);
+    public static final Sprite EABAJO1 = new Sprite(32,10,5,HojaSprites.nivel1);
+    public static final Sprite EABAJO2 = new Sprite(32,11,5,HojaSprites.nivel1);
+    
+    public static final Sprite EIZQUIERDA0 = new Sprite(32,9,6,HojaSprites.nivel1);
+    public static final Sprite EIZQUIERDA1 = new Sprite(32,10,6,HojaSprites.nivel1);
+    public static final Sprite EIZQUIERDA2 = new Sprite(32,11,6,HojaSprites.nivel1);
+    
+    public static final Sprite EDERECHA0 = new Sprite(32,9,7,HojaSprites.nivel1);
+    public static final Sprite EDERECHA1 = new Sprite(32,10,7,HojaSprites.nivel1);
+    public static final Sprite EDERECHA2 = new Sprite(32,11,7,HojaSprites.nivel1);
+    
+    public static final Sprite EARRIBA0 = new Sprite(32,9,8,HojaSprites.nivel1);
+    public static final Sprite EARRIBA1 = new Sprite(32,10,8,HojaSprites.nivel1);
+    public static final Sprite EARRIBA2 = new Sprite(32,11,8,HojaSprites.nivel1);
+    //fin de la coleccion
     //coleccion de sprites
+    
     public static Sprite VACIO = new Sprite(32,0);
+    public static Sprite COFRE = new Sprite(32,0,9,HojaSprites.nivel1);
+    public static Sprite COFREA = new Sprite(32,1,9,HojaSprites.nivel1);
     public static Sprite PASTO = new Sprite(32,0,0,HojaSprites.nivel1);
     public static Sprite ARENA = new Sprite(32,1,0,HojaSprites.nivel1);
     public static Sprite AGUA = new Sprite(32,2,0,HojaSprites.nivel1);
     public static Sprite MURO = new Sprite(32,3,0,HojaSprites.nivel1);
+    
     
     //fin de la coleccion
     

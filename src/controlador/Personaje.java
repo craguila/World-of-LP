@@ -28,6 +28,7 @@ public class Personaje {
     Inventario inventario;
     protected Mapa mapa;
     
+    private ArrayList<Status> status;    
     private ArrayList<Habilidad> habilidades;
     
     protected char direccion = 'n';
@@ -45,12 +46,15 @@ public class Personaje {
         this.inventario = inventario;
         this.posicion = posicion;
         habilidades = new ArrayList<>();
+        status = new ArrayList<>();
     }
     
     public void addHabilidad(Habilidad h){
         habilidades.add(h);
     }
-    
+    public void addStatus(Status s){
+        status.add(s);
+    }
     public void aumentarExp(int exp){
         if((this.EXP+exp)>=expSiguienteLvl(this.Nivel)){
             exp=this.EXP+exp-expSiguienteLvl(this.Nivel);
@@ -73,6 +77,7 @@ public class Personaje {
     
     public void subirLvl(){
         this.Nivel +=1;
+        this.Vida+=10;
     }
     
     public void mejorar(){
@@ -139,7 +144,7 @@ public class Personaje {
         }
     }   
     
-    private boolean sienteelchoque(int desplazamientoX, int desplazamientoY){
+    public boolean sienteelchoque(int desplazamientoX, int desplazamientoY){
         boolean colision = false;
         int posicionX = posicion[0] + desplazamientoX;
         int posicionY = posicion[1] + desplazamientoY;
@@ -176,9 +181,29 @@ public class Personaje {
             if (playerX2>monstruoX && playerX2<monstruoX2 && playerY>monstruoY && playerY<monstruoY2){
                 colision = true;
             }
-//            if (posicionX + margenDerecho > monstruoX && posicionX + margenDerecho < monstruoX + lado_monstruo){
-//                if (posicionY + margenInferior > monstruoY && posicionY + margenInferior < monstruoX + lado_monstruo){
-//monstruoX > bordeDerecho && monstruoY< bordeSuperior && monstruoY > bordeInferior ){
+               
+            
+        }
+        //busca los cofres
+        for(Cofre c: Juego.cofres){
+            int lado_monstruo =c.getSprite().getLado();
+            //esquinas del monstruo
+            int monstruoX = c.posicion[0]-lado_monstruo+5;
+            int monstruoY = c.posicion[1]-lado_monstruo;
+            int monstruoX2 = c.posicion[0];
+            int monstruoY2 = c.posicion[1];
+            //esquinas del jugador
+            int playerX = posicionX + margenIzquierdo+18;
+            int playerX2 = posicionX - margenIzquierdo- margenDerecho - sprite.getLado()+18;
+            int playerY = posicionY + margenSuperior;
+            int playerY2 = posicionY + margenSuperior + margenInferior + sprite.getLado();
+
+            if (playerX>monstruoX && playerX<monstruoX2 && playerY>monstruoY && playerY<monstruoY2){
+                colision = true;
+            }
+            if (playerX2>monstruoX && playerX2<monstruoX2 && playerY>monstruoY && playerY<monstruoY2){
+                colision = true;
+            }
                
             
         }
@@ -198,7 +223,40 @@ public class Personaje {
         return colision;
     }
 
-    public void actualizar() {
+    public boolean hayunmuro(int x, int y){
+        boolean colision = false;
+        int posicionX = x;
+        int posicionY = y;
+        
+        int margenIzquierdo = -23; //cambiar despues
+        int margenDerecho = 26;
+        
+        int margenSuperior = -20;
+        int margenInferior = 29;
+        
+        int bordeIzquierdo = (posicionX + margenDerecho)/sprite.getLado();
+        int bordeDerecho = (posicionX+ margenDerecho + margenIzquierdo)/sprite.getLado();
+        int bordeSuperior = (posicionY+ margenInferior)/sprite.getLado();
+        int bordeInferior = (posicionY+ margenInferior + margenSuperior)/sprite.getLado();
+ 
+        if(mapa.getCuadro(bordeIzquierdo + bordeSuperior * mapa.getAncho()).esSolido()){
+            colision = true;
+        }
+        if(mapa.getCuadro(bordeDerecho + bordeSuperior * mapa.getAncho()).esSolido()){
+            colision = true;
+        } 
+        if(mapa.getCuadro(bordeIzquierdo + bordeInferior * mapa.getAncho()).esSolido()){
+            colision = true;
+        } 
+        if(mapa.getCuadro(bordeDerecho + bordeInferior * mapa.getAncho()).esSolido()){
+            colision = true;
+        }
+        return colision;
+    }
+        
+        
+    public boolean actualizar() {
+        return false;
     }
     public Sprite getSprite(){
         return sprite;
@@ -214,5 +272,24 @@ public class Personaje {
 
     public ArrayList<Habilidad> getHabilidades() {
         return this.habilidades;
+    }
+    
+    public void danar(int dano){
+        int resistencia = this.stats.resistencia;
+        
+        if (Juego.jugador.vivo()){
+            if (dano >= resistencia){
+                Vida -= (dano-resistencia);
+            } else{
+                Vida --;
+            }
+            if (Vida<=0){
+                Vida = 100;
+            }
+        }
+    }
+
+    public int getVida() {
+        return this.Vida;
     }
 }

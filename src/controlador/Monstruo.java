@@ -6,6 +6,8 @@
 package controlador;
 
 import java.util.ArrayList;
+import java.util.Random;
+import vista.Juego;
 import vista.Mapa;
 
 
@@ -13,12 +15,41 @@ import vista.Mapa;
 public class Monstruo extends Personaje {
     int exp_entregada; // experiencia que entrega al usuario.
     
-    ArrayList<Habilidad> habilidades = new ArrayList<>();
+    public ArrayList<Habilidad> habilidades;
 
     public Monstruo(Mapa mapa,String Nombre, int Nivel, int EXP, Stats stats, int Vida, int Stamina, int Mana, Equipo equipo, Inventario inventario, int[] posicion) {
         super(mapa, Nombre, Nivel, EXP, stats, Vida, Stamina, Mana, equipo, inventario, posicion);
         
     }
     
-
+    public boolean jugadorvisible(){
+        int playerx = Juego.jugador.posicion[0];
+        int playery = Juego.jugador.posicion[1];
+        int monsterx = posicion[0];
+        int monstery = posicion[1];
+        int vision = stats.radio_vision*32;
+        if (((monsterx - vision)<playerx) && ((monsterx + vision) > playerx)){
+            if (((monstery -vision) < playery )&& ((monstery + vision) > playery) ){
+//                System.out.println("Te veo");
+                return true;
+            }
+        }
+//        System.out.println("");
+        return false;
+    }
+    
+    
+    public void usarHabilidad(){
+        Random  rnd = new Random();
+        int habilidad_rnd = (int) rnd.nextDouble()*habilidades.size();
+        Habilidad habilidad = habilidades.get(habilidad_rnd);
+        if(Mana>habilidad.costo){
+            System.out.println(Nombre+" usó " + habilidad.nombre);
+            Juego.jugador.danar(habilidad.dano);
+            Juego.jugador.addStatus(habilidad.estado);
+            //esto no funciona!
+            Mana -= habilidad.costo;
+        }
+                
+    }
 }

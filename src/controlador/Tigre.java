@@ -11,20 +11,17 @@ import java.util.Random;
 import vista.Juego;
 import vista.Mapa;
 
-
-public class Murcielago extends Monstruo{
+public class Tigre extends Monstruo{
     private boolean enMovimiento = false;
     private int animacion;
    
-    public Murcielago(Mapa mapa, String Nombre, int Nivel, int EXP, Stats stats, int Vida, int Stamina, int Mana, Equipo equipo, Inventario inventario, int[] posicion, Sprite sprite) {
+    public Tigre(Mapa mapa, String Nombre, int Nivel, int EXP, Stats stats, int Vida, int Stamina, int Mana, Equipo equipo, Inventario inventario, int[] posicion, Sprite sprite) {
         super(mapa, Nombre, Nivel, EXP, stats, Vida, Stamina, Mana, equipo, inventario, posicion);
         exp_entregada = 10;
         this.sprite = sprite;
         habilidades = new ArrayList<>();
         habilidades.add(Habilidad.INFLINGIR_ENFERMEDAD);
     }
-    
-    
     Random  rnd = new Random();
     @Override
     public boolean actualizar(){
@@ -76,59 +73,59 @@ public class Murcielago extends Monstruo{
 
         int resto = animacion%40;
         if (direccion == 'n'){
-            sprite = Sprite.MUARRIBA0;
+            sprite = Sprite.TARRIBA0;
             if (enMovimiento){
                 if (resto>10 && resto <= 20){
-                    sprite = Sprite.MUARRIBA1;
+                    sprite = Sprite.TARRIBA1;
                 } else if (resto>20 && resto<=30){
-                    sprite= Sprite.MUARRIBA0;
+                    sprite= Sprite.TARRIBA0;
                 } else if (resto>30 && resto<=40){
-                    sprite= Sprite.MUARRIBA2;
+                    sprite= Sprite.TARRIBA2;
                 } else{
-                    sprite= Sprite.MUARRIBA0;
+                    sprite= Sprite.TARRIBA0;
                 }
             }
         }
         if (direccion == 's'){
-            sprite = Sprite.MUABAJO0;
+            sprite = Sprite.TABAJO0;
              if (enMovimiento){
                 if (resto>10 && resto <= 20){
-                    sprite = Sprite.MUABAJO1;
+                    sprite = Sprite.TABAJO1;
                 } else if (resto>20 && resto<=30){
-                    sprite= Sprite.MUABAJO0;
+                    sprite= Sprite.TABAJO0;
                 } else if (resto>30 && resto<=40){
-                    sprite= Sprite.MUABAJO2;
+                    sprite= Sprite.TABAJO2;
                 } else{
-                    sprite= Sprite.MUABAJO0;
+                    sprite= Sprite.TABAJO0;
                 }
             }
         } 
         if (direccion == 'o'){
-            sprite = Sprite.MUIZQUIERDA0;
+            sprite = Sprite.TIZQUIERDA0;
              if (enMovimiento){
                 if (resto>10 && resto <= 20){
-                    sprite = Sprite.MUIZQUIERDA1;
+                    sprite = Sprite.TIZQUIERDA1;
                 } else if (resto>20 && resto<=30){
-                    sprite= Sprite.MUIZQUIERDA0;
+                    sprite= Sprite.TIZQUIERDA0;
                 } else if (resto>30 && resto<=40){
-                    sprite= Sprite.MUIZQUIERDA2;
+                    sprite= Sprite.TIZQUIERDA2;
                 } else{
-                    sprite= Sprite.MUIZQUIERDA0;
+                    sprite= Sprite.TIZQUIERDA0;
                 }
             }
 
         }
         if (direccion == 'e'){
-            sprite = Sprite.MUDERECHA0;
+            sprite = Sprite.TDERECHA0;
              if (enMovimiento){
                 if (resto>10 && resto <= 20){
-                    sprite = Sprite.MUDERECHA1;
+                    sprite = Sprite.TDERECHA1;
                 } else if (resto>20 && resto<=30){
-                    sprite= Sprite.MUDERECHA0;
+                    sprite= Sprite.TDERECHA0;
                 } else if (resto>30 && resto<=40){
-                    sprite= Sprite.MUDERECHA2;
+                    sprite= Sprite.TDERECHA2;
                 } else{
-                    sprite= Sprite.MUDERECHA0;
+                    sprite= Sprite.TDERECHA0;
                 }
             }
 

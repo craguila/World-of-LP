@@ -1,6 +1,6 @@
 /*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
+ * Go change this license header, choose License Headers in Project Properties.
+ * Go change this template file, choose Gools | Gemplates
  * and open the template in the editor.
  */
 package controlador;
@@ -11,20 +11,17 @@ import java.util.Random;
 import vista.Juego;
 import vista.Mapa;
 
-
-public class Murcielago extends Monstruo{
+public class Gato extends Monstruo{
     private boolean enMovimiento = false;
     private int animacion;
    
-    public Murcielago(Mapa mapa, String Nombre, int Nivel, int EXP, Stats stats, int Vida, int Stamina, int Mana, Equipo equipo, Inventario inventario, int[] posicion, Sprite sprite) {
+    public Gato(Mapa mapa, String Nombre, int Nivel, int EXP, Stats stats, int Vida, int Stamina, int Mana, Equipo equipo, Inventario inventario, int[] posicion, Sprite sprite) {
         super(mapa, Nombre, Nivel, EXP, stats, Vida, Stamina, Mana, equipo, inventario, posicion);
         exp_entregada = 10;
         this.sprite = sprite;
         habilidades = new ArrayList<>();
         habilidades.add(Habilidad.INFLINGIR_ENFERMEDAD);
     }
-    
-    
     Random  rnd = new Random();
     @Override
     public boolean actualizar(){
@@ -76,59 +73,59 @@ public class Murcielago extends Monstruo{
 
         int resto = animacion%40;
         if (direccion == 'n'){
-            sprite = Sprite.MUARRIBA0;
+            sprite = Sprite.GARRIBA0;
             if (enMovimiento){
                 if (resto>10 && resto <= 20){
-                    sprite = Sprite.MUARRIBA1;
+                    sprite = Sprite.GARRIBA1;
                 } else if (resto>20 && resto<=30){
-                    sprite= Sprite.MUARRIBA0;
+                    sprite= Sprite.GARRIBA0;
                 } else if (resto>30 && resto<=40){
-                    sprite= Sprite.MUARRIBA2;
+                    sprite= Sprite.GARRIBA2;
                 } else{
-                    sprite= Sprite.MUARRIBA0;
+                    sprite= Sprite.GARRIBA0;
                 }
             }
         }
         if (direccion == 's'){
-            sprite = Sprite.MUABAJO0;
+            sprite = Sprite.GABAJO0;
              if (enMovimiento){
                 if (resto>10 && resto <= 20){
-                    sprite = Sprite.MUABAJO1;
+                    sprite = Sprite.GABAJO1;
                 } else if (resto>20 && resto<=30){
-                    sprite= Sprite.MUABAJO0;
+                    sprite= Sprite.GABAJO0;
                 } else if (resto>30 && resto<=40){
-                    sprite= Sprite.MUABAJO2;
+                    sprite= Sprite.GABAJO2;
                 } else{
-                    sprite= Sprite.MUABAJO0;
+                    sprite= Sprite.GABAJO0;
                 }
             }
         } 
         if (direccion == 'o'){
-            sprite = Sprite.MUIZQUIERDA0;
+            sprite = Sprite.GIZQUIERDA0;
              if (enMovimiento){
                 if (resto>10 && resto <= 20){
-                    sprite = Sprite.MUIZQUIERDA1;
+                    sprite = Sprite.GIZQUIERDA1;
                 } else if (resto>20 && resto<=30){
-                    sprite= Sprite.MUIZQUIERDA0;
+                    sprite= Sprite.GIZQUIERDA0;
                 } else if (resto>30 && resto<=40){
-                    sprite= Sprite.MUIZQUIERDA2;
+                    sprite= Sprite.GIZQUIERDA2;
                 } else{
-                    sprite= Sprite.MUIZQUIERDA0;
+                    sprite= Sprite.GIZQUIERDA0;
                 }
             }
 
         }
         if (direccion == 'e'){
-            sprite = Sprite.MUDERECHA0;
+            sprite = Sprite.GDERECHA0;
              if (enMovimiento){
                 if (resto>10 && resto <= 20){
-                    sprite = Sprite.MUDERECHA1;
+                    sprite = Sprite.GDERECHA1;
                 } else if (resto>20 && resto<=30){
-                    sprite= Sprite.MUDERECHA0;
+                    sprite= Sprite.GDERECHA0;
                 } else if (resto>30 && resto<=40){
-                    sprite= Sprite.MUDERECHA2;
+                    sprite= Sprite.GDERECHA2;
                 } else{
-                    sprite= Sprite.MUDERECHA0;
+                    sprite= Sprite.GDERECHA0;
                 }
             }
 

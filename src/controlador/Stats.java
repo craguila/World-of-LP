@@ -25,7 +25,7 @@ public class Stats {
     public static Stats STATS_GUERRERO=new Stats(2, 5, 5, 4, 7, 5, 5, 6, 7);
     public static Stats STATS_ARQUERO=new Stats(4, 3, 3, 5, 6, 4, 6, 7, 5);
     public static Stats STATS_MAGO=new Stats(5, 2, 2, 1, 5, 7, 7, 5, 7);
-    public static Stats STATS_MONSTRUO=new Stats(1, 5, 1, 1, 1, 1, 1, 1, 1);
+    public static Stats STATS_MONSTRUO=new Stats(5, 5, 1, 1, 1, 1, 1, 1, 1);
 
     public Stats(int radio_vision, int rapidez, int fuerza, int destreza, int resistencia, int resistencia_magica, int inteligencia, int stamina, int constitucion) {
         this.radio_vision = radio_vision;

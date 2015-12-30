@@ -20,7 +20,7 @@ public class Guerrero extends Personaje {
         this.sprite = sprite;
     }
     @Override
-    public void actualizar(){
+    public boolean actualizar(){
         int desplazamientoX = 0;
         int desplazamientoY = 0;
 
@@ -41,6 +41,18 @@ public class Guerrero extends Personaje {
         }
         if(teclado.derecha){
             desplazamientoX=+stats.rapidez;
+        }
+        if(teclado.inventario){
+            System.out.println("Abrir inventario");
+        }
+        if(teclado.atacar){
+            System.out.println("Atacar!");
+        }
+        if(teclado.usarhabilidad){
+            System.out.println("Usar Habilidad!");
+        }
+        if(teclado.abrircofre){
+            System.out.println("Abrir cofre");
         }
 
         int resto = animacion%40;
@@ -105,8 +117,10 @@ public class Guerrero extends Personaje {
         if (desplazamientoX != 0 || desplazamientoY != 0){
             mover(desplazamientoX, desplazamientoY);
             enMovimiento= true;
+            return true;
         } else{
             enMovimiento = false;
+            return false;
         }
 
     }

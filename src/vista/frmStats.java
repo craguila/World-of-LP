@@ -62,6 +62,7 @@ public class frmStats extends javax.swing.JFrame {
         lblResistenciaMagica.setText("Resistencia Magica: "+this.p.getStats().getResistencia_magica());
         lblStamina.setText("Stamina: "+this.p.getStats().getStamina());
         lblPuntos.setText("Puntos Stats disponible: "+puntosStats);
+        lblVida.setText("Vida: "+this.p.getVida());
         pack();
     }
 
@@ -92,6 +93,7 @@ public class frmStats extends javax.swing.JFrame {
         lblConstitucion = new javax.swing.JLabel();
         lblResistencia = new javax.swing.JLabel();
         lblPuntos = new javax.swing.JLabel();
+        lblVida = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
@@ -199,34 +201,36 @@ public class frmStats extends javax.swing.JFrame {
         lblPuntos.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         lblPuntos.setText("jLabel1");
 
+        lblVida.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        lblVida.setText("jLabel1");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(pnlArquero, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblNivel)
+                    .addComponent(lblExp)
+                    .addComponent(lblResistencia)
+                    .addComponent(lblRadioVision)
+                    .addComponent(lblRapidez)
+                    .addComponent(lblFuerza)
+                    .addComponent(lblDestreza)
+                    .addComponent(lblConstitucion)
+                    .addComponent(lblStamina)
+                    .addComponent(lblInteligencia)
+                    .addComponent(lblPuntos)
+                    .addComponent(lblResistenciaMagica)
+                    .addComponent(lblNombre)
+                    .addComponent(lblClase)
+                    .addComponent(pgbExp, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(pnlArquero, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(lblNivel)
-                            .addComponent(lblExp)
-                            .addComponent(lblResistencia)
-                            .addComponent(lblRadioVision)
-                            .addComponent(lblRapidez)
-                            .addComponent(lblFuerza)
-                            .addComponent(lblDestreza)
-                            .addComponent(lblConstitucion)
-                            .addComponent(lblStamina)
-                            .addComponent(lblInteligencia)
-                            .addComponent(lblPuntos)
-                            .addComponent(lblResistenciaMagica)
-                            .addComponent(lblNombre)
-                            .addComponent(lblClase)
-                            .addComponent(pgbExp, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(41, 41, 41)
-                        .addComponent(btnAumentar)))
+                        .addGap(31, 31, 31)
+                        .addComponent(btnAumentar))
+                    .addComponent(lblVida))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -234,6 +238,8 @@ public class frmStats extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(pnlArquero, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(lblVida)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(lblNombre)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -367,6 +373,7 @@ public class frmStats extends javax.swing.JFrame {
     private javax.swing.JLabel lblResistencia;
     private javax.swing.JLabel lblResistenciaMagica;
     private javax.swing.JLabel lblStamina;
+    private javax.swing.JLabel lblVida;
     private javax.swing.JProgressBar pgbExp;
     private javax.swing.JPanel pnlArquero;
     // End of variables declaration//GEN-END:variables
