@@ -111,7 +111,7 @@ public void despuesdeatacar(){
     private void tblHabilidadesMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblHabilidadesMouseClicked
         String habilidad=tblHabilidades.getValueAt(tblHabilidades.getSelectedRow(), 0).toString();
         Habilidad habilidadEfectuada = Habilidad.NINGUNA;
-        for (Habilidad h:Juego.jugador.getHabilidades()){
+        for (Habilidad h:p.getHabilidades()){
             if (h.nombre.equals(habilidad)){
                 habilidadEfectuada = h;
             }
@@ -122,10 +122,16 @@ public void despuesdeatacar(){
                     if (Juego.jugador.vivo()){
                         System.out.println("jugador uso "+habilidad+" sobre "+m.getNombre());
 
+<<<<<<< HEAD
                         m.danar(habilidadEfectuada.dano);
                         m.addStatus(habilidadEfectuada.estado);
                         Juego.jugador.gastarMana(habilidadEfectuada.costo);
                     }
+=======
+                    m.danar(habilidadEfectuada.dano);
+                    m.addStatus(habilidadEfectuada.estado);
+                    p.gastarMana(habilidadEfectuada.costo);
+>>>>>>> origin/master
                 }
             }
             despuesdeatacar();

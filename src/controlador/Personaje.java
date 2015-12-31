@@ -310,7 +310,7 @@ public class Personaje {
     public void danar(int dano){
         int resistencia = this.stats.resistencia;
         
-        if (Juego.jugador.vivo()){
+        if (vivo()){
             if (dano >= resistencia){
                 Vida -= (dano-resistencia);
             } else{

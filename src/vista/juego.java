@@ -122,6 +122,31 @@ public class Juego extends Canvas implements Runnable{
                 cofres.add(new Cofre(mapa,"Cofre"+i,1,0, Stats.STATS_MONSTRUO,10,10,10,equipo,inventario,m_pos,Sprite.COFRE));
             }
         }
+        for(Cofre c:cofres){
+            switch(rnd.nextInt(6)){
+                case 0:
+                    c.getInventario().getItems().add(EquipoItem.ARMADURA_ARQUERO);
+                    break;
+                case 1:
+                    c.getInventario().getItems().add(EquipoItem.ARMADURA_GUERRERO);
+                    break;
+                case 2:
+                    c.getInventario().getItems().add(EquipoItem.ARMADURA_MAGO);
+                    break;
+                case 3:
+                    c.getInventario().getItems().add(EquipoItem.ARMA_ARQUERO);
+                    break;
+                case 4:
+                    c.getInventario().getItems().add(EquipoItem.ARMA_GUERRERO);
+                    break;
+                case 5:
+                    c.getInventario().getItems().add(EquipoItem.ARMA_MAGO);
+                    break;
+                case 6:
+                    c.getInventario().getItems().add(EquipoItem.FLECHA_ARQUERO);
+                    break;
+            }
+        }
         //cargamos enemigos
         //creamos los monstruos
         int num_murcielagos = 3;
