@@ -44,6 +44,7 @@ public class Juego extends Canvas implements Runnable{
     public static Personaje jugador;
     public static ArrayList<Monstruo> monstruos = new ArrayList<>();
     public static ArrayList<Cofre> cofres = new ArrayList<>();
+    public static ArrayList<Cofre> cofresobjetivo = new ArrayList<>();
     public static frmStats ventanaStats;
     public static frmHabilidades ventanaHabilidades;
     public static frmMonstruos ventanaMonstruos;
@@ -158,6 +159,7 @@ public class Juego extends Canvas implements Runnable{
                     break;
             }
         }
+        cofresobjetivo.addAll(cofres);
         //cargamos enemigos
         //creamos los monstruos
         int num_murcielagos = 3;
@@ -270,9 +272,9 @@ public class Juego extends Canvas implements Runnable{
         thread.start();
     }
     
-    private synchronized void detener(){
+    public synchronized void detener(){
         jugando = false;
-        
+        this.notify();
         try {
             thread.join();
         } catch (InterruptedException ex) {
@@ -284,6 +286,8 @@ public class Juego extends Canvas implements Runnable{
         if(!jugador.vivo()){
             JOptionPane.showMessageDialog(this,jugador.getNombre()+", PERDISTE!!!", NOMBRE, 0);
             fin=true;
+            JOptionPane.showMessageDialog(this,jugador.getNombre()+", Gracias por jugar con nostros", NOMBRE, 1);
+            System.exit(0);
         }
         switch(mision){
             case 0:
@@ -314,6 +318,26 @@ public class Juego extends Canvas implements Runnable{
         if(fin){
             int confirma=JOptionPane.showConfirmDialog(this, "¿Desea seguir Jugando?", NOMBRE, 1);
             if(JOptionPane.OK_OPTION==confirma){
+                Random rnd = new Random();
+                objMonstruo=monstruos.get(rnd.nextInt(monstruos.size()-1));
+                objCofre=cofresobjetivo.get(rnd.nextInt(cofresobjetivo.size()-1));
+                mision=rnd.nextInt(2);
+                textoMision="";
+                switch(mision){
+                    case 0:
+                        textoMision="Encontrar el "+objCofre.getNombre();
+                        break;
+                    case 1:
+                        textoMision="Encontrar al monstruo "+objMonstruo.getNombre();
+                        break;
+                    case 2:
+                        textoMision="Matar al monstruo "+objMonstruo.getNombre();
+                        break;
+                }
+                ventanaStats=new frmStats(jugador,textoMision);
+                ventanaStats.setResizable(false);
+                JOptionPane.showMessageDialog(this,jugador.getNombre()+", tu mision en este mundo mágico consiste en: \n"+textoMision , NOMBRE, 1);
+        
                 //aqui va que tiene que abirir un nuevo formulario y el juego actual tiene que morirse pero no se como :C
                 //new formulario().setVisible(true);
             }
