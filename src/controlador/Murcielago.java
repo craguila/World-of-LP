@@ -135,7 +135,6 @@ public class Murcielago extends Monstruo{
         }
         if (!vivo()){
             Juego.jugador.aumentarExp(exp_entregada);
-            Juego.monstruos.remove(this);
             this.mover(10000, 10000);
         }
         if (desplazamientoX != 0 || desplazamientoY != 0){

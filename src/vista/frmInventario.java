@@ -24,7 +24,7 @@ public class frmInventario extends javax.swing.JFrame {
         setEstado();
     }
     
-    public void setEstado() {
+    public synchronized void setEstado() {
         DefaultTableModel mdl =(DefaultTableModel)this.tblInventario.getModel();
         mdl.setRowCount(0);
         int i=1;

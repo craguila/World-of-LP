@@ -16,7 +16,7 @@ public class frmStats extends javax.swing.JFrame {
      */
     Personaje p;
     public static int puntosStats=0;
-    public frmStats(Personaje p) {
+    public frmStats(Personaje p,String mision) {
         this();
         this.p=p;
         this.setDefaultCloseOperation(javax.swing.WindowConstants.HIDE_ON_CLOSE);
@@ -36,6 +36,7 @@ public class frmStats extends javax.swing.JFrame {
         }
         lblNombre.setText("Nombre: "+this.p.getNombre());
         this.setTitle("World of LP");
+        this.lblMision.setText("Mision: "+mision);
         this.setEstado();
         
     }
@@ -47,7 +48,7 @@ public class frmStats extends javax.swing.JFrame {
         this.p.aumentarExp(10);
     }
     
-    public void setEstado(){
+    public synchronized void setEstado(){
         lblNivel.setText("Nivel: "+this.p.getNivel());
         lblExp.setText("Experiencia: "+this.p.getEXP()+"/"+p.expSiguienteLvl(this.p.getNivel()));
         pgbExp.setMaximum(p.expSiguienteLvl(this.p.getNivel()));
@@ -82,7 +83,6 @@ public class frmStats extends javax.swing.JFrame {
         lblNivel = new javax.swing.JLabel();
         pgbExp = new javax.swing.JProgressBar();
         lblExp = new javax.swing.JLabel();
-        btnAumentar = new javax.swing.JButton();
         lblRadioVision = new javax.swing.JLabel();
         lblResistenciaMagica = new javax.swing.JLabel();
         lblRapidez = new javax.swing.JLabel();
@@ -94,6 +94,7 @@ public class frmStats extends javax.swing.JFrame {
         lblResistencia = new javax.swing.JLabel();
         lblPuntos = new javax.swing.JLabel();
         lblVida = new javax.swing.JLabel();
+        lblMision = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
@@ -127,13 +128,6 @@ public class frmStats extends javax.swing.JFrame {
 
         lblExp.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         lblExp.setText("jLabel1");
-
-        btnAumentar.setText("aumentar");
-        btnAumentar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnAumentarActionPerformed(evt);
-            }
-        });
 
         lblRadioVision.setText("jLabel1");
         lblRadioVision.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -204,6 +198,8 @@ public class frmStats extends javax.swing.JFrame {
         lblVida.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         lblVida.setText("jLabel1");
 
+        lblMision.setText("jLabel1");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -227,10 +223,8 @@ public class frmStats extends javax.swing.JFrame {
                     .addComponent(lblNombre)
                     .addComponent(lblClase)
                     .addComponent(pgbExp, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(31, 31, 31)
-                        .addComponent(btnAumentar))
-                    .addComponent(lblVida))
+                    .addComponent(lblVida)
+                    .addComponent(lblMision))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -271,17 +265,12 @@ public class frmStats extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(lblConstitucion)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(btnAumentar)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addComponent(lblMision)
+                .addContainerGap(20, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
-    private void btnAumentarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAumentarActionPerformed
-        this.aumentar();
-        this.setEstado();
-    }//GEN-LAST:event_btnAumentarActionPerformed
 
     private void lblRadioVisionMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblRadioVisionMouseClicked
         if(puntosStats>0){
@@ -357,13 +346,13 @@ public class frmStats extends javax.swing.JFrame {
 
    
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnAumentar;
     private javax.swing.JLabel lblClase;
     private javax.swing.JLabel lblConstitucion;
     private javax.swing.JLabel lblDestreza;
     private javax.swing.JLabel lblExp;
     private javax.swing.JLabel lblFuerza;
     private javax.swing.JLabel lblInteligencia;
+    private javax.swing.JLabel lblMision;
     private javax.swing.JLabel lblNivel;
     private javax.swing.JLabel lblNombre;
     private javax.swing.JLabel lblPersonaje;

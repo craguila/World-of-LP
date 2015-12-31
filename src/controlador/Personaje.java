@@ -21,6 +21,7 @@ public class Personaje {
     // de experiencia.
     Stats stats;//Todos los stats del personaje
     int Vida; //Muere si llega a 0.
+    int VidaMAX;
     int Stamina; //No puede golpear si no le alcanza el valor.
     int Mana; //Muere si llega a 0.
     int[] posicion=new int[2];
@@ -42,6 +43,7 @@ public class Personaje {
         this.EXP = EXP;
         this.stats = stats;
         this.Vida = Vida;
+        this.VidaMAX = Vida;
         this.Stamina = Stamina;
         this.Mana = Mana;
         this.equipo = equipo;
@@ -84,7 +86,7 @@ public class Personaje {
     
     public void subirLvl(){
         this.Nivel +=1;
-        this.Vida+=10;
+        this.VidaMAX+=10;
     }
     
     public void mejorar(){
@@ -157,7 +159,7 @@ public class Personaje {
         }
     }   
     
-    public boolean sienteelchoque(int desplazamientoX, int desplazamientoY){
+    public synchronized boolean sienteelchoque(int desplazamientoX, int desplazamientoY){
         boolean colision = false;
         int posicionX = posicion[0] + desplazamientoX;
         int posicionY = posicion[1] + desplazamientoY;
@@ -324,5 +326,12 @@ public class Personaje {
 
     public int getVida() {
         return this.Vida;
+    }
+
+    void recuperarse() {
+        Vida+=this.stats.getConstitucion();
+        if(Vida>VidaMAX){
+            Vida=VidaMAX;
+        }
     }
 }

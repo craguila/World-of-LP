@@ -7,6 +7,7 @@ package vista;
 import controlador.Habilidad;
 import controlador.Monstruo;
 import controlador.Personaje;
+import java.util.ArrayList;
 import javax.swing.table.DefaultTableModel;
 import static vista.Juego.monstruos;
 import static vista.Juego.ventanaHabilidades;
@@ -106,6 +107,15 @@ public void despuesdeatacar(){
             ventanaInventario.setEstado();
             for(Monstruo m: monstruos){
                 m.actualizar(); 
+            }
+            ArrayList<Monstruo>muertos=new ArrayList<>();
+            for(Monstruo m: monstruos){
+                if(!m.vivo()){
+                    muertos.add(m);
+                } 
+            }
+            for(Monstruo m: muertos){
+                monstruos.remove(m); 
             }
         }
     private void tblHabilidadesMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblHabilidadesMouseClicked

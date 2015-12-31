@@ -227,9 +227,8 @@ public class formulario extends javax.swing.JFrame {
     private void btnIniciarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnIniciarActionPerformed
         if(!"".equals(this.txtNombre.getText())){
             if(clase!=0){
-                Juego juego = new Juego(this.txtNombre.getText(),clase);
+                Juego juego = new Juego(this.txtNombre.getText(),clase,this);
                 juego.iniciar();
-                this.setVisible(false);
             }
             else{
                 JOptionPane.showMessageDialog(this, "Debe Seleccionar una Clase", "World of LP", 0);

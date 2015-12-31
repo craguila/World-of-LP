@@ -36,6 +36,8 @@ public class Arquero extends Personaje {
         int desplazamientoX = 0;
         int desplazamientoY = 0;
         
+        super.recuperarse();
+        
         if (animacion<32767){
             animacion++;
         }else{

@@ -15,6 +15,8 @@ import java.awt.image.BufferedImage;
 import java.awt.image.DataBufferInt;
 import java.util.ArrayList;
 import java.util.Random;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 
@@ -49,8 +51,12 @@ public class Juego extends Canvas implements Runnable{
     private Cofre objCofre;
     private Monstruo objMonstruo;
     private int mision;
+    private String textoMision;
+    private formulario form;
     
-    public Juego(String nombre,int clase){
+    public Juego(String nombre,int clase,formulario form){
+        this.form=form;
+        form.setVisible(false);
         setPreferredSize(new Dimension(ANCHO, ALTO));
         
         pantalla = new Pantalla(ANCHO,ALTO);
@@ -64,6 +70,7 @@ public class Juego extends Canvas implements Runnable{
 //        Inventario inventario = new Inventario();
         Random  rndpos = new Random();
         int[] pos = {445,277};
+        int vida=50;
         pos[0]=(int)(rndpos.nextDouble() * 1540);
         pos[1]=(int)(rndpos.nextDouble() * 1537);
         
@@ -77,7 +84,7 @@ public class Juego extends Canvas implements Runnable{
         switch (clase) {
             case 1:
                 equipo=new Equipo(EquipoItem.ARMADURA_GUERRERO, EquipoItem.ARMA_GUERRERO,null);
-                jugador = new Guerrero(mapa,nombre,1,0,Stats.STATS_GUERRERO,10,10,10,equipo,new Inventario(),teclado,pos,Sprite.ABAJO0);
+                jugador = new Guerrero(mapa,nombre,1,0,Stats.STATS_GUERRERO,vida,10,10,equipo,new Inventario(),teclado,pos,Sprite.ABAJO0);
                 jugador.getHabilidades().add(Habilidad.CORAJE_DIVINO);
                 jugador.getHabilidades().add(Habilidad.FURIA_CAOTICA);
                 jugador.getHabilidades().add(Habilidad.VELOCIDAD);
@@ -85,7 +92,7 @@ public class Juego extends Canvas implements Runnable{
                 break;
             case 2:
                 equipo=new Equipo(EquipoItem.ARMADURA_ARQUERO, EquipoItem.ARMA_ARQUERO,EquipoItem.FLECHA_ARQUERO);
-                jugador = new Arquero(mapa,nombre,1,0, Stats.STATS_ARQUERO,10,10,10,equipo,new Inventario(),teclado,pos,Sprite.ABAJO0);
+                jugador = new Arquero(mapa,nombre,1,0, Stats.STATS_ARQUERO,vida,10,10,equipo,new Inventario(),teclado,pos,Sprite.ABAJO0);
                 jugador.getHabilidades().add(Habilidad.INFLINGIR_ENFERMEDAD);
                 jugador.getHabilidades().add(Habilidad.LLAMADA_A_LA_NATURALEZA);
                 jugador.getHabilidades().add(Habilidad.PRESENTIR);
@@ -93,7 +100,7 @@ public class Juego extends Canvas implements Runnable{
                 break;
             default:
                 equipo=new Equipo(EquipoItem.ARMADURA_MAGO, EquipoItem.ARMA_MAGO,null);
-                jugador = new Mago(mapa,nombre,1,0, Stats.STATS_MAGO,10,10,10,equipo,new Inventario(),teclado,pos,Sprite.ABAJO0);
+                jugador = new Mago(mapa,nombre,1,0, Stats.STATS_MAGO,vida,10,10,equipo,new Inventario(),teclado,pos,Sprite.ABAJO0);
                 jugador.getHabilidades().add(Habilidad.DESORDEN_DE_LA_REALIDAD);
                 jugador.getHabilidades().add(Habilidad.CONGELAR_ALMA);
                 jugador.getHabilidades().add(Habilidad.PARADOJA_TEMPORAL);
@@ -104,8 +111,6 @@ public class Juego extends Canvas implements Runnable{
         if (jugador.getNombre().equals("Pollo")){
             jugador.aumentarExp(10000);
         }
-        ventanaStats=new frmStats(jugador);
-        ventanaStats.setResizable(false);
         ventanaHabilidades=new frmHabilidades(jugador);
         ventanaHabilidades.setResizable(false);
         ventanaMonstruos=new frmMonstruos(jugador);
@@ -217,8 +222,8 @@ public class Juego extends Canvas implements Runnable{
         }
         objMonstruo=monstruos.get(rnd.nextInt(monstruos.size()-1));
         objCofre=cofres.get(rnd.nextInt(cofres.size()-1));
-        mision=1;
-        String textoMision="";
+        mision=rnd.nextInt(2);
+        textoMision="";
         switch(mision){
             case 0:
                 textoMision="Encontrar el "+objCofre.getNombre();
@@ -230,6 +235,8 @@ public class Juego extends Canvas implements Runnable{
                 textoMision="Matar al monstruo "+objMonstruo.getNombre();
                 break;
         }
+        ventanaStats=new frmStats(jugador,textoMision);
+        ventanaStats.setResizable(false);
         JOptionPane.showMessageDialog(this,jugador.getNombre()+", tu mision en este mundo mágico consiste en: \n"+textoMision , NOMBRE, 1);
         //cargamos items
         
@@ -272,10 +279,48 @@ public class Juego extends Canvas implements Runnable{
             ex.printStackTrace();
         }
     }
-    private void checkMision(){
-        if(mision==1&&jugador.getMonsruosVisibles().contains(objMonstruo.getNombre())){
-            JOptionPane.showMessageDialog(this,jugador.getNombre()+", FELICIDADES GANASTE!!!\ngracias por jugar", NOMBRE, 1);
-            System.exit(0);
+    private synchronized void checkMision(){
+        boolean fin=false;
+        if(!jugador.vivo()){
+            JOptionPane.showMessageDialog(this,jugador.getNombre()+", PERDISTE!!!", NOMBRE, 0);
+            fin=true;
+        }
+        switch(mision){
+            case 0:
+                for(Cofre c:cofres){
+                    if(c.getNombre().equals(objCofre.getNombre())&&c.isOpen()){
+                        JOptionPane.showMessageDialog(this,jugador.getNombre()+", FELICIDADES GANASTE!!!", NOMBRE, 1);
+                        fin=true;
+                        break;
+                    }
+                }
+                break;
+            case 1:
+                if(jugador.getMonsruosVisibles().contains(objMonstruo.getNombre())){
+                    JOptionPane.showMessageDialog(this,jugador.getNombre()+", FELICIDADES GANASTE!!!", NOMBRE, 1);
+                    fin=true;
+                }
+                break;
+            case 2:
+                for(Monstruo m:monstruos){
+                    if(m.getNombre().equals(objMonstruo.getNombre())&&!m.vivo()){
+                        JOptionPane.showMessageDialog(this,jugador.getNombre()+", FELICIDADES GANASTE!!!", NOMBRE, 1);
+                        fin=true;
+                        break;
+                    }
+                }
+                break;
+        }
+        if(fin){
+            int confirma=JOptionPane.showConfirmDialog(this, "¿Desea seguir Jugando?", NOMBRE, 1);
+            if(JOptionPane.OK_OPTION==confirma){
+                //aqui va que tiene que abirir un nuevo formulario y el juego actual tiene que morirse pero no se como :C
+                //new formulario().setVisible(true);
+            }
+            else{
+                JOptionPane.showMessageDialog(this,jugador.getNombre()+", Gracias por jugar con nostros", NOMBRE, 1);
+                System.exit(0);
+            }
         }
     }
     

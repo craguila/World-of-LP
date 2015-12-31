@@ -32,7 +32,7 @@ public class Guerrero extends Personaje {
     public boolean actualizar(){
         int desplazamientoX = 0;
         int desplazamientoY = 0;
-
+        super.recuperarse();
         if (animacion<32767){
             animacion++;
         }else{
