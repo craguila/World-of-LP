@@ -9,6 +9,7 @@ import Graficos.Sprite;
 import control.Teclado;
 import java.util.Calendar;
 import java.util.Date;
+import vista.Juego;
 import vista.Mapa;
 
 
@@ -53,44 +54,35 @@ public class Arquero extends Personaje {
         if(teclado.derecha){
             desplazamientoX=+stats.rapidez;
         }
-        if(teclado.inventario ){
-            if (segundos2 > segundos ){
-                if (abierto_inventario){
-                    System.out.println("Cerrar inventario");
-                    abierto_inventario = false;
-                    fecha = Calendar.getInstance();
-                    segundos = fecha.get(Calendar.SECOND);
-                } else {
-                    abierto_inventario = true;
-                    System.out.println("Abrir inventario");
-                    fecha = Calendar.getInstance();
-                    segundos = fecha.get(Calendar.SECOND);
-                }
-            }
-            fecha = Calendar.getInstance();
-            segundos2 = fecha.get(Calendar.SECOND);
+        
+        if(teclado.inventario && !Juego.ventanaInventario.isVisible()){
+            Juego.ventanaInventario.setVisible(true);
         }
-        if(teclado.atacar){
-            
-            System.out.println("Atacar!");
+        if (!teclado.inventario && Juego.ventanaInventario.isVisible()){
+            Juego.ventanaInventario.setVisible(false);
+        } 
+        
+        if(teclado.abrirstats && !Juego.ventanaStats.isVisible()){
+            Juego.ventanaStats.setVisible(true);
         }
-        if(teclado.usarhabilidad){
-            if (segundos2 > segundos ){
-                if (abierto_habilidad){
-                    System.out.println("Cerrar Habilidades");
-                    abierto_habilidad = false;
-                    fecha = Calendar.getInstance();
-                    segundos = fecha.get(Calendar.SECOND);
-                } else {
-                    abierto_habilidad = true;
-                    System.out.println("Abrir Habilidades");
-                    fecha = Calendar.getInstance();
-                    segundos = fecha.get(Calendar.SECOND);
-                }
-            }
-            fecha = Calendar.getInstance();
-            segundos2 = fecha.get(Calendar.SECOND);
+        if (!teclado.abrirstats && Juego.ventanaStats.isVisible()){
+            Juego.ventanaStats.setVisible(false);
+        } 
+        
+        if(teclado.usarhabilidad && !Juego.ventanaHabilidades.isVisible()){
+            Juego.ventanaHabilidades.setVisible(true);
         }
+        if (!teclado.usarhabilidad && Juego.ventanaHabilidades.isVisible()){
+            Juego.ventanaHabilidades.setVisible(false);
+        } 
+        
+        if(teclado.atacar && !Juego.ventanaMonstruos.isVisible()){
+            Juego.ventanaMonstruos.setVisible(true);
+        }
+        if (!teclado.atacar && Juego.ventanaMonstruos.isVisible()){
+            Juego.ventanaMonstruos.setVisible(false);
+        } 
+        
         if(teclado.abrircofre){
             System.out.println("Abrir cofre");
         }
