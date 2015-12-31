@@ -46,6 +46,9 @@ public class Juego extends Canvas implements Runnable{
     public static frmHabilidades ventanaHabilidades;
     public static frmMonstruos ventanaMonstruos;
     public static frmInventario ventanaInventario;
+    private Cofre objCofre;
+    private Monstruo objMonstruo;
+    private int mision;
     
     public Juego(String nombre,int clase){
         setPreferredSize(new Dimension(ANCHO, ALTO));
@@ -107,7 +110,7 @@ public class Juego extends Canvas implements Runnable{
         ventanaInventario=new frmInventario(jugador);
         ventanaInventario.setResizable(false);
         JOptionPane.showMessageDialog(this, "Es un placer conocer por fin a tan renombrado "+ tipo, NOMBRE, 1);
-        JOptionPane.showMessageDialog(this,jugador.getNombre()+", tu mision en este mundo mágico consiste en: \n ", NOMBRE, 1);
+        
         //agregamos los cofres;
         Random  rnd = new Random();
         int num_cofres = 10;
@@ -209,7 +212,22 @@ public class Juego extends Canvas implements Runnable{
                 monstruos.add(new Esqueleto(mapa,"Esqueleto"+i,1,0, Stats.STATS_MONSTRUO,10,10,10,equipo,inventario,m_pos,Sprite.EABAJO0));
             }
         }
-        
+        objMonstruo=monstruos.get(rnd.nextInt(monstruos.size()-1));
+        objCofre=cofres.get(rnd.nextInt(cofres.size()-1));
+        mision=1;
+        String textoMision="";
+        switch(mision){
+            case 0:
+                textoMision="Encontrar el "+objCofre.getNombre();
+                break;
+            case 1:
+                textoMision="Encontrar al monstruo "+objMonstruo.getNombre();
+                break;
+            case 2:
+                textoMision="Matar al monstruo "+objMonstruo.getNombre();
+                break;
+        }
+        JOptionPane.showMessageDialog(this,jugador.getNombre()+", tu mision en este mundo mágico consiste en: \n"+textoMision , NOMBRE, 1);
         //cargamos items
         
         
@@ -251,6 +269,12 @@ public class Juego extends Canvas implements Runnable{
             ex.printStackTrace();
         }
     }
+    private void checkMision(){
+        if(mision==1&&jugador.getMonsruosVisibles().contains(objMonstruo.getNombre())){
+            JOptionPane.showMessageDialog(this,jugador.getNombre()+", FELICIDADES GANASTE!!!\ngracias por jugar", NOMBRE, 1);
+            System.exit(0);
+        }
+    }
     
     private void actualizar(){
         teclado.actualizar();
@@ -263,6 +287,7 @@ public class Juego extends Canvas implements Runnable{
         for(Monstruo m: monstruos){
             m.actualizar(); 
         }}
+        checkMision();
         aps++;
     }
     
