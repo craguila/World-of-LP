@@ -5,6 +5,7 @@
 package controlador;
 
 import java.util.ArrayList;
+import vista.Juego;
 
 
 public class EquipoItem extends Item {
@@ -29,5 +30,15 @@ public class EquipoItem extends Item {
         this.magic_level = magic_level;
         this.range = range;
         this.status_list=new ArrayList<>();
+    }
+    public void Equipar(){
+        if (tipo == TipoItem.ARMADURA){
+            Juego.jugador.stats.resistencia_magica += magic_level;
+            Juego.jugador.stats.resistencia += physical_level;
+        } else if(tipo == TipoItem.ARMA){
+            Juego.jugador.stats.fuerza += physical_level;
+            Juego.jugador.stats.inteligencia += magic_level;
+        }
+        
     }
 }

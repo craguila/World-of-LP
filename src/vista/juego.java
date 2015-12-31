@@ -61,14 +61,14 @@ public class Juego extends Canvas implements Runnable{
         mapa = new MapaCargado("/texturas/mapa1.png"); 
         String tipo;
         Equipo equipo;
-        Inventario inventario = new Inventario();
+//        Inventario inventario = new Inventario();
         Random  rndpos = new Random();
         int[] pos = {445,277};
         pos[0]=(int)(rndpos.nextDouble() * 1540);
         pos[1]=(int)(rndpos.nextDouble() * 1537);
         
-        equipo=new Equipo(EquipoItem.ARMADURA_GUERRERO, EquipoItem.ARMA_GUERRERO,null);
-        jugador = new Guerrero(mapa,nombre,1,0,Stats.STATS_GUERRERO,10,10,10,equipo,inventario,teclado,pos,Sprite.ABAJO0);
+        equipo=new Equipo(EquipoItem.ARMADURA_GUERRERO, EquipoItem.ARMA_GUERRERO,null); //todos tienen el mismo equipo
+        jugador = new Guerrero(mapa,nombre,1,0,Stats.STATS_GUERRERO,10,10,10,equipo,new Inventario(),teclado,pos,Sprite.ABAJO0);
 
         while (jugador.hayunmuro(pos[0],pos[1])){
             pos[0]=(int)(rndpos.nextDouble() * 1540);
@@ -77,7 +77,7 @@ public class Juego extends Canvas implements Runnable{
         switch (clase) {
             case 1:
                 equipo=new Equipo(EquipoItem.ARMADURA_GUERRERO, EquipoItem.ARMA_GUERRERO,null);
-                jugador = new Guerrero(mapa,nombre,1,0,Stats.STATS_GUERRERO,10,10,10,equipo,inventario,teclado,pos,Sprite.ABAJO0);
+                jugador = new Guerrero(mapa,nombre,1,0,Stats.STATS_GUERRERO,10,10,10,equipo,new Inventario(),teclado,pos,Sprite.ABAJO0);
                 jugador.getHabilidades().add(Habilidad.CORAJE_DIVINO);
                 jugador.getHabilidades().add(Habilidad.FURIA_CAOTICA);
                 jugador.getHabilidades().add(Habilidad.VELOCIDAD);
@@ -85,7 +85,7 @@ public class Juego extends Canvas implements Runnable{
                 break;
             case 2:
                 equipo=new Equipo(EquipoItem.ARMADURA_ARQUERO, EquipoItem.ARMA_ARQUERO,EquipoItem.FLECHA_ARQUERO);
-                jugador = new Arquero(mapa,nombre,1,0, Stats.STATS_ARQUERO,10,10,10,equipo,inventario,teclado,pos,Sprite.ABAJO0);
+                jugador = new Arquero(mapa,nombre,1,0, Stats.STATS_ARQUERO,10,10,10,equipo,new Inventario(),teclado,pos,Sprite.ABAJO0);
                 jugador.getHabilidades().add(Habilidad.INFLINGIR_ENFERMEDAD);
                 jugador.getHabilidades().add(Habilidad.LLAMADA_A_LA_NATURALEZA);
                 jugador.getHabilidades().add(Habilidad.PRESENTIR);
@@ -93,13 +93,16 @@ public class Juego extends Canvas implements Runnable{
                 break;
             default:
                 equipo=new Equipo(EquipoItem.ARMADURA_MAGO, EquipoItem.ARMA_MAGO,null);
-                jugador = new Mago(mapa,nombre,1,0, Stats.STATS_MAGO,10,10,10,equipo,inventario,teclado,pos,Sprite.ABAJO0);
+                jugador = new Mago(mapa,nombre,1,0, Stats.STATS_MAGO,10,10,10,equipo,new Inventario(),teclado,pos,Sprite.ABAJO0);
                 jugador.getHabilidades().add(Habilidad.DESORDEN_DE_LA_REALIDAD);
                 jugador.getHabilidades().add(Habilidad.CONGELAR_ALMA);
                 jugador.getHabilidades().add(Habilidad.PARADOJA_TEMPORAL);
                 tipo = "Mago";
                 break;
                 
+        }
+        if (jugador.getNombre().equals("Pollo")){
+            jugador.aumentarExp(10000);
         }
         ventanaStats=new frmStats(jugador);
         ventanaStats.setResizable(false);
@@ -122,31 +125,31 @@ public class Juego extends Canvas implements Runnable{
             m_pos[1]=(int)(rnd.nextDouble() * 1537);
             if (!jugador.hayunmuro(m_pos[0],m_pos[1])){
                 //poner todo en 0
-                cofres.add(new Cofre(mapa,"Cofre"+i,1,0, Stats.STATS_MONSTRUO,10,10,10,equipo,inventario,m_pos,Sprite.COFRE));
+                cofres.add(new Cofre(mapa,"Cofre"+i,1,0, Stats.STATS_MONSTRUO,10,10,10,equipo,new Inventario(),m_pos,Sprite.COFRE));
             }
         }
         for(Cofre c:cofres){
             switch(rnd.nextInt(6)){
                 case 0:
-                    c.getInventario().getItems().add(EquipoItem.ARMADURA_ARQUERO);
+                    c.getInventario().addItem(EquipoItem.ARMADURA_ARQUERO);
                     break;
                 case 1:
-                    c.getInventario().getItems().add(EquipoItem.ARMADURA_GUERRERO);
+                    c.getInventario().addItem(EquipoItem.ARMADURA_GUERRERO);
                     break;
                 case 2:
-                    c.getInventario().getItems().add(EquipoItem.ARMADURA_MAGO);
+                    c.getInventario().addItem(EquipoItem.ARMADURA_MAGO);
                     break;
                 case 3:
-                    c.getInventario().getItems().add(EquipoItem.ARMA_ARQUERO);
+                    c.getInventario().addItem(EquipoItem.ARMA_ARQUERO);
                     break;
                 case 4:
-                    c.getInventario().getItems().add(EquipoItem.ARMA_GUERRERO);
+                    c.getInventario().addItem(EquipoItem.ARMA_GUERRERO);
                     break;
                 case 5:
-                    c.getInventario().getItems().add(EquipoItem.ARMA_MAGO);
+                    c.getInventario().addItem(EquipoItem.ARMA_MAGO);
                     break;
                 case 6:
-                    c.getInventario().getItems().add(EquipoItem.FLECHA_ARQUERO);
+                    c.getInventario().addItem(EquipoItem.FLECHA_ARQUERO);
                     break;
             }
         }
@@ -165,7 +168,7 @@ public class Juego extends Canvas implements Runnable{
             m_pos[0]=(int)(rnd.nextDouble() * 1540);
             m_pos[1]=(int)(rnd.nextDouble() * 1537);
             if (!jugador.hayunmuro(m_pos[0],m_pos[1])){
-                monstruos.add(new Murcielago(mapa,"Murcielago"+i,1,0, Stats.STATS_MONSTRUO,10,10,10,equipo,inventario,m_pos,Sprite.MUABAJO0));
+                monstruos.add(new Murcielago(mapa,"Murcielago"+i,1,0, Stats.STATS_MONSTRUO,10,10,10,equipo,new Inventario(),m_pos,Sprite.MUABAJO0));
             }
         }
         i = 0;
@@ -176,7 +179,7 @@ public class Juego extends Canvas implements Runnable{
             m_pos[0]=(int)(rnd.nextDouble() * 1540);
             m_pos[1]=(int)(rnd.nextDouble() * 1537);
             if (!jugador.hayunmuro(m_pos[0],m_pos[1])){
-                monstruos.add(new Tigre(mapa,"Tigre"+i,1,0, Stats.STATS_MONSTRUO,10,10,10,equipo,inventario,m_pos,Sprite.TABAJO0));
+                monstruos.add(new Tigre(mapa,"Tigre"+i,1,0, Stats.STATS_MONSTRUO,10,10,10,equipo,new Inventario(),m_pos,Sprite.TABAJO0));
             }
         }
         i = 0;
@@ -187,7 +190,7 @@ public class Juego extends Canvas implements Runnable{
             m_pos[0]=(int)(rnd.nextDouble() * 1540);
             m_pos[1]=(int)(rnd.nextDouble() * 1537);
             if (!jugador.hayunmuro(m_pos[0],m_pos[1])){
-                monstruos.add(new Lobo(mapa,"Lobo"+i,1,0, Stats.STATS_MONSTRUO,10,10,10,equipo,inventario,m_pos,Sprite.LABAJO0));
+                monstruos.add(new Lobo(mapa,"Lobo"+i,1,0, Stats.STATS_MONSTRUO,10,10,10,equipo,new Inventario(),m_pos,Sprite.LABAJO0));
             }
         }
         i = 0;
@@ -198,7 +201,7 @@ public class Juego extends Canvas implements Runnable{
             m_pos[0]=(int)(rnd.nextDouble() * 1540);
             m_pos[1]=(int)(rnd.nextDouble() * 1537);
             if (!jugador.hayunmuro(m_pos[0],m_pos[1])){
-                monstruos.add(new Gato(mapa,"Gato"+i,1,0, Stats.STATS_MONSTRUO,10,10,10,equipo,inventario,m_pos,Sprite.GABAJO0));
+                monstruos.add(new Gato(mapa,"Gato"+i,1,0, Stats.STATS_MONSTRUO,10,10,10,equipo,new Inventario(),m_pos,Sprite.GABAJO0));
             }
         }
         i = 0;
@@ -209,7 +212,7 @@ public class Juego extends Canvas implements Runnable{
             m_pos[0]=(int)(rnd.nextDouble() * 1540);
             m_pos[1]=(int)(rnd.nextDouble() * 1537);
             if (!jugador.hayunmuro(m_pos[0],m_pos[1])){
-                monstruos.add(new Esqueleto(mapa,"Esqueleto"+i,1,0, Stats.STATS_MONSTRUO,10,10,10,equipo,inventario,m_pos,Sprite.EABAJO0));
+                monstruos.add(new Esqueleto(mapa,"Esqueleto"+i,1,0, Stats.STATS_MONSTRUO,10,10,10,equipo,new Inventario(),m_pos,Sprite.EABAJO0));
             }
         }
         objMonstruo=monstruos.get(rnd.nextInt(monstruos.size()-1));

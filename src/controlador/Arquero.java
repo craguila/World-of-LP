@@ -112,10 +112,10 @@ public class Arquero extends Personaje {
                 int playerY2 = posicionY + margenSuperior + margenInferior + sprite.getLado();
 
                 if (playerX>monstruoX && playerX<monstruoX2 && playerY>monstruoY && playerY<monstruoY2){
-                    c.sacarItem();
+                    c.sacarItem(c);
                 }
                 if (playerX2>monstruoX && playerX2<monstruoX2 && playerY>monstruoY && playerY<monstruoY2){
-                    c.sacarItem();
+                    c.sacarItem(c);
                 }
             }
             

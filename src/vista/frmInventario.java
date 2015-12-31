@@ -4,6 +4,7 @@
  */
 package vista;
 
+import controlador.EquipoItem;
 import controlador.Item;
 import controlador.Personaje;
 import javax.swing.table.DefaultTableModel;
@@ -73,6 +74,11 @@ public class frmInventario extends javax.swing.JFrame {
                 return canEdit [columnIndex];
             }
         });
+        tblInventario.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tblInventarioMouseClicked(evt);
+            }
+        });
         jScrollPane1.setViewportView(tblInventario);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -94,6 +100,21 @@ public class frmInventario extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void tblInventarioMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblInventarioMouseClicked
+        String objetivo=tblInventario.getValueAt(tblInventario.getSelectedRow(), 1).toString();
+        for (EquipoItem i:Juego.jugador.getInventario().getItems()){
+            if (i.getNombre().equals(objetivo)){
+                System.out.println(objetivo);
+                i.Equipar();
+                Juego.jugador.getInventario().removeItem(i);
+                Juego.ventanaInventario.setEstado();
+                Juego.ventanaStats.setEstado();
+                break;  
+            }
+        }
+        
+    }//GEN-LAST:event_tblInventarioMouseClicked
 
     
     // Variables declaration - do not modify//GEN-BEGIN:variables

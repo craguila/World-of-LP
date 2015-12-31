@@ -25,10 +25,10 @@ public class Personaje {
     int Mana; //Muere si llega a 0.
     int[] posicion=new int[2];
     Equipo equipo;
-    Inventario inventario;
+    
     protected Mapa mapa;
     
-    
+    private Inventario inventario;
     private ArrayList<Status> status;    
     private ArrayList<Habilidad> habilidades;
     private ArrayList<String> monstruosVisibles;

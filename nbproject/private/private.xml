@@ -4,15 +4,11 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/CristobalIsidroMatia/Desktop/GitHub/World-of-LP/src/controlador/Inventario.java</file>
             <file>file:/C:/Users/CristobalIsidroMatia/Desktop/GitHub/World-of-LP/src/controlador/Arquero.java</file>
-            <file>file:/C:/Users/CristobalIsidroMatia/Desktop/GitHub/World-of-LP/src/controlador/Personaje.java</file>
             <file>file:/C:/Users/CristobalIsidroMatia/Desktop/GitHub/World-of-LP/src/vista/Juego.java</file>
-            <file>file:/C:/Users/CristobalIsidroMatia/Desktop/GitHub/World-of-LP/src/controlador/Habilidad.java</file>
-            <file>file:/C:/Users/CristobalIsidroMatia/Desktop/GitHub/World-of-LP/src/controlador/Monstruo.java</file>
-            <file>file:/C:/Users/CristobalIsidroMatia/Desktop/GitHub/World-of-LP/src/vista/frmHabilidades.java</file>
-            <file>file:/C:/Users/CristobalIsidroMatia/Desktop/GitHub/World-of-LP/src/controlador/Cofre.java</file>
-            <file>file:/C:/Users/CristobalIsidroMatia/Desktop/GitHub/World-of-LP/src/vista/frmMonstruos.java</file>
+            <file>file:/C:/Users/CristobalIsidroMatia/Desktop/GitHub/World-of-LP/src/controlador/Mago.java</file>
+            <file>file:/C:/Users/CristobalIsidroMatia/Desktop/GitHub/World-of-LP/src/vista/frmInventario.java</file>
+            <file>file:/C:/Users/CristobalIsidroMatia/Desktop/GitHub/World-of-LP/src/controlador/Guerrero.java</file>
         </group>
     </open-files>
 </project-private>
