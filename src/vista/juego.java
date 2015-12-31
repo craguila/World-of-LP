@@ -338,8 +338,6 @@ public class Juego extends Canvas implements Runnable{
                 ventanaStats.setResizable(false);
                 JOptionPane.showMessageDialog(this,jugador.getNombre()+", tu mision en este mundo mágico consiste en: \n"+textoMision , NOMBRE, 1);
         
-                //aqui va que tiene que abirir un nuevo formulario y el juego actual tiene que morirse pero no se como :C
-                //new formulario().setVisible(true);
             }
             else{
                 JOptionPane.showMessageDialog(this,jugador.getNombre()+", Gracias por jugar con nostros", NOMBRE, 1);
@@ -347,18 +345,22 @@ public class Juego extends Canvas implements Runnable{
             }
         }
     }
-    
+    private int actualizaciones = 0;
     private void actualizar(){
         teclado.actualizar();
         if (jugador.actualizar()){
-            
-        ventanaStats.setEstado();
-        ventanaHabilidades.setEstado();
-        ventanaMonstruos.setEstado();
-        ventanaInventario.setEstado();
-        for(Monstruo m: monstruos){
-            m.actualizar(); 
-        }}
+            actualizaciones ++;
+            if (actualizaciones == 10){
+                ventanaStats.setEstado();
+                ventanaHabilidades.setEstado();
+                ventanaMonstruos.setEstado();
+                ventanaInventario.setEstado();
+                for(Monstruo m: monstruos){
+                    m.actualizar(); 
+                }
+                actualizaciones = 0;
+            }
+        }
         checkMision();
         aps++;
     }

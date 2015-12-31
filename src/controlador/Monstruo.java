@@ -30,16 +30,14 @@ public class Monstruo extends Personaje {
         int vision = stats.radio_vision*32;
         if (((monsterx - vision)<playerx) && ((monsterx + vision) > playerx)){
             if (((monstery -vision) < playery )&& ((monstery + vision) > playery) ){
-//                System.out.println("Te veo");
                 return true;
             }
         }
-//        System.out.println("");
         return false;
     }
     
     
-    public void usarHabilidad(){
+    public boolean usarHabilidad(){
         Random  rnd = new Random();
         int habilidad_rnd = (int) rnd.nextDouble()*habilidades.size();
         Habilidad habilidad = habilidades.get(habilidad_rnd);
@@ -47,9 +45,10 @@ public class Monstruo extends Personaje {
             System.out.println(Nombre+" usó " + habilidad.nombre);
             Juego.jugador.danar(habilidad.dano);
             Juego.jugador.addStatus(habilidad.estado);
-            //esto no funciona!
             Mana -= habilidad.costo;
+            return true;
         }
+        return false;
                 
     }
 }

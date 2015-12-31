@@ -51,7 +51,9 @@ public class Esqueleto extends Monstruo{
                     Double dmg = (rand.nextDouble()*3);
                     int i = dmg.intValue();
                     if (i==1){
-                        usarHabilidad();
+                        if(!usarHabilidad()){
+                            Juego.jugador.danar(stats.fuerza);
+                        }
                     }else{
                         Juego.jugador.danar(stats.fuerza);
                     }
