@@ -31,6 +31,9 @@ public class Cofre extends Monstruo{
             c.getInventario().clear();
         }
     }
+    public boolean isOpen(){
+        return (sprite==Sprite.COFREA);
+    }
     
     @Override
     public boolean actualizar(){
