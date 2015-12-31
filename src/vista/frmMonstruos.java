@@ -109,7 +109,8 @@ public class frmMonstruos extends javax.swing.JFrame {
         for(Monstruo m:Juego.monstruos){
             if(m.getNombre().equals(objetivo)){
                 System.out.println("Jugador ataco a "+objetivo);
-                m.danar(Juego.jugador.getStats().getFuerza());
+                m.danar(p.getStats().getFuerza());
+                System.out.println(m.getVida());
                 break;
             }
         }
