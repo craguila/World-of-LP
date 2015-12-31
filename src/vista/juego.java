@@ -17,7 +17,6 @@ import java.awt.image.BufferStrategy;
 import java.awt.image.BufferedImage;
 import java.awt.image.DataBufferInt;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.Random;
 import javax.swing.*;
 
@@ -48,7 +47,9 @@ public class Juego extends Canvas implements Runnable,ActionListener{
     private JMenuBar mb;
     private JMenu menu1;
     private JMenuItem item1;
+    private JMenuItem item2;
     private frmStats ventanaStats;
+    private frmHabilidades ventanaHabilidades;
     
     public Juego(String nombre,int clase){
         setPreferredSize(new Dimension(ANCHO, ALTO));
@@ -103,6 +104,8 @@ public class Juego extends Canvas implements Runnable,ActionListener{
         }
         ventanaStats=new frmStats(jugador);
         ventanaStats.setResizable(false);
+        ventanaHabilidades=new frmHabilidades(jugador);
+        ventanaHabilidades.setResizable(false);
         JOptionPane.showMessageDialog(this, "Es un placer conocer por fin a tan renombrado "+ tipo, NOMBRE, 1);
         JOptionPane.showMessageDialog(this,jugador.getNombre()+", tu mision en este mundo mágico consiste en: \n ", NOMBRE, 1);
         //agregamos los cofres;
@@ -189,7 +192,9 @@ public class Juego extends Canvas implements Runnable,ActionListener{
         ventana.addComponentListener(new java.awt.event.ComponentAdapter() {
             @Override
             public void componentMoved(java.awt.event.ComponentEvent evt) {
-                ventanaStats.setLocation(ventana.getLocation().x-ventanaStats.getSize().width, ventana.getLocation().y);
+                ventanaStats.setLocation(ventana.getLocation().x-ventanaStats.getWidth(), ventana.getLocation().y);
+                ventanaHabilidades.setLocation(ventana.getLocation().x+ventana.getWidth()-ventanaHabilidades.getWidth(),
+                        ventana.getLocation().y+ventana.getHeight());
             }
         });
         ventana.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -202,9 +207,13 @@ public class Juego extends Canvas implements Runnable,ActionListener{
         menu1=new JMenu("Ver");
         mb.add(menu1);
         item1=new JMenuItem("Stats");
+        item2=new JMenuItem("Habilidades");
         item1.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_1,ActionEvent.CTRL_MASK));
+        item2.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_2,ActionEvent.CTRL_MASK));
         item1.addActionListener(this);
+        item2.addActionListener(this);
         menu1.add(item1);
+        menu1.add(item2);
         ventana.setJMenuBar(mb);
         ventana.setVisible(true);
         
@@ -305,6 +314,10 @@ public class Juego extends Canvas implements Runnable,ActionListener{
     public void actionPerformed(ActionEvent e) {
         if(e.getSource()==item1){            
             ventanaStats.setVisible(!ventanaStats.isVisible());
+            this.requestFocus();
+        }
+        if(e.getSource()==item2){            
+            ventanaHabilidades.setVisible(!ventanaHabilidades.isVisible());
             this.requestFocus();
         }
     }

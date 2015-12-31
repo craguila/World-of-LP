@@ -31,6 +31,6 @@ public class Status {//Ejemplo: veneno, paralisis, dormir, piedra, ...
     }
 
     public String getNombre() {
-        return nombre;
+        return this.nombre;
     }
 }
