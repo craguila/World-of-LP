@@ -124,11 +124,11 @@ public class Juego extends Canvas implements Runnable{
         }
         //cargamos enemigos
         //creamos los monstruos
-        int num_murcielagos = 10;
-        int num_tigres = 10;
-        int num_lobos = 10;
-        int num_gatos = 10;
-        int num_esq = 10;
+        int num_murcielagos = 3;
+        int num_tigres = 3;
+        int num_lobos = 3;
+        int num_gatos = 3;
+        int num_esq = 3;
         i=0;
         rnd = new Random();
         while (i < num_murcielagos){
@@ -210,6 +210,7 @@ public class Juego extends Canvas implements Runnable{
         
     }
     
+    
     public synchronized void iniciar(){
         jugando = true;
         thread = new Thread(this, "Graficos");
@@ -239,6 +240,8 @@ public class Juego extends Canvas implements Runnable{
         }}
         aps++;
     }
+    
+    
     private void mostrar(){
         BufferStrategy estrategia = getBufferStrategy();
         
