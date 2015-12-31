@@ -29,4 +29,8 @@ public class Status {//Ejemplo: veneno, paralisis, dormir, piedra, ...
         this.duration = duracion;
         
     }
+
+    public String getNombre() {
+        return nombre;
+    }
 }
