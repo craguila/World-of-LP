@@ -8,6 +8,11 @@ import controlador.Habilidad;
 import controlador.Monstruo;
 import controlador.Personaje;
 import javax.swing.table.DefaultTableModel;
+import static vista.Juego.monstruos;
+import static vista.Juego.ventanaHabilidades;
+import static vista.Juego.ventanaInventario;
+import static vista.Juego.ventanaMonstruos;
+import static vista.Juego.ventanaStats;
 
 /**
  *
@@ -94,7 +99,15 @@ public class frmHabilidades extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
+public void despuesdeatacar(){
+            ventanaStats.setEstado();
+            ventanaHabilidades.setEstado();
+            ventanaMonstruos.setEstado();
+            ventanaInventario.setEstado();
+            for(Monstruo m: monstruos){
+                m.actualizar(); 
+            }
+        }
     private void tblHabilidadesMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblHabilidadesMouseClicked
         String habilidad=tblHabilidades.getValueAt(tblHabilidades.getSelectedRow(), 0).toString();
         Habilidad habilidadEfectuada = Habilidad.NINGUNA;
@@ -114,6 +127,7 @@ public class frmHabilidades extends javax.swing.JFrame {
                 }
             }
         }
+        despuesdeatacar();
     }//GEN-LAST:event_tblHabilidadesMouseClicked
 
     

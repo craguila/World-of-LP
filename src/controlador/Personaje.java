@@ -316,7 +316,7 @@ public class Personaje {
                 Vida --;
             }
             if (Vida<=0){
-                Vida = 100;
+                Vida = 0;
             }
         }
     }
