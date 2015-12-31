@@ -28,7 +28,7 @@ public class Juego extends Canvas implements Runnable{
     private static int aps = 0;
     private static int fps = 0;
     
-    private static JFrame ventana;
+    public static JFrame ventana;
     private static volatile boolean jugando = false;
     private static Thread thread;
    

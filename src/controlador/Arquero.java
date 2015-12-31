@@ -57,6 +57,7 @@ public class Arquero extends Personaje {
         
         if(teclado.inventario && !Juego.ventanaInventario.isVisible()){
             Juego.ventanaInventario.setVisible(true);
+            Juego.ventana.setVisible(true);
         }
         if (!teclado.inventario && Juego.ventanaInventario.isVisible()){
             Juego.ventanaInventario.setVisible(false);
@@ -64,6 +65,7 @@ public class Arquero extends Personaje {
         
         if(teclado.abrirstats && !Juego.ventanaStats.isVisible()){
             Juego.ventanaStats.setVisible(true);
+            Juego.ventana.setVisible(true);
         }
         if (!teclado.abrirstats && Juego.ventanaStats.isVisible()){
             Juego.ventanaStats.setVisible(false);
@@ -71,6 +73,7 @@ public class Arquero extends Personaje {
         
         if(teclado.usarhabilidad && !Juego.ventanaHabilidades.isVisible()){
             Juego.ventanaHabilidades.setVisible(true);
+            Juego.ventana.setVisible(true);
         }
         if (!teclado.usarhabilidad && Juego.ventanaHabilidades.isVisible()){
             Juego.ventanaHabilidades.setVisible(false);
@@ -78,6 +81,8 @@ public class Arquero extends Personaje {
         
         if(teclado.atacar && !Juego.ventanaMonstruos.isVisible()){
             Juego.ventanaMonstruos.setVisible(true);
+            Juego.ventana.setVisible(true);
+            
         }
         if (!teclado.atacar && Juego.ventanaMonstruos.isVisible()){
             Juego.ventanaMonstruos.setVisible(false);
