@@ -5,6 +5,7 @@
 package vista;
 
 import controlador.Habilidad;
+import controlador.Monstruo;
 import controlador.Personaje;
 import javax.swing.table.DefaultTableModel;
 
@@ -67,6 +68,11 @@ public class frmHabilidades extends javax.swing.JFrame {
                 return canEdit [columnIndex];
             }
         });
+        tblHabilidades.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tblHabilidadesMouseClicked(evt);
+            }
+        });
         jScrollPane1.setViewportView(tblHabilidades);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -88,6 +94,15 @@ public class frmHabilidades extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void tblHabilidadesMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblHabilidadesMouseClicked
+        String habilidad=tblHabilidades.getValueAt(tblHabilidades.getSelectedRow(), 0).toString();
+        for(Monstruo m:Juego.monstruos){
+            if(p.getMonsruosVisibles().contains(m.getNombre())){
+                System.out.println("jugador uso "+habilidad+" sobre "+m.getNombre());
+            }
+        }
+    }//GEN-LAST:event_tblHabilidadesMouseClicked
 
     
     // Variables declaration - do not modify//GEN-BEGIN:variables

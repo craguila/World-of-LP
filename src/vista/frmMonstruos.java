@@ -4,6 +4,7 @@
  */
 package vista;
 
+import controlador.Monstruo;
 import controlador.Personaje;
 import javax.swing.table.DefaultTableModel;
 
@@ -76,6 +77,11 @@ public class frmMonstruos extends javax.swing.JFrame {
                 return canEdit [columnIndex];
             }
         });
+        tblMonstruos.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tblMonstruosMouseClicked(evt);
+            }
+        });
         jScrollPane1.setViewportView(tblMonstruos);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -97,6 +103,16 @@ public class frmMonstruos extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void tblMonstruosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblMonstruosMouseClicked
+        String objetivo=tblMonstruos.getValueAt(tblMonstruos.getSelectedRow(), 1).toString();
+        for(Monstruo m:Juego.monstruos){
+            if(m.getNombre().equals(objetivo)){
+                System.out.println("Jugador ataco a "+objetivo);
+                break;
+            }
+        }
+    }//GEN-LAST:event_tblMonstruosMouseClicked
 
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
