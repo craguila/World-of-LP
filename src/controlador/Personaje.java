@@ -28,6 +28,7 @@ public class Personaje {
     Inventario inventario;
     protected Mapa mapa;
     
+    
     private ArrayList<Status> status;    
     private ArrayList<Habilidad> habilidades;
     private ArrayList<String> monstruosVisibles;

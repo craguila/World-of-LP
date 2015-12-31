@@ -121,11 +121,14 @@ public class frmMonstruos extends javax.swing.JFrame {
         String objetivo=tblMonstruos.getValueAt(tblMonstruos.getSelectedRow(), 1).toString();
         for(Monstruo m:Juego.monstruos){
             if(m.getNombre().equals(objetivo)){
+                if (Juego.jugador.vivo()){
                 System.out.println("Jugador ataco a "+objetivo+"-vida: "+m.getVida());
                 
                 m.danar(Juego.jugador.getStats().getFuerza());
                 despuesdeatacar();
+                }
                 break;
+                
             }
         }
     }//GEN-LAST:event_tblMonstruosMouseClicked

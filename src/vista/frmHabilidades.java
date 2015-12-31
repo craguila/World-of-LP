@@ -119,15 +119,18 @@ public void despuesdeatacar(){
         if (Juego.jugador.getMana()>habilidadEfectuada.costo){
             for(Monstruo m:Juego.monstruos){
                 if(p.getMonsruosVisibles().contains(m.getNombre())){
-                    System.out.println("jugador uso "+habilidad+" sobre "+m.getNombre());
+                    if (Juego.jugador.vivo()){
+                        System.out.println("jugador uso "+habilidad+" sobre "+m.getNombre());
 
-                    m.danar(habilidadEfectuada.dano);
-                    m.addStatus(habilidadEfectuada.estado);
-                    Juego.jugador.gastarMana(habilidadEfectuada.costo);
+                        m.danar(habilidadEfectuada.dano);
+                        m.addStatus(habilidadEfectuada.estado);
+                        Juego.jugador.gastarMana(habilidadEfectuada.costo);
+                    }
                 }
             }
+            despuesdeatacar();
         }
-        despuesdeatacar();
+        
     }//GEN-LAST:event_tblHabilidadesMouseClicked
 
     

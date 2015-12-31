@@ -21,6 +21,17 @@ public class Cofre extends Monstruo{
         this.sprite = sprite;
     }
     
+    public void sacarItem(){
+        this.sprite = Sprite.COFREA;
+        if (!inventario.items.isEmpty()){
+            for (Item i: inventario.items){
+                Juego.jugador.inventario.items.add(i);
+            }
+            inventario.items.clear();
+            return;
+        }
+        System.out.println("El cofre está vacio");
+    }
     
     @Override
     public boolean actualizar(){

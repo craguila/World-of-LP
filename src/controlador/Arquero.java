@@ -89,7 +89,36 @@ public class Arquero extends Personaje {
         } 
         
         if(teclado.abrircofre){
-            System.out.println("Abrir cofre");
+            
+            int posicionX = posicion[0] + desplazamientoX;
+            int posicionY = posicion[1] + desplazamientoY;
+            int margenIzquierdo = -23; //cambiar despues
+            int margenDerecho = 26;
+            int margenSuperior = -20;
+            int margenInferior = 29;
+            
+            //busca los cofres
+            for(Cofre c: Juego.cofres){
+                int lado_monstruo =c.getSprite().getLado();
+                //esquinas del monstruo
+                int monstruoX = c.posicion[0]-lado_monstruo+5;
+                int monstruoY = c.posicion[1]-lado_monstruo;
+                int monstruoX2 = c.posicion[0];
+                int monstruoY2 = c.posicion[1];
+                //esquinas del jugador
+                int playerX = posicionX + margenIzquierdo+18;
+                int playerX2 = posicionX - margenIzquierdo- margenDerecho - sprite.getLado()+18;
+                int playerY = posicionY + margenSuperior;
+                int playerY2 = posicionY + margenSuperior + margenInferior + sprite.getLado();
+
+                if (playerX>monstruoX && playerX<monstruoX2 && playerY>monstruoY && playerY<monstruoY2){
+                    c.sacarItem();
+                }
+                if (playerX2>monstruoX && playerX2<monstruoX2 && playerY>monstruoY && playerY<monstruoY2){
+                    c.sacarItem();
+                }
+            }
+            
         }
         
         
