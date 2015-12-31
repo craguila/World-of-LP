@@ -255,9 +255,12 @@ public class Personaje {
         }
         return colision;
     }
-        
     
-        public void buscarmonstruos(){
+    public ArrayList<String> getMonsruosVisibles(){
+        return this.monstruosVisibles;
+    }
+    
+    public void buscarmonstruos(){
         monstruosVisibles.clear();
         int playerx = posicion[0];
         int playery = posicion[1];
