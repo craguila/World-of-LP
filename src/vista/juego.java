@@ -334,6 +334,7 @@ public class Juego extends Canvas implements Runnable{
                         textoMision="Matar al monstruo "+objMonstruo.getNombre();
                         break;
                 }
+                ventanaStats.dispose();
                 ventanaStats=new frmStats(jugador,textoMision);
                 ventanaStats.setResizable(false);
                 JOptionPane.showMessageDialog(this,jugador.getNombre()+", tu mision en este mundo mágico consiste en: \n"+textoMision , NOMBRE, 1);
