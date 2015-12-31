@@ -29,6 +29,7 @@ public class Cofre extends Monstruo{
                 Juego.jugador.getInventario().addItem(i);
             }
             c.getInventario().clear();
+            Juego.cofresobjetivo.remove(c);
         }
     }
     public boolean isOpen(){
