@@ -97,9 +97,21 @@ public class frmHabilidades extends javax.swing.JFrame {
 
     private void tblHabilidadesMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblHabilidadesMouseClicked
         String habilidad=tblHabilidades.getValueAt(tblHabilidades.getSelectedRow(), 0).toString();
-        for(Monstruo m:Juego.monstruos){
-            if(p.getMonsruosVisibles().contains(m.getNombre())){
-                System.out.println("jugador uso "+habilidad+" sobre "+m.getNombre());
+        Habilidad habilidadEfectuada = Habilidad.NINGUNA;
+        for (Habilidad h:Juego.jugador.getHabilidades()){
+            if (h.nombre.equals(habilidad)){
+                habilidadEfectuada = h;
+            }
+        }
+        if (Juego.jugador.getMana()>habilidadEfectuada.costo){
+            for(Monstruo m:Juego.monstruos){
+                if(p.getMonsruosVisibles().contains(m.getNombre())){
+                    System.out.println("jugador uso "+habilidad+" sobre "+m.getNombre());
+
+                    m.danar(habilidadEfectuada.dano);
+                    m.addStatus(habilidadEfectuada.estado);
+                    Juego.jugador.gastarMana(habilidadEfectuada.costo);
+                }
             }
         }
     }//GEN-LAST:event_tblHabilidadesMouseClicked

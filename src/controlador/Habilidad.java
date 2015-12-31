@@ -21,6 +21,7 @@ public class Habilidad {
     public static Habilidad DESORDEN_DE_LA_REALIDAD=new Habilidad("Desorden de la realidad", 20, Status.CONGELADO, 10);
     public static Habilidad CONGELAR_ALMA=new Habilidad("Congelar alma", 16, Status.CONGELADO, 8);
     public static Habilidad PARADOJA_TEMPORAL=new Habilidad("Paradoja temporal", 13, Status.PARALIZADO, 2);
+    public static Habilidad NINGUNA=new Habilidad("Ninguna", 0, null, 0);
                 
     
     public Habilidad(String nombre, int dano, Status estado, int costo){

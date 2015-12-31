@@ -102,10 +102,16 @@ public class Personaje {
     public int getNivel(){
         return this.Nivel;
     }
-    
+    public int getMana(){
+        return this.Mana;
+    }
+    public void gastarMana(int m){
+        this.Mana -= m;
+    }
     public int getEXP(){
         return this.EXP;
     }
+    
     
     public String getNombre(){
         return Nombre;
