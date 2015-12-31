@@ -23,7 +23,7 @@ public class Cofre extends Monstruo{
     
     public void sacarItem(){
         this.sprite = Sprite.COFREA;
-        if (!inventario.items.isEmpty()){
+        if (this.inventario.items.size()>0){
             for (Item i: inventario.items){
                 Juego.jugador.inventario.items.add(i);
             }
