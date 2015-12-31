@@ -7,6 +7,11 @@ package vista;
 import controlador.Monstruo;
 import controlador.Personaje;
 import javax.swing.table.DefaultTableModel;
+import static vista.Juego.monstruos;
+import static vista.Juego.ventanaHabilidades;
+import static vista.Juego.ventanaInventario;
+import static vista.Juego.ventanaMonstruos;
+import static vista.Juego.ventanaStats;
 
 /**
  *
@@ -103,23 +108,24 @@ public class frmMonstruos extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
+public void despuesdeatacar(){
+            ventanaStats.setEstado();
+            ventanaHabilidades.setEstado();
+            ventanaMonstruos.setEstado();
+            ventanaInventario.setEstado();
+            for(Monstruo m: monstruos){
+                m.actualizar(); 
+            }
+        }
     private void tblMonstruosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblMonstruosMouseClicked
         String objetivo=tblMonstruos.getValueAt(tblMonstruos.getSelectedRow(), 1).toString();
         for(Monstruo m:Juego.monstruos){
             if(m.getNombre().equals(objetivo)){
-<<<<<<< HEAD
                 if (Juego.jugador.vivo()){
                 System.out.println("Jugador ataco a "+objetivo+"-vida: "+m.getVida());
-                
                 m.danar(Juego.jugador.getStats().getFuerza());
                 despuesdeatacar();
                 }
-=======
-                System.out.println("Jugador ataco a "+objetivo);
-                m.danar(p.getStats().getFuerza());
-                System.out.println(m.getVida());
->>>>>>> origin/master
                 break;
                 
             }

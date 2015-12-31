@@ -121,17 +121,10 @@ public void despuesdeatacar(){
                 if(p.getMonsruosVisibles().contains(m.getNombre())){
                     if (Juego.jugador.vivo()){
                         System.out.println("jugador uso "+habilidad+" sobre "+m.getNombre());
-
-<<<<<<< HEAD
                         m.danar(habilidadEfectuada.dano);
                         m.addStatus(habilidadEfectuada.estado);
                         Juego.jugador.gastarMana(habilidadEfectuada.costo);
                     }
-=======
-                    m.danar(habilidadEfectuada.dano);
-                    m.addStatus(habilidadEfectuada.estado);
-                    p.gastarMana(habilidadEfectuada.costo);
->>>>>>> origin/master
                 }
             }
             despuesdeatacar();
