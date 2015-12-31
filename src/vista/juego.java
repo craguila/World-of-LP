@@ -58,7 +58,7 @@ public class Juego extends Canvas implements Runnable,ActionListener{
         teclado = new Teclado();
         addKeyListener(teclado);
         
-        mapa = new MapaCargado("/texturas/mapa1.png"); //Aqui se define el ancho del juego en cuadritos
+        mapa = new MapaCargado("/texturas/mapa1.png"); 
         String tipo;
         Equipo equipo;
         Inventario inventario = new Inventario();

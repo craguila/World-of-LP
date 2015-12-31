@@ -7,6 +7,8 @@ package controlador;
 
 import Graficos.Sprite;
 import control.Teclado;
+import java.util.Calendar;
+import java.util.Date;
 import vista.Mapa;
 
 
@@ -16,6 +18,12 @@ public class Arquero extends Personaje {
     private Teclado teclado;   
     private int ira;
     private int Flechas; //requiere utilizar flechas y ira para atacar
+    private boolean abierto_inventario;
+    private Date fechaActual = new Date();
+    private Calendar fecha = Calendar.getInstance();
+    private boolean abierto_habilidad;
+    private int segundos = fecha.get(Calendar.SECOND);
+    private int segundos2 = fecha.get(Calendar.SECOND);
     public Arquero(Mapa mapa, String Nombre, int Nivel, int EXP, Stats stats, int Vida, int Stamina, int Mana, Equipo equipo, Inventario inventario,Teclado teclado, int[] posicion, Sprite sprite) {
         super(mapa, Nombre, Nivel, EXP, stats, Vida, Stamina, Mana, equipo, inventario, posicion);
         this.teclado = teclado;
@@ -45,14 +53,43 @@ public class Arquero extends Personaje {
         if(teclado.derecha){
             desplazamientoX=+stats.rapidez;
         }
-        if(teclado.inventario){
-            System.out.println("Abrir inventario");
+        if(teclado.inventario ){
+            if (segundos2 > segundos ){
+                if (abierto_inventario){
+                    System.out.println("Cerrar inventario");
+                    abierto_inventario = false;
+                    fecha = Calendar.getInstance();
+                    segundos = fecha.get(Calendar.SECOND);
+                } else {
+                    abierto_inventario = true;
+                    System.out.println("Abrir inventario");
+                    fecha = Calendar.getInstance();
+                    segundos = fecha.get(Calendar.SECOND);
+                }
+            }
+            fecha = Calendar.getInstance();
+            segundos2 = fecha.get(Calendar.SECOND);
         }
         if(teclado.atacar){
+            
             System.out.println("Atacar!");
         }
         if(teclado.usarhabilidad){
-            System.out.println("Usar Habilidad!");
+            if (segundos2 > segundos ){
+                if (abierto_habilidad){
+                    System.out.println("Cerrar Habilidades");
+                    abierto_habilidad = false;
+                    fecha = Calendar.getInstance();
+                    segundos = fecha.get(Calendar.SECOND);
+                } else {
+                    abierto_habilidad = true;
+                    System.out.println("Abrir Habilidades");
+                    fecha = Calendar.getInstance();
+                    segundos = fecha.get(Calendar.SECOND);
+                }
+            }
+            fecha = Calendar.getInstance();
+            segundos2 = fecha.get(Calendar.SECOND);
         }
         if(teclado.abrircofre){
             System.out.println("Abrir cofre");
