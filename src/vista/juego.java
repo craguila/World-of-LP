@@ -45,6 +45,7 @@ public class Juego extends Canvas implements Runnable{
     public static frmStats ventanaStats;
     public static frmHabilidades ventanaHabilidades;
     public static frmMonstruos ventanaMonstruos;
+    public static frmInventario ventanaInventario;
     
     public Juego(String nombre,int clase){
         setPreferredSize(new Dimension(ANCHO, ALTO));
@@ -103,6 +104,8 @@ public class Juego extends Canvas implements Runnable{
         ventanaHabilidades.setResizable(false);
         ventanaMonstruos=new frmMonstruos(jugador);
         ventanaMonstruos.setResizable(false);
+        ventanaInventario=new frmInventario(jugador);
+        ventanaInventario.setResizable(false);
         JOptionPane.showMessageDialog(this, "Es un placer conocer por fin a tan renombrado "+ tipo, NOMBRE, 1);
         JOptionPane.showMessageDialog(this,jugador.getNombre()+", tu mision en este mundo mágico consiste en: \n ", NOMBRE, 1);
         //agregamos los cofres;
@@ -193,6 +196,8 @@ public class Juego extends Canvas implements Runnable{
                 ventanaHabilidades.setLocation(ventana.getLocation().x+ventana.getWidth()-ventanaHabilidades.getWidth(),
                         ventana.getLocation().y+ventana.getHeight());
                 ventanaMonstruos.setLocation(ventana.getLocation().x,ventana.getLocation().y+ventana.getHeight());
+                ventanaInventario.setLocation(ventana.getLocation().x+ventana.getWidth(), ventana.getLocation().y);
+                ventanaInventario.setVisible(true);
             }
         });
         ventana.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -228,6 +233,7 @@ public class Juego extends Canvas implements Runnable{
         ventanaStats.setEstado();
         ventanaHabilidades.setEstado();
         ventanaMonstruos.setEstado();
+        ventanaInventario.setEstado();
         for(Monstruo m: monstruos){
             m.actualizar(); 
         }}

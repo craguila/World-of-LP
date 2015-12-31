@@ -50,6 +50,10 @@ public class Personaje {
         status = new ArrayList<>();
         monstruosVisibles = new ArrayList<>();
     }
+
+    public Inventario getInventario() {
+        return inventario;
+    }
     
     public void addHabilidad(Habilidad h){
         habilidades.add(h);

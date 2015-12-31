@@ -15,5 +15,10 @@ public class Inventario {
         total_actual = 0;
         items=new ArrayList<>();
     }
+
+    public ArrayList<Item> getItems() {
+        return items;
+    }
+    
     
 }

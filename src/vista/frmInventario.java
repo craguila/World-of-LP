@@ -4,6 +4,7 @@
  */
 package vista;
 
+import controlador.Item;
 import controlador.Personaje;
 import javax.swing.table.DefaultTableModel;
 
@@ -11,28 +12,27 @@ import javax.swing.table.DefaultTableModel;
  *
  * @author Nicolas olivos
  */
-public class frmMonstruos extends javax.swing.JFrame {
+public class frmInventario extends javax.swing.JFrame {
     /**
-     * Creates new form frmMonstruos
+     * Creates new form frmInventario
      */
     Personaje p;
-    public frmMonstruos(Personaje p) {
+    public frmInventario(Personaje p) {
         initComponents();
         this.p=p;
         setEstado();
     }
     
     public void setEstado() {
-        DefaultTableModel mdl =(DefaultTableModel)this.tblMonstruos.getModel();
+        DefaultTableModel mdl =(DefaultTableModel)this.tblInventario.getModel();
         mdl.setRowCount(0);
         int i=1;
-        p.buscarmonstruos();
-        for(String nombre:p.getMonsruosVisibles()){
-            Object data[]={i,nombre};
+        for(Item it:p.getInventario().getItems()){
+            Object data[]={i,it.getNombre()};
             i++;
             mdl.addRow(data);
         }
-        this.tblMonstruos.setModel(mdl);
+        this.tblInventario.setModel(mdl);
     }
 
     /**
@@ -44,16 +44,13 @@ public class frmMonstruos extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jMenuItem1 = new javax.swing.JMenuItem();
         jScrollPane1 = new javax.swing.JScrollPane();
-        tblMonstruos = new javax.swing.JTable();
-
-        jMenuItem1.setText("jMenuItem1");
+        tblInventario = new javax.swing.JTable();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
 
-        tblMonstruos.setModel(new javax.swing.table.DefaultTableModel(
+        tblInventario.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
@@ -76,7 +73,7 @@ public class frmMonstruos extends javax.swing.JFrame {
                 return canEdit [columnIndex];
             }
         });
-        jScrollPane1.setViewportView(tblMonstruos);
+        jScrollPane1.setViewportView(tblInventario);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -91,8 +88,8 @@ public class frmMonstruos extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 278, Short.MAX_VALUE)
+                .addContainerGap())
         );
 
         pack();
@@ -100,9 +97,8 @@ public class frmMonstruos extends javax.swing.JFrame {
 
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable tblMonstruos;
+    private javax.swing.JTable tblInventario;
     // End of variables declaration//GEN-END:variables
 
     

@@ -29,5 +29,9 @@ public class Item {
         this.tipo = tipo;
         this.descripcion = descripcion;
     }
+
+    public String getNombre() {
+        return nombre;
+    }
     
 }
