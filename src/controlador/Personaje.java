@@ -30,6 +30,7 @@ public class Personaje {
     
     private ArrayList<Status> status;    
     private ArrayList<Habilidad> habilidades;
+    private ArrayList<String> monstruosVisibles;
     
     protected char direccion = 'n';
 
@@ -47,6 +48,7 @@ public class Personaje {
         this.posicion = posicion;
         habilidades = new ArrayList<>();
         status = new ArrayList<>();
+        monstruosVisibles = new ArrayList<>();
     }
     
     public void addHabilidad(Habilidad h){
@@ -252,6 +254,23 @@ public class Personaje {
             colision = true;
         }
         return colision;
+    }
+        
+    
+        public void buscarmonstruos(){
+        monstruosVisibles.clear();
+        int playerx = posicion[0];
+        int playery = posicion[1];
+        int vision = stats.radio_vision*32;
+        for (Monstruo m:Juego.monstruos){
+            int monsterx = m.posicion[0];
+            int monstery = m.posicion[1];
+            if (((playerx - vision)<monsterx) && ((playerx + vision) > monsterx)){
+                if (((playery -vision) < monstery )&& ((playery + vision) > monstery) ){
+                    monstruosVisibles.add(m.Nombre);
+                }
+            }
+        }
     }
         
         
