@@ -42,7 +42,8 @@ public class Monstruo extends Personaje {
         int habilidad_rnd = (int) rnd.nextDouble()*habilidades.size();
         Habilidad habilidad = habilidades.get(habilidad_rnd);
         if(Mana>habilidad.costo){
-            System.out.println(Nombre+" usó " + habilidad.nombre);
+            Juego.setConsole((Nombre+" usó " + habilidad.nombre));
+//            System.out.println(Nombre+" usó " + habilidad.nombre);
             Juego.jugador.danar(habilidad.dano);
             Juego.jugador.addStatus(habilidad.estado);
             Mana -= habilidad.costo;

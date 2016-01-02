@@ -25,7 +25,8 @@ public class Cofre extends Monstruo{
         c.sprite = Sprite.COFREA;
         if (c.getInventario().getSize()>0){
             for (EquipoItem i: c.getInventario().getItems()){
-                System.out.println("Obtuviste "+i.nombre);
+                Juego.setConsole("Obtuviste "+i.nombre);
+//                System.out.println("Obtuviste "+i.nombre);
                 Juego.jugador.getInventario().addItem(i);
             }
             c.getInventario().clear();

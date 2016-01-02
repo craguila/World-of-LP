@@ -132,7 +132,8 @@ public void despuesdeatacar(){
         for(Monstruo m:Juego.monstruos){
             if(m.getNombre().equals(objetivo)){
                 if (Juego.jugador.vivo()){
-                System.out.println("Jugador ataco a "+objetivo+"-vida: "+m.getVida());
+                Juego.setConsole("Jugador ataco a "+objetivo+"-vida: "+m.getVida());
+//                System.out.println("Jugador ataco a "+objetivo+"-vida: "+m.getVida());
                 m.danar(Juego.jugador.getStats().getFuerza());
                 despuesdeatacar();
                 }

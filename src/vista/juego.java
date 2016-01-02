@@ -54,8 +54,14 @@ public class Juego extends Canvas implements Runnable{
     private int mision;
     private String textoMision;
     private formulario form;
+    public static ArrayList<String> consola;
     
+
     public Juego(String nombre,int clase,formulario form){
+        consola = new ArrayList<>();
+        consola.add("");
+        consola.add("");
+        consola.add("");
         this.form=form;
         form.setVisible(false);
         setPreferredSize(new Dimension(ANCHO, ALTO));
@@ -264,8 +270,11 @@ public class Juego extends Canvas implements Runnable{
         ventana.setVisible(true);
         
     }
-    
-    
+    public static void setConsole(String m){
+        consola.set(2, consola.get(1));
+        consola.set(1, consola.get(2));
+        consola.add(0,m);
+    }
     public synchronized void iniciar(){
         jugando = true;
         thread = new Thread(this, "Graficos");
@@ -392,7 +401,10 @@ public class Juego extends Canvas implements Runnable{
         
         
         g.drawString("x:"+jugador.getX()+" y:"+jugador.getY(), 10, 10);
-        
+        g.setColor(Color.white);
+        g.drawString(consola.get(0), 10, 450);
+        g.drawString(consola.get(1), 10, 435);
+        g.drawString(consola.get(2), 10, 420);
         g.dispose();
         
         estrategia.show();

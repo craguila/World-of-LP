@@ -105,7 +105,7 @@ public class frmInventario extends javax.swing.JFrame {
         String objetivo=tblInventario.getValueAt(tblInventario.getSelectedRow(), 1).toString();
         for (EquipoItem i:Juego.jugador.getInventario().getItems()){
             if (i.getNombre().equals(objetivo)){
-                System.out.println(objetivo);
+//                System.out.println(objetivo);
                 i.Equipar();
                 Juego.jugador.getInventario().removeItem(i);
                 Juego.ventanaInventario.setEstado();

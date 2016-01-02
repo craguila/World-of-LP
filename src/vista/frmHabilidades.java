@@ -130,7 +130,8 @@ public void despuesdeatacar(){
             for(Monstruo m:Juego.monstruos){
                 if(p.getMonsruosVisibles().contains(m.getNombre())){
                     if (Juego.jugador.vivo()){
-                        System.out.println("jugador uso "+habilidad+" sobre "+m.getNombre());
+                        Juego.setConsole(("jugador uso "+habilidad+" sobre "+m.getNombre()));
+//                        System.out.println("jugador uso "+habilidad+" sobre "+m.getNombre());
                         m.danar(habilidadEfectuada.dano);
                         m.addStatus(habilidadEfectuada.estado);
                         Juego.jugador.gastarMana(habilidadEfectuada.costo);
