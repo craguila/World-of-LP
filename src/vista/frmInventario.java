@@ -32,6 +32,9 @@ public class frmInventario extends javax.swing.JFrame {
             Object data[]={it.getNombre()};
             mdl.addRow(data);
         }
+        this.lblArmadura.setText("Armadura: "+ p.getEquipo().getArmadura().getNombre());
+        this.lblArma.setText("Arma: "+ p.getEquipo().getArma().getNombre());
+        this.lblFlechas.setText("Flechas: "+ p.getEquipo().getFlechas().getNombre());
         this.lblDinero.setText("Dinero: "+p.getDinero()+" monedas.");
         this.tblInventario.setModel(mdl);
     }
@@ -48,6 +51,10 @@ public class frmInventario extends javax.swing.JFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         tblInventario = new javax.swing.JTable();
         lblDinero = new javax.swing.JLabel();
+        jLabel1 = new javax.swing.JLabel();
+        lblArmadura = new javax.swing.JLabel();
+        lblArma = new javax.swing.JLabel();
+        lblFlechas = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
@@ -85,6 +92,18 @@ public class frmInventario extends javax.swing.JFrame {
         lblDinero.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblDinero.setText("Dinero");
 
+        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel1.setText("Equipo");
+
+        lblArmadura.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblArmadura.setText("Sin Armadura");
+
+        lblArma.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblArma.setText("Sin Arma");
+
+        lblFlechas.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblFlechas.setText("Sin Flechas");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -93,17 +112,29 @@ public class frmInventario extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 211, Short.MAX_VALUE)
-                    .addComponent(lblDinero, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(lblDinero, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(lblArmadura, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(lblArma, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(lblFlechas, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
                 .addComponent(lblDinero)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 286, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 216, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabel1)
+                .addGap(18, 18, 18)
+                .addComponent(lblArmadura)
+                .addGap(18, 18, 18)
+                .addComponent(lblArma)
+                .addGap(18, 18, 18)
+                .addComponent(lblFlechas)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         pack();
@@ -125,8 +156,12 @@ public class frmInventario extends javax.swing.JFrame {
 
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JLabel lblArma;
+    private javax.swing.JLabel lblArmadura;
     private javax.swing.JLabel lblDinero;
+    private javax.swing.JLabel lblFlechas;
     private javax.swing.JTable tblInventario;
     // End of variables declaration//GEN-END:variables
 

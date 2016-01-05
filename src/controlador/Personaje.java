@@ -186,6 +186,9 @@ public class Personaje {
     public boolean vivo(){
         return Vida>0;
     }
+    public Equipo getEquipo(){
+        return equipo;
+    }
     
     public void mover(int desplazamientoX, int desplazamientoY){
         if (desplazamientoX > 0){
@@ -215,7 +218,7 @@ public class Personaje {
         int posicionX = posicion[0] + desplazamientoX;
         int posicionY = posicion[1] + desplazamientoY;
         
-        int margenIzquierdo = -23; //cambiar despues
+        int margenIzquierdo = -23; 
         int margenDerecho = 26;
         
         int margenSuperior = -20;

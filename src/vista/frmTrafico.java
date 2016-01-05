@@ -95,6 +95,7 @@ public class frmTrafico extends javax.swing.JFrame {
         btnExit = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setUndecorated(true);
 
         lblVendedor.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblVendedor.setMaximumSize(new java.awt.Dimension(144, 24));

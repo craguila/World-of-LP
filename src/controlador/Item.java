@@ -16,6 +16,7 @@ public class Item {
         POCION_VIDA,
         POCION_MANA,
         POCION_STAMINA,
+        NADA,
     }
     int number;          // Para las flechas, requiere el numero.
     String nombre;

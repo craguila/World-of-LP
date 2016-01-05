@@ -22,6 +22,7 @@ public class EquipoItem extends Item {
     public static EquipoItem ARMADURA_ARQUERO=new EquipoItem(1, 1, 10, 10, "Coraza de Cuero", TipoItem.ARMADURA, "cayado de mago",10);
     public static EquipoItem ARMADURA_MAGO=new EquipoItem(1, 1, 10, 10, "Coraza de Fuego Magico", TipoItem.ARMADURA, "cayado de mago",10);
     public static EquipoItem FLECHA_ARQUERO=new EquipoItem(1, 1, 10, 1, "Flecha Envenenada", TipoItem.ARMADURA, "cayado de mago",10);
+    public static EquipoItem NADA= new EquipoItem(0,0,0,0,"",TipoItem.NADA,"",0);
     
 
     public EquipoItem(int physical_level, int magic_level, int range, int number, String nombre, TipoItem tipo, String descripcion, int precio) {
@@ -37,11 +38,13 @@ public class EquipoItem extends Item {
             Juego.jugador.stats.statsnum.set(5,Juego.jugador.stats.statsnum.get(5)+ magic_level) ;
             Juego.jugador.stats.resistencia += physical_level;
             Juego.jugador.stats.statsnum.set(4,Juego.jugador.stats.statsnum.get(4)+ physical_level) ;
+            Juego.jugador.getEquipo().setArmadura(this);
         } else if(tipo == TipoItem.ARMA){
             Juego.jugador.stats.fuerza += physical_level;
             Juego.jugador.stats.statsnum.set(2,Juego.jugador.stats.statsnum.get(2)+ physical_level) ;
             Juego.jugador.stats.inteligencia += magic_level;
             Juego.jugador.stats.statsnum.set(6,Juego.jugador.stats.statsnum.get(6)+ magic_level) ;
+            Juego.jugador.getEquipo().setArma(this);
         }
         
     }
