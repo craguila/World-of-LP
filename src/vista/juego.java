@@ -14,6 +14,7 @@ import java.awt.image.BufferStrategy;
 import java.awt.image.BufferedImage;
 import java.awt.image.DataBufferInt;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Random;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -45,6 +46,7 @@ public class Juego extends Canvas implements Runnable{
     public static ArrayList<Monstruo> monstruos = new ArrayList<>();
     public static ArrayList<Cofre> cofres = new ArrayList<>();
     public static ArrayList<Cofre> cofresobjetivo = new ArrayList<>();
+    public static ArrayList<Npc> npcs = new ArrayList<>();
     public static frmStats ventanaStats;
     public static frmHabilidades ventanaHabilidades;
     public static frmMonstruos ventanaMonstruos;
@@ -166,6 +168,108 @@ public class Juego extends Canvas implements Runnable{
             }
         }
         cofresobjetivo.addAll(cofres);
+        //cofres agregados
+        //agregamos los npc;
+        int num_personas = 3;
+        int num_comerciantes = 3;
+        int num_enfermeros = 3;
+        ArrayList<Sprite> sprites_personas = new ArrayList<>(
+                Arrays.asList(Sprite.NPC1ABAJO,Sprite.NPC1ARRIBA,Sprite.NPC1DERECHA, Sprite.NPC1IZQUIERDA));
+        ArrayList<Sprite> sprites_comerciantes = new ArrayList<>(
+                Arrays.asList(Sprite.NPC2ABAJO,Sprite.NPC2ARRIBA,Sprite.NPC2DERECHA, Sprite.NPC2IZQUIERDA));
+        ArrayList<Sprite> sprites_enfermeros = new ArrayList<>(
+                Arrays.asList(Sprite.NPC3ABAJO,Sprite.NPC3ARRIBA,Sprite.NPC3DERECHA, Sprite.NPC3IZQUIERDA));
+        //agregamos personas (solo conversan)
+        i = 0;
+        while (i < num_personas){
+            i++;
+            int[] m_pos = {0,0};
+            m_pos[0]=(int)(rnd.nextDouble() * 1540);
+            m_pos[1]=(int)(rnd.nextDouble() * 1537);
+            int spr = rnd.nextInt(4);
+            if (!jugador.hayunmuro(m_pos[0],m_pos[1])){
+                //poner todo en 0
+                npcs.add(new Npc(mapa,"Persona"+i,1,0, Stats.STATS_MONSTRUO,10,10,10,equipo,new Inventario(),m_pos,sprites_personas.get(spr),"Persona"));
+            }
+        }
+        for(Npc npc:npcs){
+            if (!npc.texto.equals("")){
+            switch(rnd.nextInt(4)){
+                case 0:
+                    npc.texto = "Hola!, Soy un NPC";
+                    break;
+                case 1:
+                    npc.texto = "Encantado de conocerte";
+                    break;
+                case 2:
+                    npc.texto = "Debes ser muy valiente si quieres ganar este juego";
+                    break;
+                case 3:
+                    npc.texto = "Morirás en este mundo infernal";
+                    break;
+            }
+            }
+        }
+        //agregamos enfermeros (te curan)
+        i = 0;
+        while (i < num_enfermeros){
+            i++;
+            int[] m_pos = {0,0};
+            m_pos[0]=(int)(rnd.nextDouble() * 1540);
+            m_pos[1]=(int)(rnd.nextDouble() * 1537);
+            int spr = rnd.nextInt(4);
+            if (!jugador.hayunmuro(m_pos[0],m_pos[1])){
+                //poner todo en 0
+                npcs.add(new Npc(mapa,"Enfermero"+i,1,0, Stats.STATS_MONSTRUO,10,10,10,equipo,new Inventario(),m_pos,sprites_enfermeros.get(spr),"Enfermero"));
+            }
+        }
+        for(Npc npc:npcs){
+            if (!npc.texto.equals("")){
+            switch(rnd.nextInt(3)){
+                case 0:
+                    npc.texto = "Wololo";
+                    break;
+                case 1:
+                    npc.texto = "Te he recuperado la energía";
+                    break;
+                case 2:
+                    npc.texto = "Ahora te vez de lujo nuevamente";
+                    break;
+            }
+            }
+        }
+        //agregamos los comerciantes (comra/venta)
+        
+        i = 0;
+        while (i < num_comerciantes){
+            i++;
+            int[] m_pos = {0,0};
+            m_pos[0]=(int)(rnd.nextDouble() * 1540);
+            m_pos[1]=(int)(rnd.nextDouble() * 1537);
+            int spr = rnd.nextInt(4);
+            if (!jugador.hayunmuro(m_pos[0],m_pos[1])){
+                //poner todo en 0
+                npcs.add(new Npc(mapa,"Comerciante"+i,1,0, Stats.STATS_MONSTRUO,10,10,10,equipo,new Inventario(),m_pos,sprites_comerciantes.get(spr),"Comerciante"));
+            }
+        }
+        for(Npc npc:npcs){
+            if (!npc.texto.equals("")){
+            switch(rnd.nextInt(4)){
+                case 0:
+                    npc.texto = "Deseas comprar algo?";
+                    break;
+                case 1:
+                    npc.texto = "Tengo los mejores precios!";
+                    break;
+                case 2:
+                    npc.texto = "Deberías hechar un vistazo a mis productos.";
+                    break;
+                case 3:
+                    npc.texto = "Tengo todo lo que necesitas!";
+                    break;
+            }
+            }
+        }
         //cargamos enemigos
         //creamos los monstruos
         int num_murcielagos = 3;
@@ -315,34 +419,54 @@ public class Juego extends Canvas implements Runnable{
                 }
                 break;
             case 2:
+                fin=true;
                 for(Monstruo m:monstruos){
-                    if(m.getNombre().equals(objMonstruo.getNombre())&&!m.vivo()){
-                        JOptionPane.showMessageDialog(this,jugador.getNombre()+", FELICIDADES GANASTE!!!", NOMBRE, 1);
-                        fin=true;
+                    if(m.getNombre().equals(objMonstruo.getNombre())){
+                        fin = false;
                         break;
                     }
                 }
+                if (fin){
+                    JOptionPane.showMessageDialog(this,jugador.getNombre()+", FELICIDADES GANASTE!!!", NOMBRE, 1);
+                    }
                 break;
         }
         if(fin){
             int confirma=JOptionPane.showConfirmDialog(this, "¿Desea seguir Jugando?", NOMBRE, 1);
             if(JOptionPane.OK_OPTION==confirma){
                 Random rnd = new Random();
-                objMonstruo=monstruos.get(rnd.nextInt(monstruos.size()-1));
-                objCofre=cofresobjetivo.get(rnd.nextInt(cofresobjetivo.size()-1));
-                mision=rnd.nextInt(2);
-                textoMision="";
-                switch(mision){
-                    case 0:
-                        textoMision="Encontrar el "+objCofre.getNombre();
-                        break;
-                    case 1:
-                        textoMision="Encontrar al monstruo "+objMonstruo.getNombre();
-                        break;
-                    case 2:
-                        textoMision="Matar al monstruo "+objMonstruo.getNombre();
-                        break;
+                int misiones = 0;
+                boolean haymonstruos = true;
+                boolean haycofres = true;
+                if (monstruos.size() > 1){
+                  objMonstruo=monstruos.get(rnd.nextInt(monstruos.size()-1));
+                  misiones += 1;
+                } else {
+                    haymonstruos = false;
                 }
+                if (cofresobjetivo.size() >1){
+                   objCofre=cofresobjetivo.get(rnd.nextInt(cofresobjetivo.size()-1));
+                   misiones +=1;
+                } else {
+                    haycofres = false;
+                }
+                mision=rnd.nextInt(3);
+                textoMision="";
+                while (textoMision.equals("")){
+                    if (haycofres && mision == 0){
+                        textoMision="Encontrar el "+objCofre.getNombre();
+                    } else if(haymonstruos && mision == 1){
+                        textoMision="Encontrar al monstruo "+objMonstruo.getNombre();
+                    } else if(haymonstruos && mision == 2){
+                        textoMision="Matar al monstruo "+objMonstruo.getNombre();
+                    } else if(!haymonstruos && !haymonstruos){
+                        JOptionPane.showMessageDialog(this,"No hay más misiones disponibles \n"+jugador.getNombre()+", Gracias por jugar con nostros", NOMBRE, 1);
+                        System.exit(0);
+                    } else {
+                        mision=rnd.nextInt(3);
+                    }
+                }
+                
                 ventanaStats.dispose();
                 ventanaStats=new frmStats(jugador,textoMision);
                 ventanaStats.setResizable(false);
@@ -355,12 +479,12 @@ public class Juego extends Canvas implements Runnable{
             }
         }
     }
-    private int actualizaciones = 0;
+    public static int actualizaciones = 0;
     private void actualizar(){
         teclado.actualizar();
         if (jugador.actualizar()){
             actualizaciones ++;
-            if (actualizaciones == 10){
+            if (actualizaciones >= 15){
                 ventanaStats.setEstado();
                 ventanaHabilidades.setEstado();
                 ventanaMonstruos.setEstado();
@@ -393,6 +517,9 @@ public class Juego extends Canvas implements Runnable{
         for (Cofre c: cofres){
             c.mostrar(pantalla);
         }
+        for (Npc npc: npcs){
+            npc.mostrar(pantalla);
+        }
         System.arraycopy(pantalla.pixeles, 0, pixeles, 0, pixeles.length);
         
         Graphics g = estrategia.getDrawGraphics();
@@ -415,7 +542,7 @@ public class Juego extends Canvas implements Runnable{
     @Override
     public void run() {
         final int NS_POR_SEGUNDO = 1000000000;
-        final byte FPS_OBJETIVO = 120;
+        final byte FPS_OBJETIVO = 60;
         final double NS_POR_ACTUALIZACION = NS_POR_SEGUNDO/FPS_OBJETIVO;
         
         long referenciaActualizacion = System.nanoTime();
