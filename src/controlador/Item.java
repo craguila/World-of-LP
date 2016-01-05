@@ -20,16 +20,20 @@ public class Item {
     int number;          // Para las flechas, requiere el numero.
     String nombre;
     TipoItem tipo;
+    int precio;
     String descripcion; //Descripcion de habilidad que posee
     //el item al ser utilizado. Por ejemplo, recuperar la vida del Personaje
 
-    public Item(int number, String nombre, TipoItem tipo, String descripcion) {
+    public Item(int number, String nombre, TipoItem tipo, String descripcion, int precio) {
         this.number = number;
         this.nombre = nombre;
         this.tipo = tipo;
         this.descripcion = descripcion;
+        this.precio = precio;
     }
-
+    public int getPrecio(){
+        return precio;
+    }
     public String getNombre() {
         return nombre;
     }

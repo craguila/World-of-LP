@@ -57,6 +57,7 @@ public class Juego extends Canvas implements Runnable{
     private String textoMision;
     private formulario form;
     public static ArrayList<String> consola;
+    public static String mision_nueva;
     
 
     public Juego(String nombre,int clase,formulario form){
@@ -83,7 +84,7 @@ public class Juego extends Canvas implements Runnable{
         pos[0]=(int)(rndpos.nextDouble() * 1540);
         pos[1]=(int)(rndpos.nextDouble() * 1537);
         
-        equipo=new Equipo(EquipoItem.ARMADURA_GUERRERO, EquipoItem.ARMA_GUERRERO,null); //todos tienen el mismo equipo
+        equipo=new Equipo(EquipoItem.ARMADURA_GUERRERO, EquipoItem.ARMA_GUERRERO,null);
         jugador = new Guerrero(mapa,nombre,1,0,Stats.STATS_GUERRERO,10,10,10,equipo,new Inventario(),teclado,pos,Sprite.ABAJO0);
 
         while (jugador.hayunmuro(pos[0],pos[1])){
@@ -179,6 +180,8 @@ public class Juego extends Canvas implements Runnable{
                 Arrays.asList(Sprite.NPC2ABAJO,Sprite.NPC2ARRIBA,Sprite.NPC2DERECHA, Sprite.NPC2IZQUIERDA));
         ArrayList<Sprite> sprites_enfermeros = new ArrayList<>(
                 Arrays.asList(Sprite.NPC3ABAJO,Sprite.NPC3ARRIBA,Sprite.NPC3DERECHA, Sprite.NPC3IZQUIERDA));
+        
+        
         //agregamos personas (solo conversan)
         i = 0;
         while (i < num_personas){
@@ -193,7 +196,7 @@ public class Juego extends Canvas implements Runnable{
             }
         }
         for(Npc npc:npcs){
-            if (!npc.texto.equals("")){
+            if (npc.texto.equals("")){
             switch(rnd.nextInt(4)){
                 case 0:
                     npc.texto = "Hola!, Soy un NPC";
@@ -224,7 +227,7 @@ public class Juego extends Canvas implements Runnable{
             }
         }
         for(Npc npc:npcs){
-            if (!npc.texto.equals("")){
+            if (npc.texto.equals("")){
             switch(rnd.nextInt(3)){
                 case 0:
                     npc.texto = "Wololo";
@@ -238,7 +241,7 @@ public class Juego extends Canvas implements Runnable{
             }
             }
         }
-        //agregamos los comerciantes (comra/venta)
+        //agregamos los comerciantes (compra/venta)
         
         i = 0;
         while (i < num_comerciantes){
@@ -253,23 +256,51 @@ public class Juego extends Canvas implements Runnable{
             }
         }
         for(Npc npc:npcs){
-            if (!npc.texto.equals("")){
-            switch(rnd.nextInt(4)){
-                case 0:
-                    npc.texto = "Deseas comprar algo?";
-                    break;
-                case 1:
-                    npc.texto = "Tengo los mejores precios!";
-                    break;
-                case 2:
-                    npc.texto = "Deberías hechar un vistazo a mis productos.";
-                    break;
-                case 3:
-                    npc.texto = "Tengo todo lo que necesitas!";
-                    break;
-            }
+            npc.ganarDinero(5000);
+            if (npc.texto.equals("")){
+                switch(rnd.nextInt(4)){
+                    case 0:
+                        npc.texto = "Deseas comprar algo?";
+                        break;
+                    case 1:
+                        npc.texto = "Tengo los mejores precios!";
+                        break;
+                    case 2:
+                        npc.texto = "Deberías hechar un vistazo a mis productos.";
+                        break;
+                    case 3:
+                        npc.texto = "Tengo todo lo que necesitas!";
+                        break;
+                }
+                int num_items = rnd.nextInt(10);
+                for (int n=0;n<num_items;n++){
+                    switch(rnd.nextInt(6)){
+                        case 0:
+                            npc.getInventario().addItem(EquipoItem.ARMADURA_ARQUERO);
+                            break;
+                        case 1:
+                            npc.getInventario().addItem(EquipoItem.ARMADURA_GUERRERO);
+                            break;
+                        case 2:
+                            npc.getInventario().addItem(EquipoItem.ARMADURA_MAGO);
+                            break;
+                        case 3:
+                            npc.getInventario().addItem(EquipoItem.ARMA_ARQUERO);
+                            break;
+                        case 4:
+                            npc.getInventario().addItem(EquipoItem.ARMA_GUERRERO);
+                            break;
+                        case 5:
+                            npc.getInventario().addItem(EquipoItem.ARMA_MAGO);
+                            break;
+                        case 6:
+                            npc.getInventario().addItem(EquipoItem.FLECHA_ARQUERO);
+                            break;
+                    }
+                }
             }
         }
+        
         //cargamos enemigos
         //creamos los monstruos
         int num_murcielagos = 3;
@@ -285,7 +316,7 @@ public class Juego extends Canvas implements Runnable{
             m_pos[0]=(int)(rnd.nextDouble() * 1540);
             m_pos[1]=(int)(rnd.nextDouble() * 1537);
             if (!jugador.hayunmuro(m_pos[0],m_pos[1])){
-                monstruos.add(new Murcielago(mapa,"Murcielago"+i,1,0, Stats.STATS_MONSTRUO,10,10,10,equipo,new Inventario(),m_pos,Sprite.MUABAJO0));
+                monstruos.add(new Murcielago(mapa,"Murcielago "+i,1,0, Stats.STATS_MONSTRUO,10,10,10,equipo,new Inventario(),m_pos,Sprite.MUABAJO0));
             }
         }
         i = 0;
@@ -296,7 +327,7 @@ public class Juego extends Canvas implements Runnable{
             m_pos[0]=(int)(rnd.nextDouble() * 1540);
             m_pos[1]=(int)(rnd.nextDouble() * 1537);
             if (!jugador.hayunmuro(m_pos[0],m_pos[1])){
-                monstruos.add(new Tigre(mapa,"Tigre"+i,1,0, Stats.STATS_MONSTRUO,10,10,10,equipo,new Inventario(),m_pos,Sprite.TABAJO0));
+                monstruos.add(new Tigre(mapa,"Tigre "+i,1,0, Stats.STATS_MONSTRUO,10,10,10,equipo,new Inventario(),m_pos,Sprite.TABAJO0));
             }
         }
         i = 0;
@@ -307,7 +338,7 @@ public class Juego extends Canvas implements Runnable{
             m_pos[0]=(int)(rnd.nextDouble() * 1540);
             m_pos[1]=(int)(rnd.nextDouble() * 1537);
             if (!jugador.hayunmuro(m_pos[0],m_pos[1])){
-                monstruos.add(new Lobo(mapa,"Lobo"+i,1,0, Stats.STATS_MONSTRUO,10,10,10,equipo,new Inventario(),m_pos,Sprite.LABAJO0));
+                monstruos.add(new Lobo(mapa,"Lobo "+i,1,0, Stats.STATS_MONSTRUO,10,10,10,equipo,new Inventario(),m_pos,Sprite.LABAJO0));
             }
         }
         i = 0;
@@ -318,7 +349,7 @@ public class Juego extends Canvas implements Runnable{
             m_pos[0]=(int)(rnd.nextDouble() * 1540);
             m_pos[1]=(int)(rnd.nextDouble() * 1537);
             if (!jugador.hayunmuro(m_pos[0],m_pos[1])){
-                monstruos.add(new Gato(mapa,"Gato"+i,1,0, Stats.STATS_MONSTRUO,10,10,10,equipo,new Inventario(),m_pos,Sprite.GABAJO0));
+                monstruos.add(new Gato(mapa,"Gato "+i,1,0, Stats.STATS_MONSTRUO,10,10,10,equipo,new Inventario(),m_pos,Sprite.GABAJO0));
             }
         }
         i = 0;
@@ -329,7 +360,7 @@ public class Juego extends Canvas implements Runnable{
             m_pos[0]=(int)(rnd.nextDouble() * 1540);
             m_pos[1]=(int)(rnd.nextDouble() * 1537);
             if (!jugador.hayunmuro(m_pos[0],m_pos[1])){
-                monstruos.add(new Esqueleto(mapa,"Esqueleto"+i,1,0, Stats.STATS_MONSTRUO,10,10,10,equipo,new Inventario(),m_pos,Sprite.EABAJO0));
+                monstruos.add(new Esqueleto(mapa,"Esqueleto "+i,1,0, Stats.STATS_MONSTRUO,10,10,10,equipo,new Inventario(),m_pos,Sprite.EABAJO0));
             }
         }
         objMonstruo=monstruos.get(rnd.nextInt(monstruos.size()-1));
@@ -347,6 +378,7 @@ public class Juego extends Canvas implements Runnable{
                 textoMision="Matar al monstruo "+objMonstruo.getNombre();
                 break;
         }
+        mision_nueva = textoMision;
         ventanaStats=new frmStats(jugador,textoMision);
         ventanaStats.setResizable(false);
         JOptionPane.showMessageDialog(this,jugador.getNombre()+", tu mision en este mundo mágico consiste en: \n"+textoMision , NOMBRE, 1);
@@ -432,6 +464,7 @@ public class Juego extends Canvas implements Runnable{
                 break;
         }
         if(fin){
+            Juego.jugador.releaseTeclado();
             int confirma=JOptionPane.showConfirmDialog(this, "¿Desea seguir Jugando?", NOMBRE, 1);
             if(JOptionPane.OK_OPTION==confirma){
                 Random rnd = new Random();
@@ -467,9 +500,8 @@ public class Juego extends Canvas implements Runnable{
                     }
                 }
                 
-                ventanaStats.dispose();
-                ventanaStats=new frmStats(jugador,textoMision);
-                ventanaStats.setResizable(false);
+                mision_nueva = textoMision;
+                Juego.jugador.releaseTeclado();
                 JOptionPane.showMessageDialog(this,jugador.getNombre()+", tu mision en este mundo mágico consiste en: \n"+textoMision , NOMBRE, 1);
         
             }
@@ -484,7 +516,7 @@ public class Juego extends Canvas implements Runnable{
         teclado.actualizar();
         if (jugador.actualizar()){
             actualizaciones ++;
-            if (actualizaciones >= 15){
+            if (actualizaciones >= 15){ //pasa un turno
                 ventanaStats.setEstado();
                 ventanaHabilidades.setEstado();
                 ventanaMonstruos.setEstado();
@@ -493,6 +525,26 @@ public class Juego extends Canvas implements Runnable{
                     m.actualizar(); 
                 }
                 actualizaciones = 0;
+                //verificar status
+                if (Juego.jugador.getStatus().size()>0){
+                    for (Status s: Juego.jugador.getStatus()){
+                        Juego.jugador.getStats().statusStats(s.getValue());
+                        if (s.duration >= 0){
+                            s.duration --;
+                        }
+                    }
+                    ArrayList<Status> estados = new ArrayList<>();
+                    estados.addAll(Juego.jugador.getStatus());
+                    for(Status i:estados){
+                        if(i.duration<0){
+                            Juego.setConsole("Ya no estas "+i.getNombre());
+                            Juego.jugador.getStats().reestablecerStats();
+                            i.duration = 5;
+                            Juego.jugador.getStatus().remove(i);
+                        }
+                    }
+                }
+                
             }
         }
         checkMision();
@@ -500,7 +552,7 @@ public class Juego extends Canvas implements Runnable{
     }
     
     
-    private void mostrar(){
+    private synchronized void mostrar(){
         BufferStrategy estrategia = getBufferStrategy();
         
         if (estrategia == null){
@@ -525,10 +577,12 @@ public class Juego extends Canvas implements Runnable{
         Graphics g = estrategia.getDrawGraphics();
         
         g.drawImage(imagen, 0, 0, getWidth(),getHeight(),null);
+        g.fillRect(0, pantalla.getLargo()-100, pantalla.getAncho(), 60);
+        
         g.setColor(Color.red);
         
         
-        g.drawString("x:"+jugador.getX()+" y:"+jugador.getY(), 10, 10);
+        g.drawString("x: "+jugador.getX()+" y:"+jugador.getY(), 10, 10);
         g.setColor(Color.white);
         g.drawString(consola.get(0), 10, 450);
         g.drawString(consola.get(1), 10, 435);
@@ -540,7 +594,7 @@ public class Juego extends Canvas implements Runnable{
     }
 
     @Override
-    public void run() {
+    public synchronized void run() {
         final int NS_POR_SEGUNDO = 1000000000;
         final byte FPS_OBJETIVO = 60;
         final double NS_POR_ACTUALIZACION = NS_POR_SEGUNDO/FPS_OBJETIVO;
@@ -561,8 +615,10 @@ public class Juego extends Canvas implements Runnable{
                 actualizar();
                 delta--;
             }
-            mostrar();
-            
+            try{
+                mostrar();
+            }catch(Exception e){
+            }
             if(System.nanoTime() - referenciaContador > NS_POR_SEGUNDO){
                 ventana.setTitle(NOMBRE + "|| APS: "+aps+" || FPS: "+fps);
                 aps = 0;

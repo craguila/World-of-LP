@@ -18,6 +18,7 @@ public class frmStats extends javax.swing.JFrame {
     public static int puntosStats=0;
     public frmStats(Personaje p,String mision) {
         this();
+        mision = Juego.mision_nueva;
         this.p=p;
         this.setDefaultCloseOperation(javax.swing.WindowConstants.HIDE_ON_CLOSE);
         switch(this.p.getClass().toString()){
@@ -37,6 +38,7 @@ public class frmStats extends javax.swing.JFrame {
         lblNombre.setText("Nombre: "+this.p.getNombre());
         this.setTitle("World of LP");
         this.lblMision.setText("Mision: "+mision);
+        Juego.jugador.releaseTeclado();
         this.setEstado();
         
     }
@@ -64,6 +66,7 @@ public class frmStats extends javax.swing.JFrame {
         lblStamina.setText("Stamina: "+this.p.getStats().getStamina());
         lblPuntos.setText("Puntos Stats disponible: "+puntosStats);
         lblVida.setText("Vida: "+this.p.getVida());
+        this.lblMision.setText("Mision: "+Juego.mision_nueva);
         pack();
     }
 

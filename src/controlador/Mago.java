@@ -116,6 +116,27 @@ public class Mago extends Personaje {
                     c.sacarItem(c);
                 }
             }
+            //busca los npc
+            for(Npc npc: Juego.npcs){
+                int lado_monstruo =npc.getSprite().getLado();
+                //esquinas del monstruo
+                int monstruoX = npc.posicion[0]-lado_monstruo+5;
+                int monstruoY = npc.posicion[1]-lado_monstruo;
+                int monstruoX2 = npc.posicion[0];
+                int monstruoY2 = npc.posicion[1];
+                //esquinas del jugador
+                int playerX = posicionX + margenIzquierdo+18;
+                int playerX2 = posicionX - margenIzquierdo- margenDerecho - sprite.getLado()+18;
+                int playerY = posicionY + margenSuperior;
+                int playerY2 = posicionY + margenSuperior + margenInferior + sprite.getLado();
+
+                if (playerX>monstruoX && playerX<monstruoX2 && playerY>monstruoY && playerY<monstruoY2){
+                    npc.interactuar(npc);
+                }
+                if (playerX2>monstruoX && playerX2<monstruoX2 && playerY>monstruoY && playerY<monstruoY2){
+                    npc.interactuar(npc);
+                }
+            }
             
         }
         

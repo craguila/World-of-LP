@@ -3,8 +3,11 @@ package controlador;
 
 import Graficos.Pantalla;
 import Graficos.Sprite;
+import java.awt.Robot;
+import java.awt.event.KeyEvent;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.HashSet;
 import java.util.Random;
 import javax.swing.JOptionPane;
 import vista.Juego;
@@ -35,7 +38,6 @@ public class Personaje {
     private ArrayList<Status> status;    
     private ArrayList<Habilidad> habilidades;
     private ArrayList<String> monstruosVisibles;
-    
     protected char direccion = 'n';
 
     public Personaje(Mapa mapa, String Nombre, int Nivel, int EXP, Stats stats, int Vida, int Stamina, int Mana, Equipo equipo, Inventario inventario, int[] posicion) {
@@ -56,8 +58,27 @@ public class Personaje {
         status = new ArrayList<>();
         monstruosVisibles = new ArrayList<>();
         this.dinero = 0;
+        
     }
-
+    
+    public void releaseTeclado(){
+        Robot rob = null;
+        try{
+            rob=new Robot();
+        }
+        catch(Exception e){   
+        }
+        rob.keyRelease(KeyEvent.VK_SPACE);
+        rob.keyRelease(KeyEvent.VK_UP);
+        rob.keyRelease(KeyEvent.VK_DOWN);
+        rob.keyRelease(KeyEvent.VK_LEFT);
+        rob.keyRelease(KeyEvent.VK_RIGHT);
+        rob.keyRelease(KeyEvent.VK_S);
+        rob.keyRelease(KeyEvent.VK_Z);
+        rob.keyRelease(KeyEvent.VK_X);
+        rob.keyRelease(KeyEvent.VK_C);
+    }
+    
     public Inventario getInventario() {
         return inventario;
     }
@@ -81,15 +102,28 @@ public class Personaje {
         this.EXP+=exp;
     }
     
-    public void ganarDinero(int d){
-        this.dinero += d;
+    public ArrayList<Status> getStatus(){
+        return status;
     }
+    public void quitarStatus(Status s){
+        status.remove(s);
+    }
+    public void ganarDinero(int d){
+        dinero += d;
+        Juego.setConsole("Ganaste " +d+" monedas.");
+        
+    }
+    
     public boolean gastarDinero(int d){
-        if (this.dinero > d){
+        if (this.dinero >= d){
             this.dinero-=d;
             return true;
         }
         return false;
+    }
+    
+    public int getDinero(){
+        return dinero;
     }
     public int expSiguienteLvl(int lvl){
         double exp=0;

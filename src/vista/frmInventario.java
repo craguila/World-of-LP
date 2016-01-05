@@ -21,18 +21,18 @@ public class frmInventario extends javax.swing.JFrame {
     public frmInventario(Personaje p) {
         initComponents();
         this.p=p;
+        Juego.jugador.releaseTeclado();
         setEstado();
     }
     
     public synchronized void setEstado() {
         DefaultTableModel mdl =(DefaultTableModel)this.tblInventario.getModel();
         mdl.setRowCount(0);
-        int i=1;
         for(Item it:p.getInventario().getItems()){
-            Object data[]={i,it.getNombre()};
-            i++;
+            Object data[]={it.getNombre()};
             mdl.addRow(data);
         }
+        this.lblDinero.setText("Dinero: "+p.getDinero()+" monedas.");
         this.tblInventario.setModel(mdl);
     }
 
@@ -47,6 +47,7 @@ public class frmInventario extends javax.swing.JFrame {
 
         jScrollPane1 = new javax.swing.JScrollPane();
         tblInventario = new javax.swing.JTable();
+        lblDinero = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
@@ -56,14 +57,14 @@ public class frmInventario extends javax.swing.JFrame {
 
             },
             new String [] {
-                "ID", "Nombre"
+                "Nombre"
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.Integer.class, java.lang.String.class
+                java.lang.String.class
             };
             boolean[] canEdit = new boolean [] {
-                false, false
+                false
             };
 
             public Class getColumnClass(int columnIndex) {
@@ -81,20 +82,27 @@ public class frmInventario extends javax.swing.JFrame {
         });
         jScrollPane1.setViewportView(tblInventario);
 
+        lblDinero.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblDinero.setText("Dinero");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 211, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 211, Short.MAX_VALUE)
+                    .addComponent(lblDinero, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 278, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(lblDinero)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 286, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
 
@@ -102,10 +110,9 @@ public class frmInventario extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void tblInventarioMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblInventarioMouseClicked
-        String objetivo=tblInventario.getValueAt(tblInventario.getSelectedRow(), 1).toString();
+        String objetivo=tblInventario.getValueAt(tblInventario.getSelectedRow(), 0).toString();
         for (EquipoItem i:Juego.jugador.getInventario().getItems()){
             if (i.getNombre().equals(objetivo)){
-//                System.out.println(objetivo);
                 i.Equipar();
                 Juego.jugador.getInventario().removeItem(i);
                 Juego.ventanaInventario.setEstado();
@@ -119,6 +126,7 @@ public class frmInventario extends javax.swing.JFrame {
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JLabel lblDinero;
     private javax.swing.JTable tblInventario;
     // End of variables declaration//GEN-END:variables
 

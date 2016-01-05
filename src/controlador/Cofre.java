@@ -26,12 +26,12 @@ public class Cofre extends Monstruo{
         if (c.getInventario().getSize()>0){
             for (EquipoItem i: c.getInventario().getItems()){
                 Juego.setConsole("Obtuviste "+i.nombre);
-//                System.out.println("Obtuviste "+i.nombre);
                 Juego.jugador.getInventario().addItem(i);
             }
             c.getInventario().clear();
             Juego.cofresobjetivo.remove(c);
         }
+        Juego.ventanaInventario.setEstado();
     }
     public boolean isOpen(){
         return (sprite==Sprite.COFREA);

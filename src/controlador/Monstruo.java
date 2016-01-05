@@ -19,7 +19,7 @@ public class Monstruo extends Personaje {
 
     public Monstruo(Mapa mapa,String Nombre, int Nivel, int EXP, Stats stats, int Vida, int Stamina, int Mana, Equipo equipo, Inventario inventario, int[] posicion) {
         super(mapa, Nombre, Nivel, EXP, stats, Vida, Stamina, Mana, equipo, inventario, posicion);
-        
+        dinero += 10;
     }
     
     public boolean jugadorvisible(){
@@ -43,7 +43,6 @@ public class Monstruo extends Personaje {
         Habilidad habilidad = habilidades.get(habilidad_rnd);
         if(Mana>habilidad.costo){
             Juego.setConsole((Nombre+" usó " + habilidad.nombre));
-//            System.out.println(Nombre+" usó " + habilidad.nombre);
             Juego.jugador.danar(habilidad.dano);
             Juego.jugador.addStatus(habilidad.estado);
             Mana -= habilidad.costo;

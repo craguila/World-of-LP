@@ -7,6 +7,8 @@ package controlador;
 
 import Graficos.Sprite;
 import control.Teclado;
+import java.awt.Robot;
+import java.awt.event.KeyEvent;
 import java.util.Calendar;
 import java.util.Date;
 import vista.Juego;
@@ -31,6 +33,9 @@ public class Arquero extends Personaje {
         this.sprite = sprite;
     }
     
+
+   
+   
     @Override
     public boolean actualizar(){
         int desplazamientoX = 0;

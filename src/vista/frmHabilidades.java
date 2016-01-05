@@ -27,6 +27,7 @@ public class frmHabilidades extends javax.swing.JFrame {
     public frmHabilidades(Personaje p) {
         initComponents();
         this.p=p;
+        Juego.jugador.releaseTeclado();
         setEstado();
     }
     

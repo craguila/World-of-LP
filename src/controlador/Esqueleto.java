@@ -134,6 +134,7 @@ public class Esqueleto extends Monstruo{
         }
         if (!vivo()){
             Juego.jugador.aumentarExp(exp_entregada);
+            Juego.jugador.ganarDinero(dinero);
             this.mover(10000, 10000);
         }
         if (desplazamientoX != 0 || desplazamientoY != 0){

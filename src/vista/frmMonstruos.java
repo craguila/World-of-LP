@@ -14,10 +14,7 @@ import static vista.Juego.ventanaInventario;
 import static vista.Juego.ventanaMonstruos;
 import static vista.Juego.ventanaStats;
 
-/**
- *
- * @author Nicolas olivos
- */
+
 public class frmMonstruos extends javax.swing.JFrame {
     /**
      * Creates new form frmMonstruos
@@ -26,17 +23,16 @@ public class frmMonstruos extends javax.swing.JFrame {
     public frmMonstruos(Personaje p) {
         initComponents();
         this.p=p;
+        Juego.jugador.releaseTeclado();
         setEstado();
     }
     
     public void setEstado() {
         DefaultTableModel mdl =(DefaultTableModel)this.tblMonstruos.getModel();
         mdl.setRowCount(0);
-        int i=1;
         p.buscarmonstruos();
         for(String nombre:p.getMonsruosVisibles()){
-            Object data[]={i,nombre};
-            i++;
+            Object data[]={nombre};
             mdl.addRow(data);
         }
         this.tblMonstruos.setModel(mdl);
@@ -65,14 +61,14 @@ public class frmMonstruos extends javax.swing.JFrame {
 
             },
             new String [] {
-                "ID", "Nombre"
+                "Nombre"
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.Integer.class, java.lang.String.class
+                java.lang.String.class
             };
             boolean[] canEdit = new boolean [] {
-                false, false
+                false
             };
 
             public Class getColumnClass(int columnIndex) {
@@ -130,19 +126,22 @@ public void despuesdeatacar(){
             ventanaInventario.setEstado();
         }
     private void tblMonstruosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblMonstruosMouseClicked
-        String objetivo=tblMonstruos.getValueAt(tblMonstruos.getSelectedRow(), 1).toString();
-        for(Monstruo m:Juego.monstruos){
-            if(m.getNombre().equals(objetivo)){
-                if (Juego.jugador.vivo()){
-                Juego.setConsole("Jugador ataco a "+objetivo+"-vida: "+m.getVida());
-//                System.out.println("Jugador ataco a "+objetivo+"-vida: "+m.getVida());
-                m.danar(Juego.jugador.getStats().getFuerza());
-                despuesdeatacar();
+        try{
+            String objetivo=tblMonstruos.getValueAt(tblMonstruos.getSelectedRow(), 0).toString();
+            for(Monstruo m:Juego.monstruos){
+                if(m.getNombre().equals(objetivo)){
+                    if (Juego.jugador.vivo()){
+                    Juego.setConsole("Jugador ataco a "+objetivo+"-vida: "+m.getVida());
+                    m.danar(Juego.jugador.getStats().getFuerza());
+                    despuesdeatacar();
+                    }
+                    break; 
+
                 }
-                break;
-                
             }
         }
+            catch(Exception e){
+            }
     }//GEN-LAST:event_tblMonstruosMouseClicked
 
     
