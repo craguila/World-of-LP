@@ -110,10 +110,7 @@ public class frmMonstruos extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 public void despuesdeatacar(){
-            ventanaStats.setEstado();
-            ventanaHabilidades.setEstado();
-            ventanaMonstruos.setEstado();
-            ventanaInventario.setEstado();
+
             for(Monstruo m: monstruos){
                 m.actualizar(); 
             }
@@ -126,6 +123,11 @@ public void despuesdeatacar(){
             for(Monstruo m: muertos){
                 monstruos.remove(m); 
             }
+            Juego.actualizaciones += 15;
+            ventanaStats.setEstado();
+            ventanaHabilidades.setEstado();
+            ventanaMonstruos.setEstado();
+            ventanaInventario.setEstado();
         }
     private void tblMonstruosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblMonstruosMouseClicked
         String objetivo=tblMonstruos.getValueAt(tblMonstruos.getSelectedRow(), 1).toString();

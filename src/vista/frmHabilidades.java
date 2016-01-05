@@ -38,6 +38,7 @@ public class frmHabilidades extends javax.swing.JFrame {
             mdl.addRow(data);
         }
         this.tblHabilidades.setModel(mdl);
+        this.lblMana.setText("Mana: "+p.getMana());
     }
 
     
@@ -47,6 +48,7 @@ public class frmHabilidades extends javax.swing.JFrame {
 
         jScrollPane1 = new javax.swing.JScrollPane();
         tblHabilidades = new javax.swing.JTable();
+        lblMana = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
@@ -81,30 +83,33 @@ public class frmHabilidades extends javax.swing.JFrame {
         });
         jScrollPane1.setViewportView(tblHabilidades);
 
+        lblMana.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblMana.setText("Mana");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 267, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 267, Short.MAX_VALUE)
+                    .addComponent(lblMana, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(lblMana)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap())
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 public void despuesdeatacar(){
-            ventanaStats.setEstado();
-            ventanaHabilidades.setEstado();
-            ventanaMonstruos.setEstado();
-            ventanaInventario.setEstado();
             for(Monstruo m: monstruos){
                 m.actualizar(); 
             }
@@ -117,6 +122,11 @@ public void despuesdeatacar(){
             for(Monstruo m: muertos){
                 monstruos.remove(m); 
             }
+            Juego.actualizaciones += 15;
+            ventanaStats.setEstado();
+            ventanaHabilidades.setEstado();
+            ventanaMonstruos.setEstado();
+            ventanaInventario.setEstado();
         }
     private void tblHabilidadesMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblHabilidadesMouseClicked
         String habilidad=tblHabilidades.getValueAt(tblHabilidades.getSelectedRow(), 0).toString();
@@ -126,18 +136,17 @@ public void despuesdeatacar(){
                 habilidadEfectuada = h;
             }
         }
-        if (Juego.jugador.getMana()>habilidadEfectuada.costo){
+        if (Juego.jugador.getMana()>=habilidadEfectuada.costo){
             for(Monstruo m:Juego.monstruos){
                 if(p.getMonsruosVisibles().contains(m.getNombre())){
                     if (Juego.jugador.vivo()){
                         Juego.setConsole(("jugador uso "+habilidad+" sobre "+m.getNombre()));
-//                        System.out.println("jugador uso "+habilidad+" sobre "+m.getNombre());
                         m.danar(habilidadEfectuada.dano);
                         m.addStatus(habilidadEfectuada.estado);
-                        Juego.jugador.gastarMana(habilidadEfectuada.costo);
                     }
                 }
             }
+            Juego.jugador.gastarMana(habilidadEfectuada.costo);
             despuesdeatacar();
         }
         
@@ -146,6 +155,7 @@ public void despuesdeatacar(){
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JLabel lblMana;
     private javax.swing.JTable tblHabilidades;
     // End of variables declaration//GEN-END:variables
 

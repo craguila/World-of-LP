@@ -40,27 +40,27 @@ public class Lobo extends Monstruo{
             if (jugadorvisible()){
                 int distx = playerx - monsterx;
                 int disty = playery - monstery;
-                if (distx < disty && distx!=0){
+                if (distx > disty && distx!=0){
                     desplazamientoX += (distx/Math.abs(distx))*stats.rapidez;
-                } else if(distx > disty && disty!=0){
-                    desplazamientoY -= (disty/Math.abs(disty))*stats.rapidez;
+                } else if(distx <= disty && disty!=0){
+                    desplazamientoY += (disty/Math.abs(disty))*stats.rapidez;
                 }
                 
                 if (Juego.jugador.sienteelchoque(-desplazamientoX, -desplazamientoY)){
                     Random  rand = new Random();
-                    Double dmg = (rand.nextDouble()*3);
-                    int i = dmg.intValue();
+                    int i = rand.nextInt(4);
                     if (i==1){
                         if(!usarHabilidad()){
                             Juego.jugador.danar(stats.fuerza);
                         }
                     }else{
+                        Juego.setConsole((Nombre+" te atacó."));
                         Juego.jugador.danar(stats.fuerza);
                     }
                 }
             } else {
-                int x=(int)(rnd.nextDouble() *100);
-                int y=(int)(rnd.nextDouble() *100);
+                int x=rnd.nextInt(2);
+                int y=rnd.nextInt(2);;
                 if (x==1){
                         desplazamientoX-= stats.rapidez;
                 } else if(x==2){

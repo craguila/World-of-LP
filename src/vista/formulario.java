@@ -63,8 +63,8 @@ public class formulario extends javax.swing.JFrame {
         lblArquero.setMinimumSize(new java.awt.Dimension(144, 24));
         lblArquero.setPreferredSize(new java.awt.Dimension(144, 24));
         lblArquero.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                lblArqueroMouseClicked(evt);
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                lblArqueroMousePressed(evt);
             }
         });
 
@@ -86,8 +86,8 @@ public class formulario extends javax.swing.JFrame {
         lblGuerrero.setToolTipText(Stats.STATS_GUERRERO.toString());
         lblGuerrero.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         lblGuerrero.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                lblGuerreroMouseClicked(evt);
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                lblGuerreroMousePressed(evt);
             }
         });
 
@@ -108,8 +108,8 @@ public class formulario extends javax.swing.JFrame {
         lblMago.setIcon(new javax.swing.ImageIcon(getClass().getResource("/texturas/mago.jpg"))); // NOI18N
         lblMago.setToolTipText(Stats.STATS_MAGO.toString());
         lblMago.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                lblMagoMouseClicked(evt);
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                lblMagoMousePressed(evt);
             }
         });
 
@@ -251,17 +251,17 @@ public class formulario extends javax.swing.JFrame {
         clase=3;
     }//GEN-LAST:event_Clase3ActionPerformed
 
-    private void lblMagoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblMagoMouseClicked
-        Clase3.doClick();
-    }//GEN-LAST:event_lblMagoMouseClicked
-
-    private void lblArqueroMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblArqueroMouseClicked
-        Clase2.doClick();
-    }//GEN-LAST:event_lblArqueroMouseClicked
-
-    private void lblGuerreroMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblGuerreroMouseClicked
+    private void lblGuerreroMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblGuerreroMousePressed
         Clase1.doClick();
-    }//GEN-LAST:event_lblGuerreroMouseClicked
+    }//GEN-LAST:event_lblGuerreroMousePressed
+
+    private void lblArqueroMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblArqueroMousePressed
+        Clase2.doClick();
+    }//GEN-LAST:event_lblArqueroMousePressed
+
+    private void lblMagoMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblMagoMousePressed
+        Clase3.doClick();
+    }//GEN-LAST:event_lblMagoMousePressed
 
     /**
      * @param args the command line arguments

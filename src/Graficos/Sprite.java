@@ -150,6 +150,24 @@ public class Sprite {
     public static final Sprite EARRIBA1 = new Sprite(32,10,8,HojaSprites.nivel1);
     public static final Sprite EARRIBA2 = new Sprite(32,11,8,HojaSprites.nivel1);
     //fin de la coleccion
+    //sprites del del NPC1
+    public static final Sprite NPC1ABAJO = new Sprite(32,12,1,HojaSprites.nivel1);
+    public static final Sprite NPC1IZQUIERDA = new Sprite(32,12,2,HojaSprites.nivel1);
+    public static final Sprite NPC1DERECHA = new Sprite(32,12,3,HojaSprites.nivel1);
+    public static final Sprite NPC1ARRIBA = new Sprite(32,12,4,HojaSprites.nivel1);
+    //fin de la coleccion
+    //sprites del del NPC2
+    public static final Sprite NPC2ABAJO = new Sprite(32,12,5,HojaSprites.nivel1);
+    public static final Sprite NPC2IZQUIERDA = new Sprite(32,12,6,HojaSprites.nivel1);
+    public static final Sprite NPC2DERECHA = new Sprite(32,12,7,HojaSprites.nivel1);
+    public static final Sprite NPC2ARRIBA = new Sprite(32,12,8,HojaSprites.nivel1);
+    //fin de la coleccion
+    //sprites del del NPC3
+    public static final Sprite NPC3ABAJO = new Sprite(32,15,5,HojaSprites.nivel1);
+    public static final Sprite NPC3IZQUIERDA = new Sprite(32,15,6,HojaSprites.nivel1);
+    public static final Sprite NPC3DERECHA = new Sprite(32,15,7,HojaSprites.nivel1);
+    public static final Sprite NPC3ARRIBA = new Sprite(32,15,8,HojaSprites.nivel1);
+    //fin de la coleccion
     //coleccion de sprites
     
     public static Sprite VACIO = new Sprite(32,0);

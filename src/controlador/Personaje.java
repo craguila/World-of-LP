@@ -22,9 +22,11 @@ public class Personaje {
     Stats stats;//Todos los stats del personaje
     int Vida; //Muere si llega a 0.
     int VidaMAX;
+    int ManaMAX;
     int Stamina; //No puede golpear si no le alcanza el valor.
     int Mana; //Muere si llega a 0.
     int[] posicion=new int[2];
+    int dinero;
     Equipo equipo;
     
     protected Mapa mapa;
@@ -44,6 +46,7 @@ public class Personaje {
         this.stats = stats;
         this.Vida = Vida;
         this.VidaMAX = Vida;
+        this.ManaMAX = Mana;
         this.Stamina = Stamina;
         this.Mana = Mana;
         this.equipo = equipo;
@@ -52,6 +55,7 @@ public class Personaje {
         habilidades = new ArrayList<>();
         status = new ArrayList<>();
         monstruosVisibles = new ArrayList<>();
+        this.dinero = 0;
     }
 
     public Inventario getInventario() {
@@ -77,6 +81,16 @@ public class Personaje {
         this.EXP+=exp;
     }
     
+    public void ganarDinero(int d){
+        this.dinero += d;
+    }
+    public boolean gastarDinero(int d){
+        if (this.dinero > d){
+            this.dinero-=d;
+            return true;
+        }
+        return false;
+    }
     public int expSiguienteLvl(int lvl){
         double exp=0;
         double NA=(1+Math.pow(5, 0.5))/2;
@@ -87,6 +101,9 @@ public class Personaje {
     public void subirLvl(){
         this.Nivel +=1;
         this.VidaMAX+=10;
+        this.ManaMAX+=7;
+        this.Vida=VidaMAX;
+        this.Mana=ManaMAX;
     }
     
     public void mejorar(){
@@ -222,6 +239,29 @@ public class Personaje {
                
             
         }
+        //busca los npc
+        for(Npc c: Juego.npcs){
+            int lado_monstruo =c.getSprite().getLado();
+            //esquinas del monstruo
+            int monstruoX = c.posicion[0]-lado_monstruo+5;
+            int monstruoY = c.posicion[1]-lado_monstruo;
+            int monstruoX2 = c.posicion[0];
+            int monstruoY2 = c.posicion[1];
+            //esquinas del jugador
+            int playerX = posicionX + margenIzquierdo+18;
+            int playerX2 = posicionX - margenIzquierdo- margenDerecho - sprite.getLado()+18;
+            int playerY = posicionY + margenSuperior;
+            int playerY2 = posicionY + margenSuperior + margenInferior + sprite.getLado();
+
+            if (playerX>monstruoX && playerX<monstruoX2 && playerY>monstruoY && playerY<monstruoY2){
+                colision = true;
+            }
+            if (playerX2>monstruoX && playerX2<monstruoX2 && playerY>monstruoY && playerY<monstruoY2){
+                colision = true;
+            }
+               
+            
+        }
         
         if(mapa.getCuadro(bordeIzquierdo + bordeSuperior * mapa.getAncho()).esSolido()){
             colision = true;
@@ -327,11 +367,20 @@ public class Personaje {
     public int getVida() {
         return this.Vida;
     }
-
+    private static int rec = 0;
     void recuperarse() {
-        Vida+=this.stats.getConstitucion();
-        if(Vida>VidaMAX){
-            Vida=VidaMAX;
+        if (rec>500){
+            Vida+=this.stats.getConstitucion();
+            Mana+=this.stats.getInteligencia();
+            if (Mana>ManaMAX){
+                Mana = ManaMAX;
+            }
+            if(Vida>VidaMAX){
+                Vida=VidaMAX;
+            }
+            rec = 0;
+        } else {
+            rec ++;
         }
     }
 }

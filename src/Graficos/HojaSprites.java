@@ -15,7 +15,7 @@ public class HojaSprites {
     public final int[] pixeles;
     
     //coleccion de hojas de sprites
-    public static HojaSprites nivel1 = new HojaSprites("/texturas/pasto.png",384,320);
+    public static HojaSprites nivel1 = new HojaSprites("/texturas/pasto.png",576,320);
     //fin de la coleccion
     public HojaSprites(final String ruta, final int ancho, final int alto){
         this.ancho = ancho;
