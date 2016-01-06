@@ -93,7 +93,7 @@ public class Juego extends Canvas implements Runnable{
         }
         switch (clase) {
             case 1:
-                equipo=new Equipo(EquipoItem.ARMADURA_GUERRERO, EquipoItem.ARMA_GUERRERO,null);
+                equipo=new Equipo(EquipoItem.ARMADURA_GUERRERO, EquipoItem.ARMA_GUERRERO,EquipoItem.NADA);
                 jugador = new Guerrero(mapa,nombre,1,0,Stats.STATS_GUERRERO,vida,10,10,equipo,new Inventario(),teclado,pos,Sprite.ABAJO0);
                 jugador.getHabilidades().add(Habilidad.CORAJE_DIVINO);
                 jugador.getHabilidades().add(Habilidad.FURIA_CAOTICA);
@@ -109,7 +109,7 @@ public class Juego extends Canvas implements Runnable{
                 tipo = "Arquero";
                 break;
             default:
-                equipo=new Equipo(EquipoItem.ARMADURA_MAGO, EquipoItem.ARMA_MAGO,null);
+                equipo=new Equipo(EquipoItem.ARMADURA_MAGO, EquipoItem.ARMA_MAGO,EquipoItem.NADA);
                 jugador = new Mago(mapa,nombre,1,0, Stats.STATS_MAGO,vida,10,10,equipo,new Inventario(),teclado,pos,Sprite.ABAJO0);
                 jugador.getHabilidades().add(Habilidad.DESORDEN_DE_LA_REALIDAD);
                 jugador.getHabilidades().add(Habilidad.CONGELAR_ALMA);
