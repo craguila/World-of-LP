@@ -32,9 +32,21 @@ public class frmInventario extends javax.swing.JFrame {
             Object data[]={it.getNombre()};
             mdl.addRow(data);
         }
-        this.lblArmadura.setText("Armadura: "+ p.getEquipo().getArmadura().getNombre());
-        this.lblArma.setText("Arma: "+ p.getEquipo().getArma().getNombre());
-        this.lblFlechas.setText("Flechas: "+ p.getEquipo().getFlechas().getNombre());
+        if (p.getEquipo().getArmadura().getNombre().equals("")){
+            this.lblArmadura.setText("Sin armadura");
+        }else{
+           this.lblArmadura.setText("Armadura: "+ p.getEquipo().getArmadura().getNombre());
+        }
+        if (p.getEquipo().getArma().getNombre().equals("")){
+            this.lblArma.setText("Sin arma");
+        }else{
+            this.lblArma.setText("Arma: "+ p.getEquipo().getArma().getNombre());
+        }
+        if (p.getEquipo().getFlechas().getNombre().equals("")){
+            this.lblFlechas.setText("Sin flechas");
+        }else{
+            this.lblFlechas.setText("Flechas: "+ p.getEquipo().getFlechas().getNombre());
+        }
         this.lblDinero.setText("Dinero: "+p.getDinero()+" monedas.");
         this.tblInventario.setModel(mdl);
     }
