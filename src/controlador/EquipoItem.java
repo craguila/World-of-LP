@@ -15,25 +15,35 @@ public class EquipoItem extends Item {
     int range; //Alcance para arcos de flechas o baculos de magos (o tal vez la magia
     //misma deba traer alcance).
     ArrayList<Status> status_list; //Lista de estados de los que protege (ARMADURA) o que puede
+    public static final ArrayList<Status> STATUSARMADURAGUERRERO = new ArrayList<>(
+        Arrays.asList(Status.ENVENENADO,Status.CONGELADO)
+        );
+    public static final ArrayList<Status> STATUSARMADURAMAGO = new ArrayList<>(
+        Arrays.asList(Status.ENVENENADO,Status.PARALIZADO)
+        );
+    public static final ArrayList<Status> STATUSARMADURAARQUERO = new ArrayList<>(
+        Arrays.asList(Status.CONGELADO,Status.PARALIZADO)
+        );
+    public static final ArrayList<Status> VACIO = new ArrayList<>();
     
-    public static EquipoItem ARMA_GUERRERO=new EquipoItem(1, 0, 2, 0, "Sable", TipoItem.ARMA, "sable debil",10);
-    public static EquipoItem ARMA_ARQUERO=new EquipoItem(1, 0, 6, 1, "Arco Compuesto", TipoItem.ARMA, "arco compuesto",10);
-    public static EquipoItem ARMA_MAGO=new EquipoItem(1, 1, 10, 1, "Cayado", TipoItem.ARMA, "cayado de mago",10);
-    public static EquipoItem ARMADURA_GUERRERO=new EquipoItem(1, 1, 10, 10, "Coraza de Caparazon", TipoItem.ARMADURA, "cayado de mago",10);
-    public static EquipoItem ARMADURA_ARQUERO=new EquipoItem(1, 1, 10, 10, "Coraza de Cuero", TipoItem.ARMADURA, "cayado de mago",10);
-    public static EquipoItem ARMADURA_MAGO=new EquipoItem(1, 1, 10, 10, "Coraza de Fuego Magico", TipoItem.ARMADURA, "cayado de mago",10);
-    public static EquipoItem FLECHA_ARQUERO=new EquipoItem(1, 1, 10, 1, "Flecha Envenenada", TipoItem.ARMADURA, "cayado de mago",10);
-    public static EquipoItem NADA= new EquipoItem(0,0,0,0,"",TipoItem.NADA,"",0);
+    public static EquipoItem ARMA_GUERRERO=new EquipoItem(1, 0, 2, 0, "Sable", TipoItem.ARMA, "sable debil",10,VACIO);
+    public static EquipoItem ARMA_ARQUERO=new EquipoItem(1, 0, 6, 1, "Arco Compuesto", TipoItem.ARMA, "arco compuesto",10,VACIO);
+    public static EquipoItem ARMA_MAGO=new EquipoItem(1, 1, 10, 1, "Cayado", TipoItem.ARMA, "cayado de mago",10,VACIO);
+    public static EquipoItem ARMADURA_GUERRERO=new EquipoItem(1, 1, 10, 10, "Coraza de Caparazon", TipoItem.ARMADURA, "cayado de mago",10,STATUSARMADURAGUERRERO);
+    public static EquipoItem ARMADURA_ARQUERO=new EquipoItem(1, 1, 10, 10, "Coraza de Cuero", TipoItem.ARMADURA, "cayado de mago",10,STATUSARMADURAARQUERO);
+    public static EquipoItem ARMADURA_MAGO=new EquipoItem(1, 1, 10, 10, "Coraza de Fuego Magico", TipoItem.ARMADURA, "cayado de mago",10,STATUSARMADURAMAGO);
+    public static EquipoItem FLECHA_ARQUERO=new EquipoItem(1, 1, 10, 1, "Flecha Envenenada", TipoItem.ARMADURA, "cayado de mago",10,STATUSARMADURAARQUERO);
+    public static EquipoItem NADA= new EquipoItem(0,0,0,0,"",TipoItem.NADA,"",0,VACIO);
     public static ArrayList<EquipoItem> todoslositems = new ArrayList<>(
     Arrays.asList(ARMA_GUERRERO,ARMA_ARQUERO,ARMA_MAGO,ARMADURA_GUERRERO,ARMADURA_ARQUERO,ARMADURA_MAGO,FLECHA_ARQUERO,NADA)
     );
 
-    public EquipoItem(int physical_level, int magic_level, int range, int number, String nombre, TipoItem tipo, String descripcion, int precio) {
+    public EquipoItem(int physical_level, int magic_level, int range, int number, String nombre, TipoItem tipo, String descripcion, int precio,ArrayList<Status> status_list) {
         super(number, nombre, tipo, descripcion,precio);
         this.physical_level = physical_level;
         this.magic_level = magic_level;
         this.range = range;
-        this.status_list=new ArrayList<>();
+        this.status_list=status_list;
     }
     public void Equipar(){
         //sacamos el item anterior

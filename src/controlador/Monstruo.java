@@ -43,11 +43,19 @@ public class Monstruo extends Personaje {
         Habilidad habilidad = habilidades.get(habilidad_rnd);
         if(Mana>habilidad.costo){
             Juego.setConsole((Nombre+" usó " + habilidad.nombre));
+            for (Status s:Juego.jugador.getEquipo().getArmadura().status_list){
+                if (s.getNombre().equals(habilidad.estado.getNombre())){
+                    Juego.setConsole(("Fuiste protegido por " + Juego.jugador.getEquipo().getArmadura().getNombre()));
+                    Mana -= habilidad.costo;
+                    return true;
+                } 
+            }
             Juego.jugador.danar(habilidad.dano);
             Juego.jugador.addStatus(habilidad.estado);
             Mana -= habilidad.costo;
             return true;
-        }
+            }
+            
         return false;
                 
     }
