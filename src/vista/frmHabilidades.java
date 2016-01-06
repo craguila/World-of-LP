@@ -130,27 +130,30 @@ public void despuesdeatacar(){
             ventanaInventario.setEstado();
         }
     private void tblHabilidadesMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblHabilidadesMouseClicked
-        String habilidad=tblHabilidades.getValueAt(tblHabilidades.getSelectedRow(), 0).toString();
-        Habilidad habilidadEfectuada = Habilidad.NINGUNA;
-        for (Habilidad h:p.getHabilidades()){
-            if (h.nombre.equals(habilidad)){
-                habilidadEfectuada = h;
-            }
-        }
-        if (Juego.jugador.getMana()>=habilidadEfectuada.costo){
-            for(Monstruo m:Juego.monstruos){
-                if(p.getMonsruosVisibles().contains(m.getNombre())){
-                    if (Juego.jugador.vivo()){
-                        Juego.setConsole(("jugador uso "+habilidad+" sobre "+m.getNombre()));
-                        m.danar(habilidadEfectuada.dano);
-                        m.addStatus(habilidadEfectuada.estado);
-                    }
-                }
-            }
-            Juego.jugador.gastarMana(habilidadEfectuada.costo);
-            despuesdeatacar();
-        }
-        
+    	try{
+	        String habilidad=tblHabilidades.getValueAt(tblHabilidades.getSelectedRow(), 0).toString();
+	        Habilidad habilidadEfectuada = Habilidad.NINGUNA;
+	        for (Habilidad h:p.getHabilidades()){
+	            if (h.nombre.equals(habilidad)){
+	                habilidadEfectuada = h;
+	            }
+	        }
+	        if (Juego.jugador.getMana()>=habilidadEfectuada.costo){
+	            for(Monstruo m:Juego.monstruos){
+	                if(p.getMonsruosVisibles().contains(m.getNombre())){
+	                    if (Juego.jugador.vivo()){
+	                        Juego.setConsole(("jugador uso "+habilidad+" sobre "+m.getNombre()));
+	                        m.danar(habilidadEfectuada.dano);
+	                        m.addStatus(habilidadEfectuada.estado);
+	                    }
+	                }
+	            }
+	            Juego.jugador.gastarMana(habilidadEfectuada.costo);
+	            despuesdeatacar();
+	        }
+    	} catch (Exception e){
+    		
+    	}
     }//GEN-LAST:event_tblHabilidadesMouseClicked
 
     
