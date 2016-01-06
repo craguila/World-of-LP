@@ -40,11 +40,15 @@ public class Teclado implements KeyListener{
 
     @Override
     public void keyPressed(KeyEvent e) {
+        if(e.getKeyCode()>=teclas.length)
+            return;
         teclas[e.getKeyCode()]= true;
     }
 
     @Override
     public void keyReleased(KeyEvent e) {
+        if(e.getKeyCode()>=teclas.length)
+            return;
         teclas[e.getKeyCode()]= false;
     }
     
