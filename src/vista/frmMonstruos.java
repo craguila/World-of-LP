@@ -84,6 +84,11 @@ public class frmMonstruos extends javax.swing.JFrame {
                 tblMonstruosMouseClicked(evt);
             }
         });
+        tblMonstruos.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                tblMonstruosKeyPressed(evt);
+            }
+        });
         jScrollPane1.setViewportView(tblMonstruos);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -143,6 +148,10 @@ public void despuesdeatacar(){
             catch(Exception e){
             }
     }//GEN-LAST:event_tblMonstruosMouseClicked
+
+    private void tblMonstruosKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_tblMonstruosKeyPressed
+        Juego.ventana.setVisible(true);
+    }//GEN-LAST:event_tblMonstruosKeyPressed
 
     
     // Variables declaration - do not modify//GEN-BEGIN:variables

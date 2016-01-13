@@ -99,6 +99,11 @@ public class frmInventario extends javax.swing.JFrame {
                 tblInventarioMouseClicked(evt);
             }
         });
+        tblInventario.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                tblInventarioKeyPressed(evt);
+            }
+        });
         jScrollPane1.setViewportView(tblInventario);
 
         lblDinero.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -165,6 +170,10 @@ public class frmInventario extends javax.swing.JFrame {
         }
         
     }//GEN-LAST:event_tblInventarioMouseClicked
+
+    private void tblInventarioKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_tblInventarioKeyPressed
+        Juego.ventana.setVisible(true);
+    }//GEN-LAST:event_tblInventarioKeyPressed
 
     
     // Variables declaration - do not modify//GEN-BEGIN:variables

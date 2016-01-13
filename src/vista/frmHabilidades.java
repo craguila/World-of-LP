@@ -82,6 +82,11 @@ public class frmHabilidades extends javax.swing.JFrame {
                 tblHabilidadesMouseClicked(evt);
             }
         });
+        tblHabilidades.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                tblHabilidadesKeyPressed(evt);
+            }
+        });
         jScrollPane1.setViewportView(tblHabilidades);
 
         lblMana.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -155,6 +160,10 @@ public void despuesdeatacar(){
     		
     	}
     }//GEN-LAST:event_tblHabilidadesMouseClicked
+
+    private void tblHabilidadesKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_tblHabilidadesKeyPressed
+        Juego.ventana.setVisible(true);
+    }//GEN-LAST:event_tblHabilidadesKeyPressed
 
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
