@@ -27,7 +27,7 @@ public class Personaje {
     int VidaMAX;
     int ManaMAX;
     int Stamina; //No puede golpear si no le alcanza el valor.
-    int Mana; //Muere si llega a 0.
+    int Mana; 
     int[] posicion=new int[2];
     int dinero;
     Equipo equipo;
@@ -291,10 +291,10 @@ public class Personaje {
             int playerY2 = posicionY + margenSuperior + margenInferior + sprite.getLado();
 
             if (playerX>monstruoX && playerX<monstruoX2 && playerY>monstruoY && playerY<monstruoY2){
-                this.mover(c.gettoX(), c.gettoY());
+                this.mover(c.gettoX()-posicion[0] , c.gettoY()-posicion[1]);
             }
             if (playerX2>monstruoX && playerX2<monstruoX2 && playerY>monstruoY && playerY<monstruoY2){
-                this.mover(c.gettoX(), c.gettoY());
+                this.mover(c.gettoX()-posicion[0] , c.gettoY()-posicion[1]);
             }
                
             
