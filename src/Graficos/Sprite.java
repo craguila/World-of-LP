@@ -171,6 +171,7 @@ public class Sprite {
     //coleccion de sprites
     
     public static Sprite VACIO = new Sprite(32,0);
+    public static Sprite TRANSPARENTE = new Sprite(32,12,0,HojaSprites.nivel1);
     public static Sprite COFRE = new Sprite(32,0,9,HojaSprites.nivel1);
     public static Sprite COFREA = new Sprite(32,1,9,HojaSprites.nivel1);
     

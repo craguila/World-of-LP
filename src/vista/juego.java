@@ -47,6 +47,7 @@ public class Juego extends Canvas implements Runnable{
     public static ArrayList<Cofre> cofres = new ArrayList<>();
     public static ArrayList<Cofre> cofresobjetivo = new ArrayList<>();
     public static ArrayList<Npc> npcs = new ArrayList<>();
+    public static ArrayList<Teleport> teleports = new ArrayList<>();
     public static frmStats ventanaStats;
     public static frmHabilidades ventanaHabilidades;
     public static frmMonstruos ventanaMonstruos;
@@ -128,7 +129,10 @@ public class Juego extends Canvas implements Runnable{
         ventanaInventario=new frmInventario(jugador);
         ventanaInventario.setResizable(false);
         JOptionPane.showMessageDialog(this, "Es un placer conocer por fin a tan renombrado "+ tipo, NOMBRE, 1);
-        
+        //agregamos los teleports
+        int[] t1_pos = {1312,288};
+        teleports.add(new Teleport(mapa,"Teleport1",1,0, Stats.STATS_MONSTRUO,10,10,10,equipo,new Inventario(),t1_pos,Sprite.TRANSPARENTE,6336,96));
+        //teleports agregados
         //agregamos los cofres;
         Random  rnd = new Random();
         int num_cofres = 10;
@@ -572,6 +576,10 @@ public class Juego extends Canvas implements Runnable{
         for (Npc npc: npcs){
             npc.mostrar(pantalla);
         }
+        for (Teleport teleport: teleports){
+            teleport.mostrar(pantalla);
+        }
+        
         System.arraycopy(pantalla.pixeles, 0, pixeles, 0, pixeles.length);
         
         Graphics g = estrategia.getDrawGraphics();

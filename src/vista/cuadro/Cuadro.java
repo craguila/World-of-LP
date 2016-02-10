@@ -35,7 +35,7 @@ public class Cuadro {
     public static final Cuadro PASTOT_ARENAB = new Cuadro(Sprite.PASTOT_ARENAB);
     
     public static final Cuadro ARENA = new Cuadro(Sprite.ARENA);
-    public static final Cuadro AGUA = new Cuadro(Sprite.AGUA);
+    public static final Cuadro AGUA = new Cuadro(Sprite.AGUA, true);
     public static final Cuadro MURO = new Cuadro(Sprite.MURO, true);
     public static final Cuadro MURO_T = new Cuadro(Sprite.MURO_T, true);
     public static final Cuadro MURO_B = new Cuadro(Sprite.MURO_B, true);
