@@ -173,10 +173,36 @@ public class Sprite {
     public static Sprite VACIO = new Sprite(32,0);
     public static Sprite COFRE = new Sprite(32,0,9,HojaSprites.nivel1);
     public static Sprite COFREA = new Sprite(32,1,9,HojaSprites.nivel1);
-    public static Sprite PASTO = new Sprite(32,0,0,HojaSprites.nivel1);
-    public static Sprite ARENA = new Sprite(32,1,0,HojaSprites.nivel1);
+    
+    public static Sprite PASTO = new Sprite(32,13,0,HojaSprites.texturas);
+    public static Sprite PASTO_SI = new Sprite(32,12,1,HojaSprites.texturas);
+    public static Sprite PASTO_SD = new Sprite(32,13,1,HojaSprites.texturas);
+    public static Sprite PASTO_SSI = new Sprite(32,16,0,HojaSprites.texturas);
+    public static Sprite PASTO_SSM = new Sprite(32,17,0,HojaSprites.texturas);
+    public static Sprite PASTO_SSD = new Sprite(32,18,0,HojaSprites.texturas);
+    public static Sprite PASTO_I = new Sprite(32,12,2,HojaSprites.texturas);
+    public static Sprite PASTO_D = new Sprite(32,13,2,HojaSprites.texturas);
+    public static Sprite PASTO_ARENA = new Sprite(32,16,1,HojaSprites.texturas);
+    public static Sprite PASTOT_ARENAB = new Sprite(32,18,1,HojaSprites.texturas);
+    public static Sprite ARENA_PASTO = new Sprite(32,17,1,HojaSprites.texturas);
+    
+    public static Sprite ARENA = new Sprite(32,1,10,HojaSprites.texturas);
     public static Sprite AGUA = new Sprite(32,2,0,HojaSprites.nivel1);
-    public static Sprite MURO = new Sprite(32,3,0,HojaSprites.nivel1);
+    
+    public static Sprite MURO = new Sprite(32,10,0,HojaSprites.texturas);
+    public static Sprite MURO_T = new Sprite(32,10,3,HojaSprites.texturas);
+    public static Sprite MURO_B = new Sprite(32,10,4,HojaSprites.texturas);
+    
+    
+    public static Sprite CARPA_1 = new Sprite(32,16,2,HojaSprites.texturas);
+    public static Sprite CARPA_2 = new Sprite(32,17,2,HojaSprites.texturas);
+    public static Sprite CARPA_3 = new Sprite(32,18,2,HojaSprites.texturas);
+    public static Sprite CARPA_4 = new Sprite(32,16,3,HojaSprites.texturas);
+    public static Sprite CARPA_5 = new Sprite(32,17,3,HojaSprites.texturas);
+    public static Sprite CARPA_6 = new Sprite(32,18,3,HojaSprites.texturas);
+    public static Sprite CARPA_7 = new Sprite(32,16,4,HojaSprites.texturas);
+    public static Sprite CARPA_8 = new Sprite(32,17,4,HojaSprites.texturas);
+    public static Sprite CARPA_9 = new Sprite(32,18,4,HojaSprites.texturas);
     
     
     //fin de la coleccion
