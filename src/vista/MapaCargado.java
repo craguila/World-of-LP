@@ -102,7 +102,101 @@ public class MapaCargado extends Mapa{
                 case 0xffFFA0A0:
                     cuadrosCatalogo[i]=Cuadro.CARPA_9;
                     continue;
-                case 0xff31649b:
+                case 0xff424242:
+                    cuadrosCatalogo[i]=Cuadro.VACIO;
+                    continue;
+                case 0xffFF8500:
+                    cuadrosCatalogo[i]=Cuadro.TENT_1;
+                    continue;
+                case 0xffFF8501:
+                    cuadrosCatalogo[i]=Cuadro.TENT_2;
+                    continue;
+                case 0xffFF8502:
+                    cuadrosCatalogo[i]=Cuadro.TENT_3;
+                    continue;
+                case 0xffFF8503:
+                    cuadrosCatalogo[i]=Cuadro.TENT_4;
+                    continue;
+                case 0xffFF8504:
+                    cuadrosCatalogo[i]=Cuadro.TENT_5;
+                    continue;
+                case 0xffFF8505:
+                    cuadrosCatalogo[i]=Cuadro.TENT_6;
+                    continue;
+                case 0xffFF8506:
+                    cuadrosCatalogo[i]=Cuadro.TENT_7;
+                    continue;
+                case 0xffFF8507:
+                    cuadrosCatalogo[i]=Cuadro.TENT_8;
+                    continue;
+                case 0xffFF8508:
+                    cuadrosCatalogo[i]=Cuadro.TENT_9;
+                    continue;
+                case 0xffFF8509:
+                    cuadrosCatalogo[i]=Cuadro.TENT_10;
+                    continue;
+                case 0xffFF850A:
+                    cuadrosCatalogo[i]=Cuadro.TENT_11;
+                    continue;
+                case 0xffFF850B:
+                    cuadrosCatalogo[i]=Cuadro.TENT_12;
+                    continue;
+                case 0xffFF850C:
+                    cuadrosCatalogo[i]=Cuadro.TENT_13;
+                    continue;
+                case 0xffFF850D:
+                    cuadrosCatalogo[i]=Cuadro.TENT_14;
+                    continue;
+                case 0xffFF850E:
+                    cuadrosCatalogo[i]=Cuadro.TENT_15;
+                    continue;
+                case 0xffFF850F:
+                    cuadrosCatalogo[i]=Cuadro.TENT_16;
+                    continue;
+                case 0xffFF8510:
+                    cuadrosCatalogo[i]=Cuadro.TENT_17;
+                    continue;
+                case 0xffFF8511:
+                    cuadrosCatalogo[i]=Cuadro.TENT_18;
+                    continue;
+                case 0xffFF8512:
+                    cuadrosCatalogo[i]=Cuadro.TENT_19;
+                    continue;
+                case 0xffFF8513:
+                    cuadrosCatalogo[i]=Cuadro.TENT_20;
+                    continue;
+                case 0xffFF8514:
+                    cuadrosCatalogo[i]=Cuadro.TENT_21;
+                    continue;
+                case 0xffFF8515:
+                    cuadrosCatalogo[i]=Cuadro.TENT_22;
+                    continue;
+                case 0xffFF8516:
+                    cuadrosCatalogo[i]=Cuadro.TENT_23;
+                    continue;
+                case 0xffFF8517:
+                    cuadrosCatalogo[i]=Cuadro.TENT_24;
+                    continue;
+                case 0xffFF8518:
+                    cuadrosCatalogo[i]=Cuadro.TENT_25;
+                    continue;
+                case 0xffFF8519:
+                    cuadrosCatalogo[i]=Cuadro.TENT_26;
+                    continue;
+                case 0xffFF851A:
+                    cuadrosCatalogo[i]=Cuadro.TENT_27;
+                    continue;
+                case 0xffFF851B:
+                    cuadrosCatalogo[i]=Cuadro.TENT_28;
+                    continue;
+                case 0xffFF851C:
+                    cuadrosCatalogo[i]=Cuadro.TENT_29;
+                    continue;
+                case 0xffFF851D:
+                    cuadrosCatalogo[i]=Cuadro.TENT_30;
+                    continue;
+                    
+                case 0xff31641F:
                     cuadrosCatalogo[i]=Cuadro.AGUA;
                     continue;
                 case 0xff696a6a:

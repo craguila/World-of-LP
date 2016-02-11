@@ -130,8 +130,10 @@ public class Juego extends Canvas implements Runnable{
         ventanaInventario.setResizable(false);
         JOptionPane.showMessageDialog(this, "Es un placer conocer por fin a tan renombrado "+ tipo, NOMBRE, 1);
         //agregamos los teleports
-        int[] t1_pos = {1312,288};
-        teleports.add(new Teleport(mapa,"Teleport1",1,0, Stats.STATS_MONSTRUO,10,10,10,equipo,new Inventario(),t1_pos,Sprite.TRANSPARENTE,6336,96));
+        int[] t1_pos = {1312,275};
+        int[] t2_pos = {6045,427};
+        teleports.add(new Teleport(mapa,"Teleport1",t1_pos,Sprite.TRANSPARENTE,6045,409));
+        teleports.add(new Teleport(mapa,"Teleport2",t2_pos,Sprite.TRANSPARENTE,1312,300));
         //teleports agregados
         //agregamos los cofres;
         Random  rnd = new Random();

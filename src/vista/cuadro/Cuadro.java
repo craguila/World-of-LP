@@ -20,7 +20,7 @@ public class Cuadro {
     public boolean solido;
     
     //coleccion de cuadros
-    public static final Cuadro VACIO = new Cuadro(Sprite.VACIO);
+    public static final Cuadro VACIO = new Cuadro(Sprite.VACIO, true);
     public static final Cuadro PASTO = new Cuadro(Sprite.PASTO);
     public static final Cuadro PASTO_I = new Cuadro(Sprite.PASTO_I);
     public static final Cuadro PASTO_D = new Cuadro(Sprite.PASTO_D);
@@ -50,6 +50,39 @@ public class Cuadro {
     public static final Cuadro CARPA_7 = new Cuadro(Sprite.CARPA_7, true);
     public static final Cuadro CARPA_8 = new Cuadro(Sprite.CARPA_8);
     public static final Cuadro CARPA_9 = new Cuadro(Sprite.CARPA_9, true);
+    
+    public static final Cuadro TENT_1 = new Cuadro(Sprite.TENT_1, true);
+    public static final Cuadro TENT_2 = new Cuadro(Sprite.TENT_2, true);
+    public static final Cuadro TENT_3 = new Cuadro(Sprite.TENT_3, true);
+    public static final Cuadro TENT_4 = new Cuadro(Sprite.TENT_4, true);
+    public static final Cuadro TENT_5 = new Cuadro(Sprite.TENT_5, true);
+    public static final Cuadro TENT_6 = new Cuadro(Sprite.TENT_6, true);
+    public static final Cuadro TENT_7 = new Cuadro(Sprite.TENT_7, true);
+    public static final Cuadro TENT_8 = new Cuadro(Sprite.TENT_8, true);
+    public static final Cuadro TENT_9 = new Cuadro(Sprite.TENT_9, true);
+    public static final Cuadro TENT_10 = new Cuadro(Sprite.TENT_10, true);
+    public static final Cuadro TENT_11 = new Cuadro(Sprite.TENT_11, true);
+    public static final Cuadro TENT_12 = new Cuadro(Sprite.TENT_12, true);
+    public static final Cuadro TENT_13 = new Cuadro(Sprite.TENT_13);
+    public static final Cuadro TENT_14 = new Cuadro(Sprite.TENT_14);
+    public static final Cuadro TENT_15 = new Cuadro(Sprite.TENT_15, true);
+    public static final Cuadro TENT_16 = new Cuadro(Sprite.TENT_16, true);
+    public static final Cuadro TENT_17 = new Cuadro(Sprite.TENT_17, true);
+    public static final Cuadro TENT_18 = new Cuadro(Sprite.TENT_18);
+    public static final Cuadro TENT_19 = new Cuadro(Sprite.TENT_19);
+    public static final Cuadro TENT_20 = new Cuadro(Sprite.TENT_20);
+    public static final Cuadro TENT_21 = new Cuadro(Sprite.TENT_21, true);
+    public static final Cuadro TENT_22 = new Cuadro(Sprite.TENT_22);
+    public static final Cuadro TENT_23 = new Cuadro(Sprite.TENT_23);
+    public static final Cuadro TENT_24 = new Cuadro(Sprite.TENT_24);
+    public static final Cuadro TENT_25 = new Cuadro(Sprite.TENT_25);
+    public static final Cuadro TENT_26 = new Cuadro(Sprite.TENT_26, true);
+    public static final Cuadro TENT_27 = new Cuadro(Sprite.TENT_27, true);
+    public static final Cuadro TENT_28 = new Cuadro(Sprite.TENT_28);
+    public static final Cuadro TENT_29 = new Cuadro(Sprite.TENT_29, true);
+    public static final Cuadro TENT_30 = new Cuadro(Sprite.TENT_30, true);
+    
+    
     //fin de la coleccion
     
     public Cuadro(Sprite sprite){

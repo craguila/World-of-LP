@@ -5,19 +5,23 @@
  */
 package controlador;
 
+import Graficos.Pantalla;
 import Graficos.Sprite;
-import java.util.ArrayList;
-import java.util.Random;
 import vista.Juego;
 import vista.Mapa;
 
 
-public class Teleport extends Monstruo{
-    private boolean enMovimiento = false;
+public class Teleport {
+    protected Sprite sprite;
+    String Nombre;
+    int[] posicion=new int[2];
+    protected Mapa mapa;
     private int toX;
     private int toY;
-    public Teleport(Mapa mapa, String Nombre, int Nivel, int EXP, Stats stats, int Vida, int Stamina, int Mana, Equipo equipo, Inventario inventario, int[] posicion, Sprite sprite,int toX, int toY) {
-        super(mapa, Nombre, Nivel, EXP, stats, Vida, Stamina, Mana, equipo, inventario, posicion);
+    public Teleport(Mapa mapa, String Nombre, int[] posicion, Sprite sprite,int toX, int toY) {
+        this.mapa = mapa;
+        this.Nombre = Nombre;
+        this.posicion = posicion;
         this.sprite = sprite;
         this.toX = toX;
         this.toY = toY;
@@ -25,22 +29,22 @@ public class Teleport extends Monstruo{
     
 
 
-    
-    @Override
     public boolean actualizar(){
 
         return false;
 
     }
 
-    @Override
     public Sprite getSprite(){
         return sprite;
     }
-    public void mostrar(){
-
-    }
     
+    public void mostrar(Pantalla pantalla){
+        pantalla.mostrarTeleport(posicion[0], posicion[1], this);
+        
+        
+    }
+     
     public int gettoX(){
         return toX;
     }
