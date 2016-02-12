@@ -12,15 +12,22 @@ import vista.Juego;
 import vista.Mapa;
 
 
-public class Cofre extends Monstruo{
+public class Cofre extends Objeto{//deberia extends Objeto y agregar inventario
     private boolean enMovimiento = false;
     private int animacion;
-   
-    public Cofre(Mapa mapa, String Nombre, int Nivel, int EXP, Stats stats, int Vida, int Stamina, int Mana, Equipo equipo, Inventario inventario, int[] posicion, Sprite sprite) {
-        super(mapa, Nombre, Nivel, EXP, stats, Vida, Stamina, Mana, equipo, inventario, posicion);
+    private Inventario inventario;
+    public Cofre(Mapa mapa, String nombre, int[] posicion, Sprite sprite, Inventario inventario) {
+        super (mapa, nombre, posicion, sprite);
         this.sprite = sprite;
+        this.inventario = inventario;
     }
     
+    public Inventario getInventario() {
+        return inventario;
+    }
+    public String getNombre(){
+        return nombre;
+    }
     public void sacarItem(Cofre c){
         c.sprite = Sprite.COFREA;
         if (c.getInventario().getSize()>0){

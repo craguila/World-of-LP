@@ -279,7 +279,7 @@ public class Personaje {
         //busca los teleports
         for(Teleport c: Juego.teleports){
             int lado_monstruo =c.getSprite().getLado();
-            //esquinas del monstruo
+            //esquinas del teleport
             int monstruoX = c.posicion[0]-lado_monstruo+5;
             int monstruoY = c.posicion[1]-lado_monstruo;
             int monstruoX2 = c.posicion[0];
@@ -295,6 +295,29 @@ public class Personaje {
             }
             if (playerX2>monstruoX && playerX2<monstruoX2 && playerY>monstruoY && playerY<monstruoY2){
                 this.mover(c.gettoX()-posicion[0] , c.gettoY()-posicion[1]);
+            }
+               
+            
+        }
+        //busca los objetos
+        for(Objeto c: Juego.objetos){
+            int lado_monstruo =c.getSprite().getLado();
+            //esquinas del teleport
+            int monstruoX = c.posicion[0]-lado_monstruo+5;
+            int monstruoY = c.posicion[1]-lado_monstruo;
+            int monstruoX2 = c.posicion[0];
+            int monstruoY2 = c.posicion[1];
+            //esquinas del jugador
+            int playerX = posicionX + margenIzquierdo+18;
+            int playerX2 = posicionX - margenIzquierdo- margenDerecho - sprite.getLado()+18;
+            int playerY = posicionY + margenSuperior;
+            int playerY2 = posicionY + margenSuperior + margenInferior + sprite.getLado();
+
+            if (playerX>monstruoX && playerX<monstruoX2 && playerY>monstruoY && playerY<monstruoY2){
+                colision = true;
+            }
+            if (playerX2>monstruoX && playerX2<monstruoX2 && playerY>monstruoY && playerY<monstruoY2){
+                colision = true;
             }
                
             

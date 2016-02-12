@@ -236,6 +236,8 @@ public class Sprite {
     public static Sprite TENT_29 = new Sprite(32,13,6,HojaSprites.tent);
     public static Sprite TENT_30 = new Sprite(32,14,6,HojaSprites.tent);
     
+    public static Sprite BARRIL = new Sprite(32,0,15,HojaSprites.objetos);
+    
     
     //fin de la coleccion
     

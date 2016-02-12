@@ -16,8 +16,6 @@ import java.awt.image.DataBufferInt;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Random;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 
@@ -48,6 +46,7 @@ public class Juego extends Canvas implements Runnable{
     public static ArrayList<Cofre> cofresobjetivo = new ArrayList<>();
     public static ArrayList<Npc> npcs = new ArrayList<>();
     public static ArrayList<Teleport> teleports = new ArrayList<>();
+    public static ArrayList<Objeto> objetos = new ArrayList<>();
     public static frmStats ventanaStats;
     public static frmHabilidades ventanaHabilidades;
     public static frmMonstruos ventanaMonstruos;
@@ -135,6 +134,10 @@ public class Juego extends Canvas implements Runnable{
         teleports.add(new Teleport(mapa,"Teleport1",t1_pos,Sprite.TRANSPARENTE,6045,409));
         teleports.add(new Teleport(mapa,"Teleport2",t2_pos,Sprite.TRANSPARENTE,1312,300));
         //teleports agregados
+        //agregamos objetos
+        int[] b1_pos = {500,500};
+        objetos.add(new Objeto(mapa,"Barril1",b1_pos,Sprite.BARRIL));
+        //objetos agregados
         //agregamos los cofres;
         Random  rnd = new Random();
         int num_cofres = 10;
@@ -146,7 +149,7 @@ public class Juego extends Canvas implements Runnable{
             m_pos[1]=(int)(rnd.nextDouble() * 1537);
             if (!jugador.hayunmuro(m_pos[0],m_pos[1])){
                 //poner todo en 0
-                cofres.add(new Cofre(mapa,"Cofre"+i,1,0, Stats.STATS_MONSTRUO,10,10,10,equipo,new Inventario(),m_pos,Sprite.COFRE));
+                cofres.add(new Cofre(mapa,"Cofre"+i,m_pos,Sprite.COFRE,new Inventario()));
             }
         }
         for(Cofre c:cofres){
@@ -580,6 +583,9 @@ public class Juego extends Canvas implements Runnable{
         }
         for (Teleport teleport: teleports){
             teleport.mostrar(pantalla);
+        }
+        for (Objeto objeto: objetos){
+            objeto.mostrar(pantalla);
         }
         
         System.arraycopy(pantalla.pixeles, 0, pixeles, 0, pixeles.length);

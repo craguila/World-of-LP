@@ -5,6 +5,7 @@
  */
 package Graficos;
 
+import controlador.Objeto;
 import controlador.Personaje;
 import controlador.Teleport;
 import vista.cuadro.Cuadro;
@@ -77,6 +78,27 @@ public class Pantalla {
         }
     }
     public void mostrarTeleport(int compensacionX, int compensacionY, Teleport jugador){
+        compensacionX -= diferenciaX;
+        compensacionY -= diferenciaY;
+        
+        for (int y=0 ; y< jugador.getSprite().getLado();y++){
+            int posicionY = y + compensacionY;
+            for (int x=0; x<jugador.getSprite().getLado();x++){
+                int posicionX = x + compensacionX;
+                if(posicionX < - jugador.getSprite().getLado() || posicionX >= ancho || posicionY < 0 || posicionY >= alto){
+                    break;
+                }
+                if (posicionX < 0){
+                    posicionX = 0;
+                }
+                int colorpixel = jugador.getSprite().pixeles[x + y*jugador.getSprite().getLado()];
+                if (colorpixel != 0xff7bc684){
+                    pixeles[posicionX + posicionY*ancho] = colorpixel;
+                }
+            }
+        }
+    }
+    public void mostrarObjeto(int compensacionX, int compensacionY, Objeto jugador){
         compensacionX -= diferenciaX;
         compensacionY -= diferenciaY;
         
