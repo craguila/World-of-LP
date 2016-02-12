@@ -4,6 +4,7 @@
  */
 package vista;
 
+
 import controlador.Stats;
 import javax.swing.ButtonGroup;
 import javax.swing.JOptionPane;
@@ -230,12 +231,15 @@ public class formulario extends javax.swing.JFrame {
                 Juego juego = new Juego(this.txtNombre.getText(),clase,this);
                 juego.iniciar();
             }
-            else{
+            else{   
                 JOptionPane.showMessageDialog(this, "Debe Seleccionar una Clase", "World of LP", 0);
             }
         }
         else{
             JOptionPane.showMessageDialog(this, "Debe Ingresar Su Nombre", "World of LP", 0);
+            
+            
+            
         }
     }//GEN-LAST:event_btnIniciarActionPerformed
 
@@ -306,7 +310,7 @@ public class formulario extends javax.swing.JFrame {
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 new formulario().setVisible(true);
-                
+                (new Thread(new Music(0,80,200))).start();
             }
         });
     }
