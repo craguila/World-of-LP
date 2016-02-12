@@ -24,6 +24,7 @@ public class Music implements Runnable {
         this.volume = volume;
         this.duration = duration;
     }
+    
     @Override
     public void run(){
         
@@ -39,11 +40,24 @@ public class Music implements Runnable {
             // Each of these arguments is between 0 and 127.
             Random  rnd = new Random();
             while (true){
-                int nota = 60 + rnd.nextInt(10)*2;
-                int duracion = duration + rnd.nextInt(100);
+                int nota = 60 + rnd.nextInt(10);
+                int duracion = duration;
                 channels[channel].noteOn( nota, volume );
-                Thread.sleep( duracion );
+                channels[channel].noteOn( nota+4, volume );
+                channels[channel].noteOn( nota+7, volume );
+                
+                int secondinstrument = 9;
+                for (int i = 0;i<7;i++){
+                    int nota_drum = 60 + rnd.nextInt(3);
+                    channels[secondinstrument].noteOn( nota_drum, volume );
+                    Thread.sleep( duracion/7 );
+                    channels[secondinstrument].noteOff( nota_drum );
+                }
                 channels[channel].noteOff( nota );
+                channels[channel].noteOff( nota+4 );
+                channels[channel].noteOff( nota+7 );
+                Thread.sleep( 200 );
+                
             }
             //synth.close();
         }

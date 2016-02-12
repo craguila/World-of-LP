@@ -310,7 +310,7 @@ public class formulario extends javax.swing.JFrame {
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 new formulario().setVisible(true);
-                (new Thread(new Music(0,80,200))).start();
+                (new Thread(new Music(0,80,2000))).start();
             }
         });
     }
