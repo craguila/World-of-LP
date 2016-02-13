@@ -466,4 +466,12 @@ public class Personaje {
             rec ++;
         }
     }
+    public String getArea(){
+        if (this.posicion[0]<1000 && this.posicion[1]<1350){
+            return "Pasto";
+        } else if (this.posicion[0]>6010 && this.posicion[1]<420){
+            return "Carpa";
+        }
+        return "Otra";
+    }
 }

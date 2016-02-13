@@ -5,6 +5,7 @@
  */
 package vista;
 
+import controlador.Personaje;
 import java.util.Random;
 import javax.sound.midi.MidiSystem;
 import javax.sound.midi.Synthesizer;
@@ -32,31 +33,66 @@ public class Music implements Runnable {
             synth = MidiSystem.getSynthesizer();
             synth.open();
             channels = synth.getChannels();
-            // --------------------------------------
-            // Play a few notes.
-            // The two arguments to the noteOn() method are:
-            // "MIDI note number" (pitch of the note),
-            // and "velocity" (i.e., volume, or intensity).
-            // Each of these arguments is between 0 and 127.
             Random  rnd = new Random();
+            int nota;
+            int duracion;
+            int secondinstrument;
+            int nota_drum;
             while (true){
-                int nota = 60 + rnd.nextInt(10);
-                int duracion = duration;
-                channels[channel].noteOn( nota, volume );
-                channels[channel].noteOn( nota+4, volume );
-                channels[channel].noteOn( nota+7, volume );
-                
-                int secondinstrument = 9;
-                for (int i = 0;i<7;i++){
-                    int nota_drum = 60 + rnd.nextInt(3);
-                    channels[secondinstrument].noteOn( nota_drum, volume );
-                    Thread.sleep( duracion/7 );
-                    channels[secondinstrument].noteOff( nota_drum );
+                switch (Juego.jugador.getArea()){
+                    case "Pasto":
+                        nota = 60 + rnd.nextInt(10);
+                        duracion = duration;
+                        channels[channel].noteOn( nota, volume-20 );
+                        channels[channel].noteOn( nota+4, volume-20 );
+                        channels[channel].noteOn( nota+7, volume-20 );
+
+                        secondinstrument = 9;
+                        for (int i = 0;i<10;i++){
+                            nota_drum = 60 + rnd.nextInt(3);
+                            channels[secondinstrument].noteOn( nota_drum, volume );
+                            Thread.sleep( duracion/10 );
+                            channels[secondinstrument].noteOff( nota_drum );
+                        }
+                        channels[channel].noteOff( nota );
+                        channels[channel].noteOff( nota+4 );
+                        channels[channel].noteOff( nota+7 );
+                        nota_drum = 60 + rnd.nextInt(3);
+
+                        channels[secondinstrument].noteOn( nota_drum, volume );
+                        Thread.sleep( duracion/10 );
+                        channels[secondinstrument].noteOff( nota_drum );
+                        break;
+                    case "Carpa":
+                        secondinstrument = 9;
+                        channels[secondinstrument].noteOn( 62, volume );
+                        channels[secondinstrument].noteOn( 60, volume );
+                        Thread.sleep( 250 );
+                        channels[secondinstrument].noteOff( 60 );
+                        channels[secondinstrument].noteOff( 62 );
+                        for (int i = 0;i<3;i++){
+                            channels[secondinstrument].noteOn( 60, volume );
+                            Thread.sleep( 250 );
+                            channels[secondinstrument].noteOff( 60 );
+                        }
+                        break;
+                    default:
+                        duracion = duration;
+
+                        secondinstrument = 13;
+                        //for (int i = 0;i<15;i++){
+                            nota_drum = 80 + rnd.nextInt(2);
+                            channels[secondinstrument].noteOn( nota_drum, volume );
+                            channels[secondinstrument].noteOn( nota_drum+4, volume );
+                            channels[secondinstrument].noteOn( nota_drum+6, volume );
+                            Thread.sleep( duracion );
+                            channels[secondinstrument].noteOff( nota_drum );
+                        //}
+                        break;
+                        
                 }
-                channels[channel].noteOff( nota );
-                channels[channel].noteOff( nota+4 );
-                channels[channel].noteOff( nota+7 );
-                Thread.sleep( 200 );
+                
+                
                 
             }
             //synth.close();

@@ -86,7 +86,8 @@ public class Juego extends Canvas implements Runnable{
         
         equipo=new Equipo(EquipoItem.ARMADURA_GUERRERO, EquipoItem.ARMA_GUERRERO,null);
         jugador = new Guerrero(mapa,nombre,1,0,Stats.STATS_GUERRERO,10,10,10,equipo,new Inventario(),teclado,pos,Sprite.ABAJO0);
-
+        
+        (new Thread(new Music(0,80,2000))).start();
         while (jugador.hayunmuro(pos[0],pos[1])){
             pos[0]=(int)(rndpos.nextDouble() * 1540);
             pos[1]=(int)(rndpos.nextDouble() * 1537);
