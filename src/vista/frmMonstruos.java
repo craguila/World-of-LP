@@ -153,7 +153,9 @@ public void despuesdeatacar(){
         Juego.ventana.setVisible(true);
     }//GEN-LAST:event_tblMonstruosKeyPressed
 
-    
+    public javax.swing.JTable getMonstruos(){
+        return tblMonstruos;
+    }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JScrollPane jScrollPane1;

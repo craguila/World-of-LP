@@ -22,6 +22,7 @@ public class Teclado implements KeyListener{
     public boolean usarhabilidad;
     public boolean abrircofre;
     public boolean abrirstats;
+    public boolean atacarenemigo;
     
     public void actualizar(){
         arriba = teclas[KeyEvent.VK_UP];
@@ -33,6 +34,7 @@ public class Teclado implements KeyListener{
         usarhabilidad = teclas[KeyEvent.VK_C];
         abrircofre = teclas[KeyEvent.VK_SPACE];
         abrirstats = teclas[KeyEvent.VK_S];
+        atacarenemigo = teclas[KeyEvent.VK_A];
     }
     @Override
     public void keyTyped(KeyEvent e) {

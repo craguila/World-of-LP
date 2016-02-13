@@ -3,14 +3,15 @@ package controlador;
 
 import Graficos.Pantalla;
 import Graficos.Sprite;
+import control.Teclado;
 import java.awt.Robot;
 import java.awt.event.KeyEvent;
 import java.util.ArrayList;
 import java.util.Date;
-import java.util.HashSet;
 import java.util.Random;
 import javax.swing.JOptionPane;
 import vista.Juego;
+import static vista.Juego.ventanaMonstruos;
 import vista.Mapa;
 import vista.frmStats;
 
@@ -31,6 +32,7 @@ public class Personaje {
     int[] posicion=new int[2];
     int dinero;
     Equipo equipo;
+      
     
     protected Mapa mapa;
     
@@ -77,6 +79,7 @@ public class Personaje {
         rob.keyRelease(KeyEvent.VK_Z);
         rob.keyRelease(KeyEvent.VK_X);
         rob.keyRelease(KeyEvent.VK_C);
+        rob.keyRelease(KeyEvent.VK_A);
     }
     
     public Inventario getInventario() {
@@ -412,10 +415,273 @@ public class Personaje {
         }
     }
         
-        
-    public boolean actualizar() {
-        return false;
+    public boolean actualizar(){
+        return true;
     }
+    
+    public boolean actualizar(int animacion, boolean enMovimiento, String tipo){
+        return true;
+    }
+        
+    public boolean actualizar(boolean enMovimiento, int animacion, Teclado teclado, String tipo){
+        int desplazamientoX = 0;
+        int desplazamientoY = 0;
+        
+        recuperarse();
+        
+        if (animacion<32767){
+            animacion++;
+        }else{
+            animacion =0;
+        }
+        
+        if (teclado.arriba){
+            desplazamientoY=-stats.rapidez;
+        }
+        if (teclado.abajo){
+            desplazamientoY=+stats.rapidez;
+        }
+        if(teclado.izquierda){
+            desplazamientoX=-stats.rapidez;
+        }
+        if(teclado.derecha){
+            desplazamientoX=+stats.rapidez;
+        }
+        
+        if(teclado.inventario && !Juego.ventanaInventario.isVisible()){
+            Juego.ventanaInventario.setVisible(true);
+            Juego.ventana.setVisible(true);
+        }
+        if (!teclado.inventario && Juego.ventanaInventario.isVisible()){
+            Juego.ventanaInventario.setVisible(false);
+        } 
+        
+        if(teclado.abrirstats && !Juego.ventanaStats.isVisible()){
+            Juego.ventanaStats.setVisible(true);
+            Juego.ventana.setVisible(true);
+        }
+        if (!teclado.abrirstats && Juego.ventanaStats.isVisible()){
+            Juego.ventanaStats.setVisible(false);
+        } 
+        
+        if(teclado.usarhabilidad && !Juego.ventanaHabilidades.isVisible()){
+            Juego.ventanaHabilidades.setVisible(true);
+            Juego.ventana.setVisible(true);
+        }
+        if (!teclado.usarhabilidad && Juego.ventanaHabilidades.isVisible()){
+            Juego.ventanaHabilidades.setVisible(false);
+        } 
+        
+        if(teclado.atacar && !Juego.ventanaMonstruos.isVisible()){
+            Juego.ventanaMonstruos.setVisible(true);
+            Juego.ventana.setVisible(true);
+            
+        }
+        if (!teclado.atacar && Juego.ventanaMonstruos.isVisible()){
+            Juego.ventanaMonstruos.setVisible(false);
+        } 
+        if (teclado.atacarenemigo){
+            try{
+            String objetivo=ventanaMonstruos.getMonstruos().getValueAt(0, 0).toString();
+            for(Monstruo m:Juego.monstruos){
+                if(m.getNombre().equals(objetivo)){
+                    if (Juego.jugador.vivo()){
+                    Juego.setConsole("Jugador ataco a "+objetivo+"-vida: "+m.getVida());
+                    m.danar(Juego.jugador.getStats().getFuerza());
+                    ventanaMonstruos.despuesdeatacar();
+                    this.releaseTeclado();
+                    }
+                    break; 
+
+                }
+            }
+        }
+            catch(Exception e){
+            }
+        } 
+        
+        if(teclado.abrircofre){
+            
+            int posicionX = posicion[0] + desplazamientoX;
+            int posicionY = posicion[1] + desplazamientoY;
+            int margenIzquierdo = -23; //cambiar despues
+            int margenDerecho = 26;
+            int margenSuperior = -20;
+            int margenInferior = 29;
+            
+            //busca los cofres
+            for(Cofre c: Juego.cofres){
+                int lado_monstruo =c.getSprite().getLado();
+                //esquinas del monstruo
+                int monstruoX = c.posicion[0]-lado_monstruo+5;
+                int monstruoY = c.posicion[1]-lado_monstruo;
+                int monstruoX2 = c.posicion[0];
+                int monstruoY2 = c.posicion[1];
+                //esquinas del jugador
+                int playerX = posicionX + margenIzquierdo+18;
+                int playerX2 = posicionX - margenIzquierdo- margenDerecho - sprite.getLado()+18;
+                int playerY = posicionY + margenSuperior;
+                int playerY2 = posicionY + margenSuperior + margenInferior + sprite.getLado();
+
+                if (playerX>monstruoX && playerX<monstruoX2 && playerY>monstruoY && playerY<monstruoY2){
+                    c.sacarItem(c);
+                }
+                if (playerX2>monstruoX && playerX2<monstruoX2 && playerY>monstruoY && playerY<monstruoY2){
+                    c.sacarItem(c);
+                }
+            }
+            //busca los npc
+            for(Npc npc: Juego.npcs){
+                int lado_monstruo =npc.getSprite().getLado();
+                //esquinas del monstruo
+                int monstruoX = npc.posicion[0]-lado_monstruo+5;
+                int monstruoY = npc.posicion[1]-lado_monstruo;
+                int monstruoX2 = npc.posicion[0];
+                int monstruoY2 = npc.posicion[1];
+                //esquinas del jugador
+                int playerX = posicionX + margenIzquierdo+18;
+                int playerX2 = posicionX - margenIzquierdo- margenDerecho - sprite.getLado()+18;
+                int playerY = posicionY + margenSuperior;
+                int playerY2 = posicionY + margenSuperior + margenInferior + sprite.getLado();
+
+                if (playerX>monstruoX && playerX<monstruoX2 && playerY>monstruoY && playerY<monstruoY2){
+                    npc.interactuar(npc);
+                }
+                if (playerX2>monstruoX && playerX2<monstruoX2 && playerY>monstruoY && playerY<monstruoY2){
+                    npc.interactuar(npc);
+                }
+            }
+            
+        }
+        
+        //animacion y sprites
+        Sprite sn0;
+        Sprite sn1;
+        Sprite sn2;
+        Sprite ss0;
+        Sprite ss1;
+        Sprite ss2;
+        Sprite se0;
+        Sprite se1;
+        Sprite se2;
+        Sprite so0;
+        Sprite so1;
+        Sprite so2;
+        switch (tipo){
+            case "Arquero":
+                sn0 = Sprite.AARRIBA0;
+                sn1 = Sprite.AARRIBA1;
+                sn2 = Sprite.AARRIBA2;
+                ss0 = Sprite.AABAJO0;
+                ss1 = Sprite.AABAJO1;
+                ss2 = Sprite.AABAJO2;
+                se0 = Sprite.ADERECHA0;
+                se1 = Sprite.ADERECHA1;
+                se2 = Sprite.ADERECHA2;
+                so0 = Sprite.AIZQUIERDA0;
+                so1 = Sprite.AIZQUIERDA1;
+                so2 = Sprite.AIZQUIERDA2;
+                break;
+            case "Mago":
+                sn0 = Sprite.MARRIBA0;
+                sn1 = Sprite.MARRIBA1;
+                sn2 = Sprite.MARRIBA2;
+                ss0 = Sprite.MABAJO0;
+                ss1 = Sprite.MABAJO1;
+                ss2 = Sprite.MABAJO2;
+                se0 = Sprite.MDERECHA0;
+                se1 = Sprite.MDERECHA1;
+                se2 = Sprite.MDERECHA2;
+                so0 = Sprite.MIZQUIERDA0;
+                so1 = Sprite.MIZQUIERDA1;
+                so2 = Sprite.MIZQUIERDA2;
+                break;
+            default: //guerrero
+                sn0 = Sprite.ARRIBA0;
+                sn1 = Sprite.ARRIBA1;
+                sn2 = Sprite.ARRIBA2;
+                ss0 = Sprite.ABAJO0;
+                ss1 = Sprite.ABAJO1;
+                ss2 = Sprite.ABAJO2;
+                se0 = Sprite.DERECHA0;
+                se1 = Sprite.DERECHA1;
+                se2 = Sprite.DERECHA2;
+                so0 = Sprite.IZQUIERDA0;
+                so1 = Sprite.IZQUIERDA1;
+                so2 = Sprite.IZQUIERDA2;
+                break;
+                
+        }
+        int resto = animacion%40;
+        if (direccion == 'n'){
+            sprite = sn0;
+            if (enMovimiento){
+                if (resto>10 && resto <= 20){
+                    sprite = sn1;
+                } else if (resto>20 && resto<=30){
+                    sprite= sn0;
+                } else if (resto>30 && resto<=40){
+                    sprite= sn2;
+                } else{
+                    sprite= sn0;
+                }
+            }
+        }
+        if (direccion == 's'){
+            sprite = ss0;
+             if (enMovimiento){
+                if (resto>10 && resto <= 20){
+                    sprite = ss1;
+                } else if (resto>20 && resto<=30){
+                    sprite= ss0;
+                } else if (resto>30 && resto<=40){
+                    sprite= ss2;
+                } else{
+                    sprite= ss0;
+                }
+            }
+        } 
+        if (direccion == 'o'){
+            sprite = so0;
+             if (enMovimiento){
+                if (resto>10 && resto <= 20){
+                    sprite = so1;
+                } else if (resto>20 && resto<=30){
+                    sprite= so0;
+                } else if (resto>30 && resto<=40){
+                    sprite= so2;
+                } else{
+                    sprite= so0;
+                }
+            }
+            
+        }
+        if (direccion == 'e'){
+            sprite = se0;
+             if (enMovimiento){
+                if (resto>10 && resto <= 20){
+                    sprite = se1;
+                } else if (resto>20 && resto<=30){
+                    sprite= se0;
+                } else if (resto>30 && resto<=40){
+                    sprite= se2;
+                } else{
+                    sprite= se0;
+                }
+            }
+            
+        }
+        if (desplazamientoX != 0 || desplazamientoY != 0){
+            mover(desplazamientoX, desplazamientoY);
+            enMovimiento= true;
+            return true;
+        } else{
+            enMovimiento = false;
+            return false;
+        }
+        
+    }
+    
     public Sprite getSprite(){
         return sprite;
     }
