@@ -16,12 +16,21 @@ import vista.Mapa;
 public class Objeto {
     protected Sprite sprite;
     String nombre;
+    int posX;
+    int posY;
     int[] posicion=new int[2];
     protected Mapa mapa;
     public Objeto(Mapa mapa, String nombre, int[] posicion, Sprite sprite) {
         this.mapa = mapa;
         this.nombre = nombre;
         this.posicion = posicion;
+        this.sprite = sprite;
+    }
+    public Objeto(String nombre, Mapa mapa, Sprite sprite, int posX, int posY) {
+        this.mapa = mapa;
+        this.nombre = nombre;
+        this.posicion[0] = posX;
+        this.posicion[1] = posY;
         this.sprite = sprite;
     }
     

@@ -304,23 +304,39 @@ public class Personaje {
         }
         //busca los objetos
         for(Objeto c: Juego.objetos){
-            int lado_monstruo =c.getSprite().getLado();
+            int lado_objeto =c.getSprite().getLado();
             //esquinas del teleport
-            int monstruoX = c.posicion[0]-lado_monstruo+5;
-            int monstruoY = c.posicion[1]-lado_monstruo;
-            int monstruoX2 = c.posicion[0];
-            int monstruoY2 = c.posicion[1];
+            int objetoX = c.posicion[0]-lado_objeto+5;
+            int objetoY = c.posicion[1]-lado_objeto;
+            int objetoX2 = c.posicion[0];
+            int objetoY2 = c.posicion[1];
             //esquinas del jugador
             int playerX = posicionX + margenIzquierdo+18;
             int playerX2 = posicionX - margenIzquierdo- margenDerecho - sprite.getLado()+18;
             int playerY = posicionY + margenSuperior;
             int playerY2 = posicionY + margenSuperior + margenInferior + sprite.getLado();
 
-            if (playerX>monstruoX && playerX<monstruoX2 && playerY>monstruoY && playerY<monstruoY2){
-                colision = true;
+            if (playerX>objetoX && playerX<objetoX2 && playerY>objetoY && playerY<objetoY2){
+                int x = Math.abs(playerX-objetoX);
+                int y = Math.abs(playerY-objetoY);
+                        int colorpixel = c.getSprite().pixeles[x + y*c.getSprite().getLado()];
+                        if (colorpixel != 0xff7bc684){
+                            colision = true;
+                        } 
+
             }
-            if (playerX2>monstruoX && playerX2<monstruoX2 && playerY>monstruoY && playerY<monstruoY2){
-                colision = true;
+            if (playerX2>objetoX && playerX2<objetoX2 && playerY>objetoY && playerY<objetoY2){
+                int x = Math.abs(playerX-objetoX);
+                int y = Math.abs(playerY-objetoY);
+                    try{
+                        int colorpixel = c.getSprite().pixeles[x + y*c.getSprite().getLado()];
+                        if (colorpixel != 0xff7bc684){
+                            colision = true;
+                        }
+                    }catch (Exception e){
+                            colision = true;
+                    }
+
             }
                
             

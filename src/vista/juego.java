@@ -136,8 +136,15 @@ public class Juego extends Canvas implements Runnable{
         teleports.add(new Teleport(mapa,"Teleport2",t2_pos,Sprite.TRANSPARENTE,1312,300));
         //teleports agregados
         //agregamos objetos
-        int[] b1_pos = {500,500};
-        objetos.add(new Objeto(mapa,"Barril1",b1_pos,Sprite.BARRIL));
+        objetos.add(new Objeto("CamaA1", mapa ,Sprite.CAMA1, 6016, 320));
+        objetos.add(new Objeto("CamaB1", mapa ,Sprite.CAMA2, 6016, 352));
+        objetos.add(new Objeto("CamaC1", mapa ,Sprite.CAMA3, 6016, 384));
+        objetos.add(new Objeto("Barril1", mapa ,Sprite.BARRIL, 6016, 384));
+        objetos.add(new Objeto("NTableA1", mapa ,Sprite.NIGHTTABLE1, 6048, 320));
+        objetos.add(new Objeto("NTableB1", mapa ,Sprite.NIGHTTABLE2, 6048, 352));
+        objetos.add(new Objeto("Candle1", mapa ,Sprite.CANDLE, 6048, 320));
+        objetos.add(new Objeto("HALFBARRELPLANTS1", mapa ,Sprite.HALFBARRELPLANTS, 6080, 340));
+        objetos.add(new Objeto("HALFBARREL1", mapa ,Sprite.HALFBARREL, 6080, 360));
         //objetos agregados
         //agregamos los cofres;
         Random  rnd = new Random();

@@ -205,38 +205,47 @@ public class Sprite {
     public static Sprite CARPA_8 = new Sprite(32,17,4,HojaSprites.texturas);
     public static Sprite CARPA_9 = new Sprite(32,18,4,HojaSprites.texturas);
     
-    public static Sprite TENT_1 = new Sprite(32,10,1,HojaSprites.tent);
-    public static Sprite TENT_2 = new Sprite(32,11,1,HojaSprites.tent);
-    public static Sprite TENT_3 = new Sprite(32,12,1,HojaSprites.tent);
-    public static Sprite TENT_4 = new Sprite(32,13,1,HojaSprites.tent);
-    public static Sprite TENT_5 = new Sprite(32,14,1,HojaSprites.tent);
-    public static Sprite TENT_6 = new Sprite(32,10,2,HojaSprites.tent);
-    public static Sprite TENT_7 = new Sprite(32,11,2,HojaSprites.tent);
-    public static Sprite TENT_8 = new Sprite(32,12,2,HojaSprites.tent);
-    public static Sprite TENT_9 = new Sprite(32,13,2,HojaSprites.tent);
-    public static Sprite TENT_10 = new Sprite(32,14,2,HojaSprites.tent);
-    public static Sprite TENT_11 = new Sprite(32,10,3,HojaSprites.tent);
-    public static Sprite TENT_12 = new Sprite(32,11,3,HojaSprites.tent);
-    public static Sprite TENT_13 = new Sprite(32,12,3,HojaSprites.tent);
-    public static Sprite TENT_14 = new Sprite(32,13,3,HojaSprites.tent);
-    public static Sprite TENT_15 = new Sprite(32,14,3,HojaSprites.tent);
-    public static Sprite TENT_16 = new Sprite(32,10,4,HojaSprites.tent);
-    public static Sprite TENT_17 = new Sprite(32,11,4,HojaSprites.tent);
-    public static Sprite TENT_18 = new Sprite(32,12,4,HojaSprites.tent);
-    public static Sprite TENT_19 = new Sprite(32,13,4,HojaSprites.tent);
-    public static Sprite TENT_20 = new Sprite(32,14,4,HojaSprites.tent);
-    public static Sprite TENT_21 = new Sprite(32,10,5,HojaSprites.tent);
-    public static Sprite TENT_22 = new Sprite(32,11,5,HojaSprites.tent);
-    public static Sprite TENT_23 = new Sprite(32,12,5,HojaSprites.tent);
-    public static Sprite TENT_24 = new Sprite(32,13,5,HojaSprites.tent);
-    public static Sprite TENT_25 = new Sprite(32,14,5,HojaSprites.tent);
-    public static Sprite TENT_26 = new Sprite(32,10,6,HojaSprites.tent);
-    public static Sprite TENT_27 = new Sprite(32,11,6,HojaSprites.tent);
-    public static Sprite TENT_28 = new Sprite(32,12,6,HojaSprites.tent);
-    public static Sprite TENT_29 = new Sprite(32,13,6,HojaSprites.tent);
-    public static Sprite TENT_30 = new Sprite(32,14,6,HojaSprites.tent);
+    public static Sprite TENT_1 = new Sprite(32,0,1,HojaSprites.objetos);
+    public static Sprite TENT_2 = new Sprite(32,1,1,HojaSprites.objetos);
+    public static Sprite TENT_3 = new Sprite(32,2,1,HojaSprites.objetos);
+    public static Sprite TENT_4 = new Sprite(32,3,1,HojaSprites.objetos);
+    public static Sprite TENT_5 = new Sprite(32,4,1,HojaSprites.objetos);
+    public static Sprite TENT_6 = new Sprite(32,0,2,HojaSprites.objetos);
+    public static Sprite TENT_7 = new Sprite(32,1,2,HojaSprites.objetos);
+    public static Sprite TENT_8 = new Sprite(32,2,2,HojaSprites.objetos);
+    public static Sprite TENT_9 = new Sprite(32,3,2,HojaSprites.objetos);
+    public static Sprite TENT_10 = new Sprite(32,4,2,HojaSprites.objetos);
+    public static Sprite TENT_11 = new Sprite(32,0,3,HojaSprites.objetos);
+    public static Sprite TENT_12 = new Sprite(32,1,3,HojaSprites.objetos);
+    public static Sprite TENT_13 = new Sprite(32,2,3,HojaSprites.objetos);
+    public static Sprite TENT_14 = new Sprite(32,3,3,HojaSprites.objetos);
+    public static Sprite TENT_15 = new Sprite(32,4,3,HojaSprites.objetos);
+    public static Sprite TENT_16 = new Sprite(32,0,4,HojaSprites.objetos);
+    public static Sprite TENT_17 = new Sprite(32,1,4,HojaSprites.objetos);
+    public static Sprite TENT_18 = new Sprite(32,2,4,HojaSprites.objetos);
+    public static Sprite TENT_19 = new Sprite(32,3,4,HojaSprites.objetos);
+    public static Sprite TENT_20 = new Sprite(32,4,4,HojaSprites.objetos);
+    public static Sprite TENT_21 = new Sprite(32,0,5,HojaSprites.objetos);
+    public static Sprite TENT_22 = new Sprite(32,5,1,HojaSprites.objetos);
+    public static Sprite TENT_23 = new Sprite(32,6,1,HojaSprites.objetos);
+    public static Sprite TENT_24 = new Sprite(32,7,1,HojaSprites.objetos);
+    public static Sprite TENT_25 = new Sprite(32,4,5,HojaSprites.objetos);
+    public static Sprite TENT_26 = new Sprite(32,0,6,HojaSprites.objetos);
+    public static Sprite TENT_27 = new Sprite(32,5,2,HojaSprites.objetos);
+    public static Sprite TENT_28 = new Sprite(32,6,2,HojaSprites.objetos);
+    public static Sprite TENT_29 = new Sprite(32,7,2,HojaSprites.objetos);
+    public static Sprite TENT_30 = new Sprite(32,4,6,HojaSprites.objetos);
     
     public static Sprite BARRIL = new Sprite(32,0,15,HojaSprites.objetos);
+    public static Sprite NIGHTTABLE1 = new Sprite(32,5,20,HojaSprites.objetos);
+    public static Sprite NIGHTTABLE2 = new Sprite(32,5,21,HojaSprites.objetos);
+    public static Sprite CANDLE = new Sprite(32,6,20,HojaSprites.objetos);
+    public static Sprite CAMA1 = new Sprite(32,4,20,HojaSprites.objetos);
+    public static Sprite CAMA2 = new Sprite(32,4,21,HojaSprites.objetos);
+    public static Sprite CAMA3 = new Sprite(32,4,22,HojaSprites.objetos);
+    public static Sprite HALFBARREL = new Sprite(32,2,16,HojaSprites.objetos);
+    public static Sprite HALFBARRELPLANTS = new Sprite(32,1,16,HojaSprites.objetos);
+    
     
     
     //fin de la coleccion
